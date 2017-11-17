@@ -1,0 +1,34 @@
+---
+title: "Untitled"
+author: "Boncho Ku"
+date: "2017년 11월 17일"
+output: 
+  pdf_document: 
+    highlight: monochrome
+    includes:
+      in_header: header.tex
+    keep_tex: yes
+    latex_engine: pdflatex
+    citation_package: natbib
+fontsize: 11pt
+editor_options:
+  chunk_output_type: console
+linkcolor: blue
+---
+
+```{r knitr_init, echo=FALSE, results="hide", message=FALSE, cache=FALSE}
+knitr::opts_knit$set(root.dir = '..')
+options(max.print = 5000)
+knitr::opts_chunk$set(eval = TRUE, echo = FALSE, cache = FALSE, include = TRUE, collapse = FALSE, tidy=TRUE, message=FALSE, warning=FALSE,
+                      dependson = NULL, engine = "R", error = TRUE, fig.path="Figures/", fig.align = "center", fig.width = 7, fig.height = 7,
+                      fig.keep='all', fig.retina=2, background = '#F7F7F7', highlight = T, comment = NA)
+```
+
+# Introduction 
+
+## Overview: R을 꼭 사용해야 할까? 
+
+```{r, echo = T,  background = 'gray', size = "scriptsize"}
+summary(cars)
+```
+
