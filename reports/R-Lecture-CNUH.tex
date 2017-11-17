@@ -41,37 +41,39 @@
 \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
 % Add ',fontsize=\small' for more characters per line
-\newenvironment{Shaded}{}{}
-\newcommand{\KeywordTok}[1]{\textbf{#1}}
-\newcommand{\DataTypeTok}[1]{\underline{#1}}
-\newcommand{\DecValTok}[1]{#1}
-\newcommand{\BaseNTok}[1]{#1}
-\newcommand{\FloatTok}[1]{#1}
-\newcommand{\ConstantTok}[1]{#1}
-\newcommand{\CharTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{#1}
-\newcommand{\StringTok}[1]{#1}
-\newcommand{\VerbatimStringTok}[1]{#1}
-\newcommand{\SpecialStringTok}[1]{#1}
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\ImportTok}[1]{#1}
-\newcommand{\CommentTok}[1]{\textit{#1}}
-\newcommand{\DocumentationTok}[1]{\textit{#1}}
-\newcommand{\AnnotationTok}[1]{\textit{#1}}
-\newcommand{\CommentVarTok}[1]{\textit{#1}}
-\newcommand{\OtherTok}[1]{#1}
-\newcommand{\FunctionTok}[1]{#1}
-\newcommand{\VariableTok}[1]{#1}
-\newcommand{\ControlFlowTok}[1]{\textbf{#1}}
-\newcommand{\OperatorTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\PreprocessorTok}[1]{\textbf{#1}}
-\newcommand{\AttributeTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textit{#1}}
-\newcommand{\WarningTok}[1]{\textit{#1}}
-\newcommand{\AlertTok}[1]{\textbf{#1}}
-\newcommand{\ErrorTok}[1]{\textbf{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\NormalTok}[1]{#1}
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -127,6 +129,68 @@
   \postdate{\par}
   \date{2017년 11월 17일}
 
+ \usepackage{kotex}
+ \usepackage{placeins}
+ \usepackage{enumerate}
+ % \usepackage{setspace} \doublespacing
+ \usepackage{relsize}
+ \usepackage{bigints}
+ \usepackage{bm}
+ % \usepackage{titlesec}
+ \usepackage{lipsum}
+ 
+% \onehalfspacing
+% \counterwithin{figure}{section}
+% \counterwithin{table}{section}
+% \setlength{\parindent}{2em}
+% \setlength{\parskip}{0em}
+
+ \usepackage{booktabs}
+ \usepackage{dcolumn}
+ \usepackage{array}
+ \usepackage[font=small,labelfont=bf]{caption}
+ \usepackage{gensymb}
+ \usepackage{makecell}
+ \usepackage{multirow}
+ \usepackage{natbib}
+ \usepackage{threeparttable}
+ %\usepackage{boondox-cal}
+
+%\usepackage[nomarkers]{endfloat}
+\usepackage{rotating}
+
+% \DeclareDelayedFloatFlavour{sidewaystable}{table}
+% \DeclareDelayedFloatFlavour{sidewaysfigure}{figure}
+% \DeclareMathSizes{16}{16}{10}{10}
+
+\renewcommand\theadalign{cb}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\renewcommand\theadalign{cb}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\
+\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\
+\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\
+\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{P}[1]{>{\raggedright\tabularxbackslash}p{#1}}
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+\newcommand{\specialcelll}[2][l]{%
+  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+
+
+\captionsetup[table]{aboveskip=0pt}
+\captionsetup[table]{belowskip=10pt}
+
+\linespread{1.2}
 
 \begin{document}
 \maketitle
@@ -136,7 +200,7 @@
 \subsection{Overview: R을 꼭 사용해야 할까?}\label{overview-r---}
 
 \begin{Shaded}
-\begin{Highlighting}[gray]
+\begin{Highlighting}[]
 \KeywordTok{summary}\NormalTok{(cars)}
 \end{Highlighting}
 \end{Shaded}

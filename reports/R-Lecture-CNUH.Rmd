@@ -4,7 +4,7 @@ author: "Boncho Ku"
 date: "2017년 11월 17일"
 output: 
   pdf_document: 
-    highlight: monochrome
+    # highlight: monochrome
     includes:
       in_header: header.tex
     keep_tex: yes
