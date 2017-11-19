@@ -1,34 +1,178 @@
 ---
-title: "Untitled"
-author: "Boncho Ku"
-date: "2017년 11월 17일"
+title: \textbf{\LARGE R을 이용한 자료처리 및 시각화}
+subtitle: \textbf{\Large 기본 환경 설정부터 재현가능한 연구 방법 입문}\vspace{2cm}\linebreak 한국한의학연구원 한의기반연구부\linebreak Korea Institute of Oriental Medicine, KM Fundamental Research Division \vspace{2cm} 
+author: \textbf{\Large 구본초, Ph.D. in Statistics}
+date: "2017-11-23"
 output: 
-  pdf_document: 
-    # highlight: monochrome
-    includes:
-      in_header: header.tex
-    keep_tex: yes
-    latex_engine: pdflatex
+  bookdown::pdf_book:
+    includes: 
+      in_header: preamble.tex
+    toc: true 
+    toc_depth: 2
+    highlight: tango
+    fig_caption: yes
     citation_package: natbib
-fontsize: 11pt
-editor_options:
-  chunk_output_type: console
-linkcolor: blue
+    keep_tex: yes
+documentclass: book
+classoption: a4paper
+link-citation: yes
+colorlinkgs: yes
+lot: no
+lof: no
+fontsize: 12pt
+bibliography: CNUH.bib
+
 ---
 
+
 ```{r knitr_init, echo=FALSE, results="hide", message=FALSE, cache=FALSE}
-knitr::opts_knit$set(root.dir = '..')
+ 
+knitr::opts_knit$set(root.dir = '..') 
 options(max.print = 5000)
 knitr::opts_chunk$set(eval = TRUE, echo = FALSE, cache = FALSE, include = TRUE, collapse = FALSE, tidy=TRUE, message=FALSE, warning=FALSE,
-                      dependson = NULL, engine = "R", error = TRUE, fig.path="Figures/", fig.align = "center", fig.width = 7, fig.height = 7,
-                      fig.keep='all', fig.retina=2, background = '#F7F7F7', highlight = T, comment = NA)
+                    dependson = NULL, engine = "R", error = TRUE, fig.path="Figures/", fig.align = "center", fig.width = 7, fig.height = 7,
+                     fig.keep='all', fig.retina=2, background = '#F7F7F7', highlight = T, comment = NA, tidy = TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50))
 ```
 
-# Introduction 
+# R을 사용하기 위한 환경 설정
 
-## Overview: R을 꼭 사용해야 할까? 
+## Overview
 
-```{r, echo = T,  background = 'gray', size = "scriptsize"}
-summary(cars)
-```
+### What is R?
 
+- R 언어: 통계 및 자료 시각화를 지원하는 언어 및 환경
+
+- 1980년 AT\&T 연구소의 John Chambers가 개발한 S 언어를 기반으로 1995년 뉴질랜드 Auckland Univ.의 Robert Gentleman \& Ross Ihaka 개발이 그 기원임
+
+- GNU 기반 오픈소스
+
+### Why R? 
+
+1. 장점
+    - \textbf{Free software}
+    - 주요 운영체제(Unix, Windows, Macintosh)에서 사용 가능
+    - 현존하는 거의 대부분의 통계 방법론들이 package로 구현
+    - 강력한 그래픽 기능
+    - 빠른 update 및 연산속도(?)
+    - 방대한 community 및 R package에 공개 및 공유된 자료
+
+2. Do we have to learn R language?
+    - 물론 꼭 배울 필요는 없다!! (요리를 하는데 꼭 좋은 칼이 필요 없듯이...)
+    - 다양한 통계 소프트웨어 및 분석 언어(SPSS, SAS, WEKA, MATLAB, PYTHON, ...) 존재
+    - 프로그래밍에 익숙하지 않은 사용자들의 접근성이 떨어짐
+    - 하지만 배워두면 좋은 이유
+        - 통계분석과 보고서 작성을 위한 최적 환경
+            - R + Rstudio + Rmarkdown을 통해 분석에서부터 보고서 작성까지 한번에 가능 
+        - SPSS, SAS에 비해 확장성이 높기 때문에 다양한 문제에 적용 가능
+        - 방대한 양의 메뉴얼 및 서적들
+        - 그리고 이 모든 것을 거의 대부분 무료 사용 가능
+      
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{Tips}
+  \begin{itemize}
+    \item R에서 구현한 모든 package들은 CRAN (The Comprehensive R Archive Network, http://cran.r-project.org/web/view)에서 살펴볼 수 있음
+    \item R과 관련한 대부분의 문제는 Google 검색과 스텍 오버플로우(http://stackoverflow.com)에서 해결할 수 있음
+    \item 본 문서는 서민구 선생님의 ``R을 이용한 데이터 처리 \& 실무'' \citep{Seo-2014} 와 고석범 선생님의 ``R과 Knitr을 활용한 데이터 연동형 문서 만들기'' \citep{Ko-2014} 의 내용을 주로 참조함. 
+  \end{itemize}
+\end{minipage}}
+\end{quote}
+
+\newpage
+
+## R 설치하기(Windows 용)
+
+R은 공개 소프트웨어로 http://www.r-project.org/ 에서 다운로드 및 설치 가능
+
+1. 웹브라우저(i.e. explore, chrome, firefox 등)에서 http://www.r-project.org 이동
+2. 좌측 R Logo 하단 Download 아래 `CRAN' 클릭
+
+\begin{figure}[h]
+{
+  \centering
+  \includegraphics[width = 12cm, height = 12cm]{Figures/Rorg-main-add.png}
+  \caption[www.r-project.org 메인화면]{www.r-project.org 메인화면}\label{fig:R-install-01}
+}
+\end{figure}
+
+3. 클릭 후 연결 창에서 스크롤 후 ``Korea'' 아래 링크 클릭 (그림 \ref{fig:R-install-02} 참조)
+
+\begin{figure}[h]
+{
+  \centering
+  \includegraphics[width = 12cm, height = 8cm]{Figures/CRAN-korea-01.PNG}
+  \caption[CRAN 국가별 mirrors]{CRAN 국가별 mirrors}\label{fig:R-install-02}
+}
+\end{figure}
+
+4. 클릭 후 세 가지 운영체제(Linux, Mac OS X, Windowns)에 따른 R 버전 선택 가능
+    - 본 문서에서는 Windows 버전 설치만 다룸
+
+\begin{figure}[h]
+{
+  \centering
+  \includegraphics[width = 12cm, height = 10cm]{Figures/Rinstall-01.png}
+  \caption[운영체제 별 R 버전 선택]{운영체제 별 R 버전 선택}\label{fig:R-install-03}
+}
+\end{figure} 
+
+5. ``Downloads R for Windows'' 링크 클릭하면 다음과 같은 화면으로 이동
+
+\begin{figure}[h]
+{
+  \centering
+  \includegraphics[width = 12cm, height = 10cm]{Figures/Rinstall-02.png}
+  \caption[Windows 용 R base 및 구성요소 다운로드]{Windows 용 R base 및 구성요소 다운로드}\label{fig:R-install-04}
+}
+\end{figure} 
+
+6. R을 구성하는 하위구조 중 "base" 링크 클릭 후 다음 화면에서 "Downloads R 3.4.2 for Windows"를 클릭 후 설치 파일을 임의의 디렉토리에 저장 후 실행(그림 \ref{fig:R-install-05} 참조)
+
+7. 참고로 3개 subdirectories에 대한 간략한 설명은 아래와 같음
+    - `base`: R 실행 프로그램 
+    - `contrib`: R package의 바이너리 파일 
+    - `Rtools`: R package 개발 및 배포를 위한 프로그램
+
+\begin{figure}[h]
+{
+  \centering
+  \includegraphics[width = 12cm, height = 10cm]{Figures/Rinstall-03.png}
+  \caption[Windows 용 R 설치 파일 다운로드 페이지]{Windows 용 R 설치 파일 다운로드 페이지}\label{fig:R-install-05}
+}
+\end{figure} 
+
+8. 다운로드한 파일을 실행하면 아래와 같은 대화창이 나타남
+    - 한국어 선택 $\rightarrow$ 환영 화면에서 [다음(N)>] 클릭
+
+\begin{figure}[h]
+{
+  \centering
+  \includegraphics[width = 14cm, height = 11cm]{Figures/R-install-F01.png}
+  \caption[R 설치과정 01]{R 설치과정 01}\label{fig:R-install-06}
+}
+\end{figure} 
+
+9. GNU 라이센스에 대한 설명 및 동의 여부([다음(N)>]) 클릭 (그림 \ref{fig:R-install-07})
+
+\begin{figure}[h]
+{
+  \centering
+  \includegraphics[width = 10cm, height = 10cm]{Figures/R-install-F02.png}
+  \caption[R GNU general license]{R GNU general license}\label{fig:R-install-07}
+}
+\end{figure} 
+
+10. 설치 디렉토리 설정 및 구성요소 설지 여부
+    - 원하는 디렉토리 설정(예: `C:\R\R-3.4.2`)
+    - 기본 프로그램 및 32 또는 64 bit 용 설치 파일, R console 한글 번역 모두 체크 뒤 [다음(N)>] 클릭
+    
+
+\begin{figure}[h]
+{
+  \centering
+  \includegraphics[width = 15cm, height = 10cm]{Figures/R-install-F03.png}
+  \caption[R 설치 디렉토리 설정]{R 설치 디렉토리 설정}\label{fig:R-install-08}
+}
+\end{figure} 
+
+# References 
