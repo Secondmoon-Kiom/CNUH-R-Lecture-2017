@@ -132,6 +132,7 @@ Fundamental Research Division \vspace{2cm}}
   \date{2017-11-23}
 
 \usepackage{kotex}
+\usepackage{xspace}
 \usepackage{placeins}
 \usepackage{enumerate}
 \usepackage{float}
@@ -169,6 +170,7 @@ Fundamental Research Division \vspace{2cm}}
     ](key) {#1\strut}
   ;
 }
+\newcommand{\latex}{\LaTeX\xspace}
 
 \renewcommand\theadalign{cb}
 \renewcommand\theadfont{\bfseries}
@@ -305,7 +307,8 @@ Fundamental Research Division \vspace{2cm}}
   \begin{itemize}
     \item R에서 구현한 모든 package들은 CRAN (The Comprehensive R Archive Network, http://cran.r-project.org/web/view)에서 살펴볼 수 있음
     \item R과 관련한 대부분의 문제는 Google 검색과 스텍 오버플로우(http://stackoverflow.com)에서 해결할 수 있음
-    \item 본 문서는 서민구 선생님의 ``R을 이용한 데이터 처리 \& 실무'' \citep{Seo-2014} 와 고석범 선생님의 ``R과 Knitr을 활용한 데이터 연동형 문서 만들기'' \citep{Ko-2014} 의 내용을 주로 참조함. 
+    \item 해당 문서는 서민구 선생님의 ``R을 이용한 데이터 처리 \& 실무'' \citep{Seo-2014} 와 고석범 선생님의 ``R과 Knitr을 활용한 데이터 연동형 문서 만들기'' \citep{Ko-2014} 의 내용을 주로 참조함. 
+    \item: 해당 문서는 \texttt{RMarkdown} + \latex + \texttt{knitr}로 작성된 문서이며, 이를 위해 작성한 모든 소스 코드 및 자료는 https://github.com/Secondmoon-Kiom/CNUH-R-Lecture-2017 에서 확인할 수 있음. 
   \end{itemize}
 \end{minipage}}
 \end{quote}
@@ -874,27 +877,98 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
 }
 \end{figure}
 
-\section{RStudio의 화면구성}\label{rstudio-}
+\section{RStudio 튜닝}\label{rstudio-}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  RStudio IDE 화면 구성
-\end{enumerate}
+  RStudio IDE 화면 구성: 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게
+  4개 창으로 구성
 
-\begin{figure}[H]
-{
-  \centering
-  \includegraphics[width = 12cm, height = 10cm]{Figures/Rstudio-cap1.png}
-  \caption[RStudio 화면구성]{RStudio 화면구성}\label{fig:Rstudio-part-01}
-}
-\end{figure}
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii})}
+  \tightlist
+  \item
+    콘솔(console)
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
+    \begin{itemize}
+    \tightlist
+    \item
+      R 명령어 실행 공간(RGui, 정확하게는 \texttt{Rterm.exe}가 실행되고
+      있는 창)
+    \item
+      R 스크립트 또는 콘솔 창에서 작성한 명령어(프로그램) 실행 결과 출력
+    \item
+      경고, 에러/로그 등의 메세지 확인
+    \end{itemize}
+  \item
+    스크립트(script)
+
+    \begin{itemize}
+    \tightlist
+    \item
+      명령어의 일괄처리(batch processing)
+    \item
+      \keystroke{Ctrl} + \keystroke{Enter}: 선택한 블럭 내 명령어 실행
+    \item
+      \keystroke{Alt} + \keystroke{Enter}: 선택 없이 커서가 위치한
+      라인의 명령어 실행
+    \item
+      \keystroke{Ctrl} + \keystroke{Alt} + \keystroke{R} 또는
+      \keystroke{Ctrl} + \keystroke{Shift} + \keystroke{Enter}:
+      실행하고자 하는 R 명령어들이 저장된 배치파일(\texttt{filename.R})
+      일괄실행(콘솔에 실행 명령어 출력)
+    \item
+      \keystroke{Ctrl} + \keystroke{Shift} + \keystroke{S}: 위 작업을
+      실행 명령어 출력 없이 실행
+
+      \begin{figure}[H]
+      {
+        \centering
+        \includegraphics[width = 14cm, height = 12cm]{Figures/Rstudio-cap1.png}
+        \caption[RStudio 화면구성]{RStudio 화면구성}\label{fig:Rstudio-part-01}
+      }
+      \end{figure}
+    \end{itemize}
+  \item
+    Environment/History
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Environment: 현재 R 작업환경에 저장되어 있는 객체의 특성을 요약
+      제시
+
+      \begin{itemize}
+      \tightlist
+      \item
+        좌측 화살표 버튼 클릭: 해당 객체의 상세 정보 확인(그림
+        \ref{fig:Rstudio-envirn-01})
+      \item
+        우측 사각형 버튼 클릭: 스프레드 시트 형태로 데이터셋 확인(그림
+        \ref{fig:Rstudio-envirn-02})
+
+        \begin{figure}[H] {
+          \centering
+          \includegraphics[width = 12cm, height = 10cm]{Figures/Rstudio-envwin-01.png}
+          \caption[RStudio Environment 창: 객체 상세정보]{RStudio Environment 창: 객체 상세정보}\label{fig:Rstudio-envirn-01}
+        } \end{figure}\begin{figure}[H] {
+          \centering
+          \includegraphics[width = 15cm, height = 10cm]{Figures/Rstudio-envwin-02.png}
+          \caption[RStudio Environment 창: 스프레드 시트]{RStudio Environment 창: 스프레드 시트}\label{fig:Rstudio-envirn-02}
+        } \end{figure}
+      \end{itemize}
+    \item
+      History: R 콘솔에서 실행된 명령어(스크립트)들의 이력 확인
+
+      \begin{figure}[H] {
+        \centering
+        \includegraphics[width = 8cm, height = 8cm]{Figures/Rstudio-historywin.png}
+        \caption[RStudio History 창]{RStudio History 창}\label{fig:Rstudio-history}
+      } \end{figure}
+    \end{itemize}
+  \end{enumerate}
 \item
   창 순서는 사용자의 편의에 따라 변경 가능
 
@@ -935,8 +1009,13 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
 
 \section{파일 입출력}\label{-}
 
+\chapter{\texorpdfstring{\texttt{ggplot2}를 이용한 자료
+시각화}{ggplot2를 이용한 자료 시각화}}\label{ggplot2---}
+
+\chapter{재현가능한 데이터 연동 문서 작성}\label{----}
+
 \renewcommand\bibname{References}
-\bibliography{CNUH}
+\bibliography{CNUH.bib}
 
 
 \end{document}
