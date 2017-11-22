@@ -307,7 +307,7 @@ Fundamental Research Division \vspace{2cm}}
   \begin{itemize}
     \item R에서 구현한 모든 package들은 CRAN (The Comprehensive R Archive Network, http://cran.r-project.org/web/view)에서 살펴볼 수 있음
     \item R과 관련한 대부분의 문제는 Google 검색과 스텍 오버플로우(http://stackoverflow.com)에서 해결할 수 있음
-    \item 해당 문서는 서민구 선생님의 ``R을 이용한 데이터 처리 \& 실무'' \citep{Seo-2014} 와 고석범 선생님의 ``R과 Knitr을 활용한 데이터 연동형 문서 만들기'' \citep{Ko-2014} 의 내용을 주로 참조함. 
+    \item 해당 문서는 서민구 선생님의 ``R을 이용한 데이터 처리 \& 실무'' \citep{Seo-2014}, 고석범 선생님의 ``R과 Knitr을 활용한 데이터 연동형 문서 만들기'' \citep{Ko-2014}, R Friend 님의 블로그 ``R, Phython 분석과 프로그래밍'' \citep{RFriend} 의 내용을 주로 참조함. 
     \item 해당 문서는 \texttt{RMarkdown} + \latex + \texttt{knitr}로 작성된 문서이며, 이를 위해 작성한 모든 소스 코드 및 자료는 https://github.com/Secondmoon-Kiom/CNUH-R-Lecture-2017 에서 확인할 수 있음. 
   \end{itemize}
 \end{minipage}}
@@ -726,9 +726,49 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
 \begin{quote}
 \colorbox{gray!10}{\begin{minipage}{15cm}
 \textbf{Tips}
-\texttt{vignette}에서 제공하는 문서는 실제 분석을 기반으로 작성한 문서이기 때문에 초보자들이 R 패키지의 접근성을 높혀줌. \texttt{browseVignettes()}으로 현존하는 모든 R 패키지들의 vignette을 볼 수 있기 때문에 매우 유용함.
+\begin{itemize}
+\item \texttt{vignette}에서 제공하는 문서는 실제 분석을 기반으로 작성한 문서이기 때문에 초보자들이 R 패키지의 접근성을 높혀줌. \texttt{browseVignettes()}으로 현존하는 모든 R 패키지들의 vignette을 볼 수 있기 때문에 매우 유용함.
+\item R 세션(R 콘솔이 시작해서 종료까지)에 설정된 옵션은 \texttt{options()} 실행으로 확인 가능
+\item 현재 R 세션에 대한 정보는 \texttt{sessionInfo()} 함수로 확인 가능
+\end{itemize}
 \end{minipage}}
 \end{quote}
+
+\emph{참고}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 현재 설정된 출력 자리수 확인}
+\ErrorTok{>}\StringTok{ }\KeywordTok{options}\NormalTok{(}\StringTok{"digits"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+$digits
+[1] 7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{pi}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3.141593
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 출력 자리수를 7에서 3으로 변경}
+\ErrorTok{>}\StringTok{ }\KeywordTok{options}\NormalTok{(}\DataTypeTok{digits =} \DecValTok{3}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\NormalTok{pi}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3.14
+\end{verbatim}
 
 \subsection{이것으로 R 설치 완료??}\label{-r--}
 
@@ -932,6 +972,21 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
       \keystroke{Alt} + \keystroke{Enter}: 선택 없이 커서가 위치한
       라인의 명령어 실행
     \end{itemize}
+  \item
+    새 R 스크립트 파일 열기
+
+    \begin{itemize}
+    \tightlist
+    \item
+      R 상단 메뉴: \keystroke{File} \(\rightarrow\) \keystroke{New File}
+      \(\rightarrow\) \keystroke{R Script}
+    \item
+      단축키: \keystroke{Ctrl} + \keystroke{Shift} + \keystroke{N}
+    \end{itemize}
+  \item
+    R 스크립트 이외 \texttt{R\ Markdown}, \texttt{R\ Notebook},
+    \texttt{Shiny\ Web\ Application} 등 새 문서의 목적에 따라 다양한
+    종류의 문서 생성 가능
   \end{itemize}
 \item
   Environment/History
@@ -948,8 +1003,15 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
       좌측 화살표 버튼 클릭: 해당 객체의 상세 정보 확인(그림
       \ref{fig:Rstudio-envirn-01})
     \item
-      우측 사각형 버튼 클릭: 스프레드 시트 형태로 데이터셋 확인(그림
-      \ref{fig:Rstudio-envirn-02})
+      우측 사각형 버튼 클릭: 객체가 데이터프레임인 경우 스프레드 시트
+      형태로 데이터셋 확인(그림 \ref{fig:Rstudio-envirn-02})
+    \item
+      디스켓 아이콘: 작업공간 저장 여부
+    \item
+      빗자루 아이콘: 작업공간 객체 일괄 삭제
+    \item
+      Global Environment 아이콘: 현재 작업공간에서 사용중인 패키지 및
+      선택 패키지 내장 함수 목록 확인
 
       \begin{figure}[H] {
         \centering
@@ -1014,21 +1076,16 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
       } \end{figure}
     \end{itemize}
   \item
-    Packages: 현재 컴퓨터에 설치된 R 패키지 목록 출력
+    Packages: 현재 컴퓨터에 설치된 R 패키지 목록 출력: 신규 설치 및
+    업데이트 가능
 
-    \begin{itemize}
-    \tightlist
-    \item
-      신규 설치 및 업데이트 가능
-
-      \begin{figure}[H] {
-        \centering
-        \includegraphics[width = 8cm, height = 8cm]{Figures/RStudio-packagewin.png}
-        \caption[RStudio Packages 창 화면]{RStudio Packages 창 화면}\label{fig:Rstudio-pkgwin}
-      } \end{figure}
-    \end{itemize}
+    \begin{figure}[H] {
+      \centering
+      \includegraphics[width = 8cm, height = 8cm]{Figures/RStudio-packagewin.png}
+      \caption[RStudio Packages 창 화면]{RStudio Packages 창 화면}\label{fig:Rstudio-pkgwin}
+    } \end{figure}
   \item
-    Help: \texttt{help(명령어)} 입력 시 도움말 창이 출력되는 공간
+    Help: \texttt{help(topic)} 입력 시 도움말 창이 출력되는 공간
   \end{enumerate}
 \end{enumerate}
 
@@ -1044,32 +1101,175 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
   \caption[\texttt{help(lm)} 실행 후 RStudio Help 창 화면]{\texttt{help(lm)} 실행 후 RStudio Help 창 화면}\label{fig:Rstudio-hlpwin}
 } \end{figure}
 
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  RStudio의 창 layout은 \texttt{{[}Tools{]}} \(\rhd\)
+  \texttt{{[}Global\ Options{]}} \(\rhd\)
+  \texttt{{[}Pane\ Layout{]}}에서 변경 가능
+\end{enumerate}
+
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 15cm, height = 10cm]{Figures/RStudio-layout.png}
+  \caption[RStudio Option 선택화면 및 Pane 레이아웃 선택 화면]{RStudio Option 선택화면 및 Pane 레이아웃 선택 화면}\label{fig:Rstudio-layout}
+} \end{figure}
+
 \section{RStudio에서 배치 파일 생성 및 실행}\label{rstudio-----}
 
 \section{R 패키지 설치하기}\label{r--}
 
-\section{rJava 설치하기}\label{rjava-}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  RStudio
+\end{enumerate}
+
+\section{\texorpdfstring{\texttt{rJava}
+설치하기}{rJava 설치하기}}\label{rjava-}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  자바 명령을 호출하는 패키지를 정상적으로 사용하기 위한 패키지
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Java 계열 머신러닝 어플리케이션 활용 또는 최근까지 Excel 파일을
+    불러오기 위해 설치 필수(Excel에 관해서는 Hadley Wickham의
+    \texttt{readxl} 개발 이전에만\ldots{})
+  \item
+    다음은 Java가 설치되지 않은 환경에서 \texttt{rJava}를 불렀을 때
+    발생한 오류 예시임
+
+    \begin{figure}[H] {
+      \centering
+      \includegraphics[width = 10cm, height = 8cm]{Figures/R-rJava-error.png}
+      \caption[\texttt{rJava} 에러 메세지]{\texttt{rJava} 에러 메세지}\label{fig:rJava-error}
+    } \end{figure}
+  \end{itemize}
+\item
+  \texttt{rJava} 설치 전 자바 설치 및 Windows 시스템 환경 설정 필요
+\item
+  자바 개발 키트(Java Development Kit, JDK)는
+  \url{http://www.oracle.com/technetwork/java/javase/downloads/index.html}
+  에서 다운로드 가능
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{{[}Java\ Platform\ (JDK){]}} \(\rhd\)
+    \texttt{{[}Download{]}} 클릭
+
+    \begin{figure}[H] {
+      \centering
+      \includegraphics[width = 10cm, height = 10cm]{Figures/R-rJava-install-01.png}
+      \caption[JDK 다운로드 메인 페이지]{JDK 다운로드 페이지}\label{fig:rJava-01}
+    } \end{figure}
+  \end{itemize}
+\item
+  JDK 다운로드 전 현재 주로 작업하고 있는 R 버전 정보(32 bit vs.~64 bit)
+  확인
+
+  \begin{itemize}
+  \tightlist
+  \item
+    R 세션 시작 시 또는 RStudio에서 \texttt{{[}Tools{]}} \(\rhd\)
+    \texttt{{[}Global\ Options{]}}에서 R 버전 확인 가능
+  \item
+    라이센스 계약에 동의 후 확인한 R 버전에 대응하는 링크 클릭 후
+    다운로드 진행
+
+    \begin{figure}[H] {
+      \centering
+      \includegraphics[width = 15cm, height = 10cm]{Figures/R-rJava-install-02.png}
+      \caption[JDK 라이센스 및 다운로드 링크 페이지]{JDK 라이센스 및 다운로드 링크 페이지}\label{fig:rJava-02}
+    } \end{figure}
+  \end{itemize}
+\item
+  다운로드 완료 후 설치 확인
+
+  \begin{itemize}
+  \tightlist
+  \item
+    정상적으로 설치한 경우라면
+    \texttt{C:\textbackslash{}Program\ Files\textbackslash{}Java\textbackslash{}jdk-9.0.1}
+    디렉토리에서 설치 확인 가능
+  \item
+    Java runtime environment (JRE)는
+    \texttt{C:\textbackslash{}Program\ Files\textbackslash{}Java\textbackslash{}jre-9.0.1}
+    에서 설치 확인 가능
+  \end{itemize}
+\item
+  새 사용자 변수 생성
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \keystroke{Windows 시작} 클릭 \(\rightarrow\) \texttt{{[}컴퓨터{]}}
+    우 클릭 \(\rightarrow\) \texttt{{[}속성{]}} 클릭 후 다음 그림
+    \ref{fig:rJava-03}에서 \texttt{{[}고급\ 시스템\ 설정{]}} 클릭
+
+    \begin{figure}[H] {
+      \centering
+      \includegraphics[width = 15cm, height = 10cm]{Figures/R-rJava-system.png}
+      \caption[Windows 시스템 설정 화면]{Windows 시스템 설정 화면}\label{fig:rJava-03}
+    } \end{figure}
+  \item
+    시스템 속성 창에서 \texttt{{[}환경변수(N)...{]}} 클릭 후 환경변수
+    창에서 사용자 변수 \texttt{{[}새로\ 만들기(N)...{]}} 클릭
+  \item
+    변수 이름에 \texttt{JAVA\_HOME}, 변수 값에 JDK 설치 디렉토리
+    이름(예:
+    \texttt{C:\textbackslash{}Program\ Files\textbackslash{}Java\textbackslash{}jdk-9.0.1})
+    입력
+
+    \begin{figure}[H] {
+      \centering
+      \includegraphics[width = 15cm, height = 10cm]{Figures/R-rJava-install-03.png}
+      \caption[Windows 시스템 설정 화면]{Windows 시스템 설정 화면}\label{fig:rJava-04}
+    } \end{figure}
+  \end{itemize}
+\item
+  시스템 변수 \texttt{PATH} 갱신
+
+  \begin{itemize}
+  \tightlist
+  \item
+    JRE가 설치된 디렉토리(아래 나열)를 기존 \texttt{PATH}에
+    추가(디렉토리 구분자: \texttt{;})
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \texttt{C:\textbackslash{}Program\ Files\textbackslash{}Java\textbackslash{}jre-9.0.1\textbackslash{}bin}
+    \item
+      \texttt{C:\textbackslash{}Program\ Files\textbackslash{}Java\textbackslash{}jre-9.0.1\textbackslash{}bin\textbackslash{}server}
+    \end{itemize}
+  \end{itemize}
+\item
+  설정 완료 후 R 또는 RStudio 재실행 후 \texttt{rJava} 설치
+\item
+  별 다른 에러 메세지 출력이 없으면 성공적으로 설치
+\end{enumerate}
 
 \section{\texorpdfstring{RStudio 프로젝트 생성 및
 \texttt{ProjectTemplate} 패키지
 연동}{RStudio 프로젝트 생성 및 ProjectTemplate 패키지 연동}}\label{rstudio----projecttemplate--}
 
-\section{RStudio를 잘 활용 하려면?}\label{rstudio---}
+\section{R + RStudio를 잘 활용 하려면?}\label{r-rstudio---}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
 \tightlist
 \item
-  창 순서는 사용자의 편의에 따라 변경 가능
-
-  \begin{itemize}
-  \tightlist
-  \item
-    상단 메뉴바에서 \keystroke{Tools} \(\rightarrow\)
-    \keystroke{Global Options} \(\rightarrow\)
-    \keystroke{Pane Layout}에서 조정
-  \end{itemize}
+  주기적인 update
+\item
+  RStudio 제 
 \end{enumerate}
 
 \chapter{R의 기본 사용}\label{r--}
@@ -1077,26 +1277,36 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
 \begin{itemize}
 \tightlist
 \item
+  R은 객체지향언어(object-oriented language)임
+\item
+  객체: 숫자, 데이터셋, 단어, 테이블, 분석결과 등 모든 것을 칭함
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ``객체지향''의 의미는 R의 모든 명령어는 객체를 대상으로 이루어진다는
+    것을 의
+  \end{itemize}
+\item
+  R에서 사용자가 데이터 입력을 위해 생성 또는 읽어온 객체(object)는 종종
+  변수(variable)라는 말과 혼용됨.
+\item
+  본 문서에서는 최상위 데이터 저장장소를 객체라고 명명하며
+  데이터프레임과 같이 여러 종류의 데이터타입으로 이루어진 객체의 1차원
+  속성을 변수라고 칭함.
+\item
   R을 다룰 수 있으려면 기본적인 R의 데이터 할당 방식과 데이터 타입,
   그리고 연산 방법에 대한 이해가 있어야 함.
 \item
   특히 데이터 타입에 따라 사용하는 함수 또는 분석 방법이 조금씩 다른
   것이 R의 특징임
 \item
-  들어가기에 앞서 R의 데이터 타입에 대한 개괄적인 모식도를 먼저 확인
+  따라서 R의 데이터 타입에 좀 더 익숙해져야 R을 보다 쉽게 다룰 수 있음
 \end{itemize}
-
-\begin{figure}[H] {
-  \centering
-  \includegraphics[width = 15cm, height = 13cm]{Figures/datatype-diagram}
-  \caption[R 데이터 타입 구조 다이어그램]{R 데이터 타입 구조 다이어그램}\label{fig:Rstudio-hlpwin}
-} \end{figure}
-
-\vspace{1cm}
 
 \begin{quote}
 \colorbox{gray!10}{\begin{minipage}{15cm}
-\textbf{Tips: R을 본격적으로 다루기 앞서 알아두면 유용한 단축키 및 명령어}
+\textbf{Tips: 들어가기 앞서  알아두면 유용한 단축키 및 명령어}
   \begin{itemize}
     \item R console에 저장된 모든 객체들을 일괄 삭제: \texttt{rm(list = ls())}
     \item R console 화면 청소: \keystroke{Ctrl} + \keystroke{L} 
@@ -1106,7 +1316,50 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
 
 \section{R 객체 입력 방법 및 변수 설정 규칙}\label{r-------}
 
-\section{변수}
+\begin{itemize}
+\tightlist
+\item
+  R의 데이터 타입은 1)스칼라, 2)벡터, 3)요인, 4)행렬, 5)배열,
+  6)데이터프레임, 7)리스트 로 나눌 수 있음.
+\item
+  자세히 들어가기 전 R 데이터 타입의 구조 다이어그램을 먼저 살펴봄
+\end{itemize}
+
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 15cm, height = 13cm]{Figures/datatype-diagram}
+  \caption[R 데이터 타입 구조 다이어그램]{R 데이터 타입 구조 다이어그램}\label{fig:R-datatype}
+} \end{figure}
+
+\vspace{1cm}
+
+\subsection{객체 입력 및 할당}\label{---}
+
+\begin{itemize}
+\tightlist
+\item
+  R의 가장 기본적인
+\end{itemize}
+
+앞서 열거한 7 가지 데이터 타입을 설명하기 전,
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  객체를 할당하는 두 가지 방법
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii})}
+  \tightlist
+  \item
+    \texttt{=}
+  \item
+    \texttt{\textless{}-} 또는 \texttt{-\textgreater{}}
+  \item
+    두 할당지시자의 차이점:
+  \end{enumerate}
+\end{enumerate}
 
 \section{스칼라}
 
@@ -1120,9 +1373,11 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
 
 \section{데이터 프레임}\label{-}
 
-\section{연}
+\section{데이터 연산}\label{-}
 
 \chapter{데이터 조작}\label{-}
+
+\section{실습 데이터 설명}\label{--}
 
 \section{파일 입출력}\label{-}
 
@@ -1133,15 +1388,23 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
 
 RStudio 메뉴 명령을 통한 파일 입출력
 
-\section{}\label{section}
+\section{벡터화 연산(apply 계열 함)}\label{-apply--}
+
+\section{\texorpdfstring{\texttt{dplyr\ +\ tidyr}을 이용한 data
+wrangling}{dplyr + tidyr을 이용한 data wrangling}}\label{dplyr-tidyr--data-wrangling}
 
 \chapter{\texorpdfstring{\texttt{ggplot2}를 이용한 자료
 시각화}{ggplot2를 이용한 자료 시각화}}\label{ggplot2---}
 
+\section{\texorpdfstring{\texttt{ggplot()} vs.
+\texttt{plot()}}{ggplot() vs. plot()}}\label{ggplot-vs.-plot}
+
+\section{Grammar of Graphics}\label{grammar-of-graphics}
+
 \chapter{재현가능한 데이터 연동 문서 작성}\label{----}
 
 \renewcommand\bibname{References}
-\bibliography{CNUH}
+\bibliography{CNUH.bib}
 
 
 \end{document}

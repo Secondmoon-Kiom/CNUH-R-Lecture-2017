@@ -74,7 +74,7 @@ knitr::opts_chunk$set(eval = TRUE, echo = FALSE, cache = FALSE, include = TRUE, 
   \begin{itemize}
     \item R에서 구현한 모든 package들은 CRAN (The Comprehensive R Archive Network, http://cran.r-project.org/web/view)에서 살펴볼 수 있음
     \item R과 관련한 대부분의 문제는 Google 검색과 스텍 오버플로우(http://stackoverflow.com)에서 해결할 수 있음
-    \item 해당 문서는 서민구 선생님의 ``R을 이용한 데이터 처리 \& 실무'' \citep{Seo-2014} 와 고석범 선생님의 ``R과 Knitr을 활용한 데이터 연동형 문서 만들기'' \citep{Ko-2014} 의 내용을 주로 참조함. 
+    \item 해당 문서는 서민구 선생님의 ``R을 이용한 데이터 처리 \& 실무'' \citep{Seo-2014}, 고석범 선생님의 ``R과 Knitr을 활용한 데이터 연동형 문서 만들기'' \citep{Ko-2014}, R Friend 님의 블로그 ``R, Phython 분석과 프로그래밍'' \citep{RFriend} 의 내용을 주로 참조함. 
     \item 해당 문서는 \texttt{RMarkdown} + \latex + \texttt{knitr}로 작성된 문서이며, 이를 위해 작성한 모든 소스 코드 및 자료는 https://github.com/Secondmoon-Kiom/CNUH-R-Lecture-2017 에서 확인할 수 있음. 
   \end{itemize}
 \end{minipage}}
@@ -312,9 +312,25 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
 \begin{quote}
 \colorbox{gray!10}{\begin{minipage}{15cm}
 \textbf{Tips}
-\texttt{vignette}에서 제공하는 문서는 실제 분석을 기반으로 작성한 문서이기 때문에 초보자들이 R 패키지의 접근성을 높혀줌. \texttt{browseVignettes()}으로 현존하는 모든 R 패키지들의 vignette을 볼 수 있기 때문에 매우 유용함.
+\begin{itemize}
+\item \texttt{vignette}에서 제공하는 문서는 실제 분석을 기반으로 작성한 문서이기 때문에 초보자들이 R 패키지의 접근성을 높혀줌. \texttt{browseVignettes()}으로 현존하는 모든 R 패키지들의 vignette을 볼 수 있기 때문에 매우 유용함.
+\item R 세션(R 콘솔이 시작해서 종료까지)에 설정된 옵션은 \texttt{options()} 실행으로 확인 가능
+\item 현재 R 세션에 대한 정보는 \texttt{sessionInfo()} 함수로 확인 가능
+\end{itemize}
 \end{minipage}}
 \end{quote}
+
+_참고_
+
+```{r option-ex, echo = T, prompt = T}
+# 현재 설정된 출력 자리수 확인
+options("digits")
+pi
+# 출력 자리수를 7에서 3으로 변경
+options(digits = 3)
+pi
+```
+
 
 ### 이것으로 R 설치 완료??
 
@@ -414,11 +430,18 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
     - 일괄 처리를 위한 RStudio 제공 단축키
         - \keystroke{Ctrl} + \keystroke{Enter}: 선택한 블럭 내 명령어 실행
         - \keystroke{Alt} + \keystroke{Enter}: 선택 없이 커서가 위치한 라인의 명령어 실행 
+    - 새 R 스크립트 파일 열기
+        - R 상단 메뉴: \keystroke{File} $\rightarrow$ \keystroke{New File} $\rightarrow$ \keystroke{R Script}
+        - 단축키: \keystroke{Ctrl} + \keystroke{Shift} + \keystroke{N}
+    - R 스크립트 이외 `R Markdown`, `R Notebook`, `Shiny Web Application` 등 새 문서의 목적에 따라 다양한 종류의 문서 생성 가능
 
 3. Environment/History
     1) Environment: 현재 R 작업환경에 저장되어 있는 객체의 특성을 요약 제시
         - 좌측 화살표 버튼 클릭: 해당 객체의 상세 정보 확인(그림 \ref{fig:Rstudio-envirn-01})
-        - 우측 사각형 버튼 클릭: 스프레드 시트 형태로 데이터셋 확인(그림 \ref{fig:Rstudio-envirn-02})
+        - 우측 사각형 버튼 클릭: 객체가 데이터프레임인 경우 스프레드 시트 형태로 데이터셋 확인(그림 \ref{fig:Rstudio-envirn-02})
+        - 디스켓 아이콘: 작업공간 저장 여부
+        - 빗자루 아이콘: 작업공간 객체 일괄 삭제
+        - Global Environment 아이콘: 현재 작업공간에서 사용중인 패키지 및 선택 패키지 내장 함수 목록 확인
 \begin{figure}[H] {
   \centering
   \includegraphics[width = 12cm, height = 10cm]{Figures/Rstudio-envwin-01.png}
@@ -455,15 +478,13 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
   \caption[RStudio Plots 창 화면]{RStudio Plots 창 화면}\label{fig:Rstudio-plot}
 } \end{figure}
             
-    3) Packages: 현재 컴퓨터에 설치된 R 패키지 목록 출력
-        - 신규 설치 및 업데이트 가능
+    3) Packages: 현재 컴퓨터에 설치된 R 패키지 목록 출력: 신규 설치 및 업데이트 가능
 \begin{figure}[H] {
   \centering
   \includegraphics[width = 8cm, height = 8cm]{Figures/RStudio-packagewin.png}
   \caption[RStudio Packages 창 화면]{RStudio Packages 창 화면}\label{fig:Rstudio-pkgwin}
 } \end{figure}
-
-    4) Help: `help(명령어)` 입력 시 도움말 창이 출력되는 공간
+    4) Help: `help(topic)` 입력 시 도움말 창이 출력되는 공간
 ```{r r-help-win, echo = T, eval = F, prompt = T}
 help(lm)
 ```
@@ -473,62 +494,127 @@ help(lm)
   \caption[\texttt{help(lm)} 실행 후 RStudio Help 창 화면]{\texttt{help(lm)} 실행 후 RStudio Help 창 화면}\label{fig:Rstudio-hlpwin}
 } \end{figure}
 
-## RStudio에서 배치 파일 생성 및 실행
-
-## R 패키지 설치하기
-
-## rJava 설치하기
-
-## RStudio 프로젝트 생성 및 `ProjectTemplate` 패키지 연동
-
-항상 이런 방식을 회피해야 되는 이유는 많다:
-
-어느 데이터 버젼이 원본이고, 어느 데이터 버젼이 변경된 것인지 분간하기 정말 힘들다;
-다양한 확장자를 갖는 파일과 뒤섞일 때, 정말 엉망이 된다;
-아마도 실제 파일을 찾고, 해당 그래프를 생성하는데 사용된 정확한 프로그램 코드와 맞는 그림을 연결시키는데 시간이 엄청 많이 소요될 것이다.
-프로젝트를 잘 배치하게 되면 궁극적으로 여러분의 삶을 편안하게 만들 것이다:
-
-데이터 정합성을 보장할 것이다;
-작성한 코드를 다른 사람(연구실 동료, 공동연구자, 지도교수)과 더 단순하게 공유할 수 있게 만든다;
-논문 제출할 때 코드를 쉽게 업로드할 수 있게 한다;
-휴가 뒤에, 프로젝트 백업을 더 손쉽게 한다.
-
-RStudio의 가장 강력하고 유용한 측면 중 하나가 프로젝트 관리 기능이다. 프로젝트 관리 기능을 사용해서, 모든 것이 갖춘 재현가능한 프로젝트를 생성한다.
-RStudio에서 새로운 프로젝트를 생성한다:
-
-“File” 메뉴를 클릭하고 나서, “New Project” 선택한다.
-“New Directory”를 클릭한다.
-“Empty Project”를 클릭한다.
-프로젝트를 저장할 디렉토리 명칭을 타이핑한다. 예를 들어, “my_project”.
-“Create a git repository”에 대한 체크박스가 선택되었는지 확실히 한다.
-“Create Project” 버튼을 클릭한다.
-
-(엑셀처럼) 인터랙티브하게 데이터를 작업하게 되면, 필연적으로 데이터에 변형이 일어나고 데이터 출처와, 수집이 이루어진 뒤에 어떻게 변형되었는지 확인을 할 수 없게 된다. 따라서, 데이터를 “읽기-전용(Read-Only)”으로 다룬다.
-
-많은 경우에, 데이터가 “지저분하다”: 상당한 전처리 과정을 거쳐야 R 형식(혹은 다른 프로그래밍 언어)으로 유용하게 사용될 수 있다. 이런 작업이 “데이터 정제작업”이라고 불린다. 1 별도 디렉토리에 데이터 정제 스크립트를 보관하고, “정제된” 데이터셋을 보관하는 두번째 “읽기-전용” 데이터 디렉토리를 생성하는 것도 유용하다.
-
-프로젝트 관리를 자동화하는 한 방식은 제3자 팩키지, ProjectTemplate을 설치하는 것이다. 해당 팩키지는 프로젝트 관리에 대한 이상적인 디렉토리 구조를 설정해 놓는다. 팩키지가 자동으로 분석 파이브라인/작업흐름을 구성해서 구조화해 놓는다. RStudio 기본설정된 프로젝트 관리 기능과 Git을 섞어 사용하면, 작업을 기록할 뿐만 아니라, 동료 연구원과 작업산출물 공유를 가능케 한다.
-
-ProjectTemplate을 설치한다.
-라이브러리를 불러 적재한다.
-프로젝트를 초기화한다.
+5. RStudio의 창 layout은 `[Tools]` $\rhd$ `[Global Options]` $\rhd$ `[Pane Layout]`에서 변경 가능
 
 \begin{figure}[H] {
   \centering
-  \includegraphics[width = 8cm, height = 8cm]{Figures/RStudio-helpwin.png}
-  \caption[\texttt{help(lm)} 실행 후 RStudio Help 창 화면]{\texttt{help(lm)} 실행 후 RStudio Help 창 화면}\label{fig:Rstudio-hlpwin}
+  \includegraphics[width = 15cm, height = 10cm]{Figures/RStudio-layout.png}
+  \caption[RStudio Option 선택화면 및 Pane 레이아웃 선택 화면]{RStudio Option 선택화면 및 Pane 레이아웃 선택 화면}\label{fig:Rstudio-layout}
 } \end{figure}
 
 
-## RStudio를 잘 활용 하려면?
+## RStudio에서 배치 파일 생성 및 실행
 
+
+
+
+## R 패키지 설치하기
+
+1. RStudio 
+
+## `rJava` 설치하기
+
+1. 자바 명령을 호출하는 패키지를 정상적으로 사용하기 위한 패키지
+    - Java 계열 머신러닝 어플리케이션 활용 또는 최근까지 Excel 파일을 불러오기 위해 설치 필수(Excel에 관해서는 Hadley Wickham의 `readxl` 개발 이전에만...)
+    - 다음은 Java가 설치되지 않은 환경에서 `rJava`를 불렀을 때 발생한 오류 예시임
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 10cm, height = 8cm]{Figures/R-rJava-error.png}
+  \caption[\texttt{rJava} 에러 메세지]{\texttt{rJava} 에러 메세지}\label{fig:rJava-error}
+} \end{figure}    
+    
+2. `rJava` 설치 전 자바 설치 및 Windows 시스템 환경 설정 필요
+
+3. 자바 개발 키트(Java Development Kit, JDK)는 http://www.oracle.com/technetwork/java/javase/downloads/index.html 에서 다운로드 가능
+    - `[Java Platform (JDK)]` $\rhd$ `[Download]` 클릭
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 10cm, height = 10cm]{Figures/R-rJava-install-01.png}
+  \caption[JDK 다운로드 메인 페이지]{JDK 다운로드 페이지}\label{fig:rJava-01}
+} \end{figure}
+
+4. JDK 다운로드 전 현재 주로 작업하고 있는 R 버전 정보(32 bit vs. 64 bit) 확인
+    - R 세션 시작 시 또는 RStudio에서 `[Tools]` $\rhd$ `[Global Options]`에서 R 버전 확인 가능
+    - 라이센스 계약에 동의 후 확인한 R 버전에 대응하는 링크 클릭 후 다운로드 진행
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 15cm, height = 10cm]{Figures/R-rJava-install-02.png}
+  \caption[JDK 라이센스 및 다운로드 링크 페이지]{JDK 라이센스 및 다운로드 링크 페이지}\label{fig:rJava-02}
+} \end{figure}    
+
+5. 다운로드 완료 후 설치 확인
+    - 정상적으로 설치한 경우라면 `C:\Program Files\Java\jdk-9.0.1` 디렉토리에서 설치 확인 가능
+    - Java runtime environment (JRE)는 `C:\Program Files\Java\jre-9.0.1` 에서 설치 확인 가능
+
+6. 새 사용자 변수 생성
+    - \keystroke{Windows 시작} 클릭 $\rightarrow$ `[컴퓨터]` 우 클릭 $\rightarrow$ `[속성]` 클릭 후 다음 그림 \ref{fig:rJava-03}에서 `[고급 시스템 설정]` 클릭
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 15cm, height = 10cm]{Figures/R-rJava-system.png}
+  \caption[Windows 시스템 설정 화면]{Windows 시스템 설정 화면}\label{fig:rJava-03}
+} \end{figure}    
+    - 시스템 속성 창에서 `[환경변수(N)...]` 클릭 후 환경변수 창에서 사용자 변수 `[새로 만들기(N)...]` 클릭
+    - 변수 이름에 `JAVA_HOME`, 변수 값에 JDK 설치 디렉토리 이름(예: `C:\Program Files\Java\jdk-9.0.1`) 입력
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 15cm, height = 10cm]{Figures/R-rJava-install-03.png}
+  \caption[Windows 시스템 설정 화면]{Windows 시스템 설정 화면}\label{fig:rJava-04}
+} \end{figure}    
+
+7. 시스템 변수 `PATH` 갱신
+    - JRE가 설치된 디렉토리(아래 나열)를 기존 `PATH`에 추가(디렉토리 구분자: `;`)
+        - `C:\Program Files\Java\jre-9.0.1\bin`
+        - `C:\Program Files\Java\jre-9.0.1\bin\server` 
+
+8. 설정 완료 후 R 또는 RStudio 재실행 후 `rJava` 설치
+```{r rJava-install, echo = T, eval = F, prompt = T, include = F}
+install.packages(rJava)
+library(rJava)
+```
+
+9. 별 다른 에러 메세지 출력이 없으면 성공적으로 설치
+
+## RStudio 프로젝트 생성 및 `ProjectTemplate` 패키지 연동
+
+<!-- 항상 이런 방식을 회피해야 되는 이유는 많다: -->
+
+<!-- 어느 데이터 버젼이 원본이고, 어느 데이터 버젼이 변경된 것인지 분간하기 정말 힘들다; -->
+<!-- 다양한 확장자를 갖는 파일과 뒤섞일 때, 정말 엉망이 된다; -->
+<!-- 아마도 실제 파일을 찾고, 해당 그래프를 생성하는데 사용된 정확한 프로그램 코드와 맞는 그림을 연결시키는데 시간이 엄청 많이 소요될 것이다. -->
+<!-- 프로젝트를 잘 배치하게 되면 궁극적으로 여러분의 삶을 편안하게 만들 것이다: -->
+
+<!-- 데이터 정합성을 보장할 것이다; -->
+<!-- 작성한 코드를 다른 사람(연구실 동료, 공동연구자, 지도교수)과 더 단순하게 공유할 수 있게 만든다; -->
+<!-- 논문 제출할 때 코드를 쉽게 업로드할 수 있게 한다; -->
+<!-- 휴가 뒤에, 프로젝트 백업을 더 손쉽게 한다. -->
+
+<!-- RStudio의 가장 강력하고 유용한 측면 중 하나가 프로젝트 관리 기능이다. 프로젝트 관리 기능을 사용해서, 모든 것이 갖춘 재현가능한 프로젝트를 생성한다. -->
+<!-- RStudio에서 새로운 프로젝트를 생성한다: -->
+
+<!-- “File” 메뉴를 클릭하고 나서, “New Project” 선택한다. -->
+<!-- “New Directory”를 클릭한다. -->
+<!-- “Empty Project”를 클릭한다. -->
+<!-- 프로젝트를 저장할 디렉토리 명칭을 타이핑한다. 예를 들어, “my_project”. -->
+<!-- “Create a git repository”에 대한 체크박스가 선택되었는지 확실히 한다. -->
+<!-- “Create Project” 버튼을 클릭한다. -->
+
+<!-- (엑셀처럼) 인터랙티브하게 데이터를 작업하게 되면, 필연적으로 데이터에 변형이 일어나고 데이터 출처와, 수집이 이루어진 뒤에 어떻게 변형되었는지 확인을 할 수 없게 된다. 따라서, 데이터를 “읽기-전용(Read-Only)”으로 다룬다. -->
+
+<!-- 많은 경우에, 데이터가 “지저분하다”: 상당한 전처리 과정을 거쳐야 R 형식(혹은 다른 프로그래밍 언어)으로 유용하게 사용될 수 있다. 이런 작업이 “데이터 정제작업”이라고 불린다. 1 별도 디렉토리에 데이터 정제 스크립트를 보관하고, “정제된” 데이터셋을 보관하는 두번째 “읽기-전용” 데이터 디렉토리를 생성하는 것도 유용하다. -->
+
+<!-- 프로젝트 관리를 자동화하는 한 방식은 제3자 팩키지, ProjectTemplate을 설치하는 것이다. 해당 팩키지는 프로젝트 관리에 대한 이상적인 디렉토리 구조를 설정해 놓는다. 팩키지가 자동으로 분석 파이브라인/작업흐름을 구성해서 구조화해 놓는다. RStudio 기본설정된 프로젝트 관리 기능과 Git을 섞어 사용하면, 작업을 기록할 뿐만 아니라, 동료 연구원과 작업산출물 공유를 가능케 한다. -->
+
+<!-- ProjectTemplate을 설치한다. -->
+<!-- 라이브러리를 불러 적재한다. -->
+<!-- 프로젝트를 초기화한다. -->
+
+## R + RStudio를 잘 활용 하려면?
+
+1. 주기적인 update
+2. RStudio 제
 <!-- - \keystroke{Ctrl} + \keystroke{Alt} + \keystroke{R} 또는 \keystroke{Ctrl} + \keystroke{Shift} + \keystroke{Enter}: 실행하고자 하는 R 명령어들이 저장된 배치파일(`filename.R`) 일괄실행(콘솔에 실행 명령어 출력) -->
 <!-- - \keystroke{Ctrl} + \keystroke{Shift} + \keystroke{S}: 위 작업을 실행 명령어 출력 없이 실행 -->
         
-        
-2. 창 순서는 사용자의 편의에 따라 변경 가능
-    - 상단 메뉴바에서 \keystroke{Tools} $\rightarrow$ \keystroke{Global Options} $\rightarrow$ \keystroke{Pane Layout}에서 조정
-
 <!-- \begin{figure}[H] -->
 <!-- { -->
 <!--   \centering -->
