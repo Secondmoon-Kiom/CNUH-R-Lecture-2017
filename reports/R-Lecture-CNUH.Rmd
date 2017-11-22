@@ -31,7 +31,7 @@ bibliography: CNUH.bib
 knitr::opts_knit$set(root.dir = '..') 
 options(max.print = 5000)
 knitr::opts_chunk$set(eval = TRUE, echo = FALSE, cache = FALSE, include = TRUE, collapse = FALSE, tidy=TRUE, message=FALSE, warning=FALSE,
-                    dependson = NULL, engine = "R", error = TRUE, fig.path="Figures/", fig.align = "center", fig.width = 7, fig.height = 7,
+                      dependson = NULL, engine = "R", error = TRUE, fig.path="Figures/", fig.align = "center", fig.width = 7, fig.height = 7,
                      fig.keep='all', fig.retina=2, background = '#F7F7F7', highlight = T, comment = NA, tidy = TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50))
 ```
 
@@ -309,6 +309,13 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
   \endgroup
 \end{table}
 
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{Tips}
+\texttt{vignette}에서 제공하는 문서는 실제 분석을 기반으로 작성한 문서이기 때문에 초보자들이 R 패키지의 접근성을 높혀줌. \texttt{browseVignettes()}으로 현존하는 모든 R 패키지들의 vignette을 볼 수 있기 때문에 매우 유용함.
+\end{minipage}}
+\end{quote}
+
 ### 이것으로 R 설치 완료??
 
 - 기본적 R 사용방식은 입력한 명령어와 실행결과를 확인하는 대화형(interpreter) 방식
@@ -385,29 +392,33 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
 
 ## RStudio의 구성
 
-1. RStudio IDE 화면 구성: 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으로 구성
-    1) 콘솔(console)
-        - R 명령어 실행 공간(RGui, 정확하게는 `Rterm.exe`가 실행되고 있는 창)
-        - R 스크립트 또는 콘솔 창에서 작성한 명령어(프로그램) 실행 결과 출력
-        - 경고, 에러/로그 등의 메세지 확인
-    2) 스크립트(script)
-        - 명령어의 일괄처리(batch processing) 
-        - \keystroke{Ctrl} + \keystroke{Enter}: 선택한 블럭 내 명령어 실행
-        - \keystroke{Alt} + \keystroke{Enter}: 선택 없이 커서가 위치한 라인의 명령어 실행 
-        - \keystroke{Ctrl} + \keystroke{Alt} + \keystroke{R} 또는 \keystroke{Ctrl} + \keystroke{Shift} + \keystroke{Enter}: 실행하고자 하는 R 명령어들이 저장된 배치파일(`filename.R`) 일괄실행(콘솔에 실행 명령어 출력)
-        - \keystroke{Ctrl} + \keystroke{Shift} + \keystroke{S}: 위 작업을 실행 명령어 출력 없이 실행
+### RStudio IDE 화면 구성
+
+RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으로 구성
+
 \begin{figure}[H]
 {
   \centering
   \includegraphics[width = 14cm, height = 12cm]{Figures/Rstudio-cap1.png}
-  \caption[RStudio 화면구성]{RStudio 화면구성}\label{fig:Rstudio-part-01}
+  \caption[RStudio 화면구성]{RStudio 화면구성: 우하단 그림은 http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html 에서 발췌}\label{fig:Rstudio-part-01}
 }
 \end{figure}  
 
-    3) Environment/History
-        - Environment: 현재 R 작업환경에 저장되어 있는 객체의 특성을 요약 제시
-            - 좌측 화살표 버튼 클릭: 해당 객체의 상세 정보 확인(그림 \ref{fig:Rstudio-envirn-01})
-            - 우측 사각형 버튼 클릭: 스프레드 시트 형태로 데이터셋 확인(그림 \ref{fig:Rstudio-envirn-02})
+
+1. 콘솔(console)
+    - R 명령어 실행 공간(RGui, 정확하게는 `Rterm.exe`가 실행되고 있는 창)
+    - R 스크립트 또는 콘솔 창에서 작성한 명령어(프로그램) 실행 결과 출력
+    - 경고, 에러/로그 등의 메세지 확인
+    
+2. 스크립트(script) R 명령어 입력 공간으로 일괄처리(batch processing) 가능
+    - 일괄 처리를 위한 RStudio 제공 단축키
+        - \keystroke{Ctrl} + \keystroke{Enter}: 선택한 블럭 내 명령어 실행
+        - \keystroke{Alt} + \keystroke{Enter}: 선택 없이 커서가 위치한 라인의 명령어 실행 
+
+3. Environment/History
+    1) Environment: 현재 R 작업환경에 저장되어 있는 객체의 특성을 요약 제시
+        - 좌측 화살표 버튼 클릭: 해당 객체의 상세 정보 확인(그림 \ref{fig:Rstudio-envirn-01})
+        - 우측 사각형 버튼 클릭: 스프레드 시트 형태로 데이터셋 확인(그림 \ref{fig:Rstudio-envirn-02})
 \begin{figure}[H] {
   \centering
   \includegraphics[width = 12cm, height = 10cm]{Figures/Rstudio-envwin-01.png}
@@ -425,8 +436,96 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
   \caption[RStudio History 창]{RStudio History 창}\label{fig:Rstudio-history}
 } \end{figure}
 
-    4) File/Plots/Packages/Help/Viewer
-        - Windows 탐색기와 유사 
+4. File/Plots/Packages/Help/Viewer
+    1) File: Windows 탐색기와 유사
+        - 파일 및 폴더 생성, 삭제 수정, 그리고 작업경로 설정
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 8cm, height = 8cm]{Figures/Rstudio-file.png}
+  \caption[RStudio File 창]{RStudio File 창}\label{fig:Rstudio-file}
+} \end{figure}
+    2) Plots: 콘솔 또는 스크립트 창으로부터 생성한 그래프 출력 
+        - 작업 중 생성한 그래프가 이력에 따라 저장: \keystroke{$\Leftarrow$} 이전, \keystroke{$\Rightarrow$} 최근
+        - \keystroke{Zoom} 기능으로 그래프 확대 가능
+        - \keystroke{Export}를 통해 선택 그래프를 이미지 파일(`.png`, `.jpeg` 등), PDF 파일 및 PDF 출력 파일로 저장 가능
+        - 엑스박스는 현재 화면에 출력된 그래프 삭제, 빗자루 아이콘은 생성한 모든 그래프 삭제
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 8cm, height = 8cm]{Figures/Rstudio-plotwin.png}
+  \caption[RStudio Plots 창 화면]{RStudio Plots 창 화면}\label{fig:Rstudio-plot}
+} \end{figure}
+            
+    3) Packages: 현재 컴퓨터에 설치된 R 패키지 목록 출력
+        - 신규 설치 및 업데이트 가능
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 8cm, height = 8cm]{Figures/RStudio-packagewin.png}
+  \caption[RStudio Packages 창 화면]{RStudio Packages 창 화면}\label{fig:Rstudio-pkgwin}
+} \end{figure}
+
+    4) Help: `help(명령어)` 입력 시 도움말 창이 출력되는 공간
+```{r r-help-win, echo = T, eval = F, prompt = T}
+help(lm)
+```
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 8cm, height = 8cm]{Figures/RStudio-helpwin.png}
+  \caption[\texttt{help(lm)} 실행 후 RStudio Help 창 화면]{\texttt{help(lm)} 실행 후 RStudio Help 창 화면}\label{fig:Rstudio-hlpwin}
+} \end{figure}
+
+## RStudio에서 배치 파일 생성 및 실행
+
+## R 패키지 설치하기
+
+## rJava 설치하기
+
+## RStudio 프로젝트 생성 및 `ProjectTemplate` 패키지 연동
+
+항상 이런 방식을 회피해야 되는 이유는 많다:
+
+어느 데이터 버젼이 원본이고, 어느 데이터 버젼이 변경된 것인지 분간하기 정말 힘들다;
+다양한 확장자를 갖는 파일과 뒤섞일 때, 정말 엉망이 된다;
+아마도 실제 파일을 찾고, 해당 그래프를 생성하는데 사용된 정확한 프로그램 코드와 맞는 그림을 연결시키는데 시간이 엄청 많이 소요될 것이다.
+프로젝트를 잘 배치하게 되면 궁극적으로 여러분의 삶을 편안하게 만들 것이다:
+
+데이터 정합성을 보장할 것이다;
+작성한 코드를 다른 사람(연구실 동료, 공동연구자, 지도교수)과 더 단순하게 공유할 수 있게 만든다;
+논문 제출할 때 코드를 쉽게 업로드할 수 있게 한다;
+휴가 뒤에, 프로젝트 백업을 더 손쉽게 한다.
+
+RStudio의 가장 강력하고 유용한 측면 중 하나가 프로젝트 관리 기능이다. 프로젝트 관리 기능을 사용해서, 모든 것이 갖춘 재현가능한 프로젝트를 생성한다.
+RStudio에서 새로운 프로젝트를 생성한다:
+
+“File” 메뉴를 클릭하고 나서, “New Project” 선택한다.
+“New Directory”를 클릭한다.
+“Empty Project”를 클릭한다.
+프로젝트를 저장할 디렉토리 명칭을 타이핑한다. 예를 들어, “my_project”.
+“Create a git repository”에 대한 체크박스가 선택되었는지 확실히 한다.
+“Create Project” 버튼을 클릭한다.
+
+(엑셀처럼) 인터랙티브하게 데이터를 작업하게 되면, 필연적으로 데이터에 변형이 일어나고 데이터 출처와, 수집이 이루어진 뒤에 어떻게 변형되었는지 확인을 할 수 없게 된다. 따라서, 데이터를 “읽기-전용(Read-Only)”으로 다룬다.
+
+많은 경우에, 데이터가 “지저분하다”: 상당한 전처리 과정을 거쳐야 R 형식(혹은 다른 프로그래밍 언어)으로 유용하게 사용될 수 있다. 이런 작업이 “데이터 정제작업”이라고 불린다. 1 별도 디렉토리에 데이터 정제 스크립트를 보관하고, “정제된” 데이터셋을 보관하는 두번째 “읽기-전용” 데이터 디렉토리를 생성하는 것도 유용하다.
+
+프로젝트 관리를 자동화하는 한 방식은 제3자 팩키지, ProjectTemplate을 설치하는 것이다. 해당 팩키지는 프로젝트 관리에 대한 이상적인 디렉토리 구조를 설정해 놓는다. 팩키지가 자동으로 분석 파이브라인/작업흐름을 구성해서 구조화해 놓는다. RStudio 기본설정된 프로젝트 관리 기능과 Git을 섞어 사용하면, 작업을 기록할 뿐만 아니라, 동료 연구원과 작업산출물 공유를 가능케 한다.
+
+ProjectTemplate을 설치한다.
+라이브러리를 불러 적재한다.
+프로젝트를 초기화한다.
+
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 8cm, height = 8cm]{Figures/RStudio-helpwin.png}
+  \caption[\texttt{help(lm)} 실행 후 RStudio Help 창 화면]{\texttt{help(lm)} 실행 후 RStudio Help 창 화면}\label{fig:Rstudio-hlpwin}
+} \end{figure}
+
+
+## RStudio를 잘 활용 하려면?
+
+<!-- - \keystroke{Ctrl} + \keystroke{Alt} + \keystroke{R} 또는 \keystroke{Ctrl} + \keystroke{Shift} + \keystroke{Enter}: 실행하고자 하는 R 명령어들이 저장된 배치파일(`filename.R`) 일괄실행(콘솔에 실행 명령어 출력) -->
+<!-- - \keystroke{Ctrl} + \keystroke{Shift} + \keystroke{S}: 위 작업을 실행 명령어 출력 없이 실행 -->
+        
+        
 2. 창 순서는 사용자의 편의에 따라 변경 가능
     - 상단 메뉴바에서 \keystroke{Tools} $\rightarrow$ \keystroke{Global Options} $\rightarrow$ \keystroke{Pane Layout}에서 조정
 
@@ -438,10 +537,50 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
 <!-- } -->
 <!-- \end{figure}   -->
 
-
 # R의 기본 사용
 
-## 변수
+- R은 객체지향언어(object-oriented language)임
+- 객체: 숫자, 데이터셋, 단어, 테이블, 분석결과 등 모든 것을 칭함
+    - "객체지향"의 의미는 R의 모든 명령어는 객체를 대상으로 이루어진다는 것을 의
+- R에서 사용자가 데이터 입력을 위해 생성 또는 읽어온 객체(object)는 종종 변수(variable)라는 말과 혼용됨. 
+- 본 문서에서는 최상위 데이터 저장장소를 객체라고 명명하며 데이터프레임과 같이 여러 종류의 데이터타입으로 이루어진 객체의 1차원 속성을 변수라고 칭함. 
+- R을 다룰 수 있으려면 기본적인 R의 데이터 할당 방식과 데이터 타입, 그리고 연산 방법에 대한 이해가 있어야 함. 
+- 특히 데이터 타입에 따라 사용하는 함수 또는 분석 방법이 조금씩 다른 것이 R의 특징임
+- 따라서 R의 데이터 타입에 좀 더 익숙해져야 R을 보다 쉽게 다룰 수 있음
+
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{Tips: 들어가기 앞서  알아두면 유용한 단축키 및 명령어}
+  \begin{itemize}
+    \item R console에 저장된 모든 객체들을 일괄 삭제: \texttt{rm(list = ls())}
+    \item R console 화면 청소: \keystroke{Ctrl} + \keystroke{L} 
+  \end{itemize}
+\end{minipage}}
+\end{quote}
+
+## R 객체 입력 방법 및 변수 설정 규칙
+
+- R의 데이터 타입은 1)스칼라, 2)벡터, 3)요인, 4)행렬, 5)배열, 6)데이터프레임, 7)리스트 로 나눌 수 있음.
+- 자세히 들어가기 전 R 데이터 타입의 구조 다이어그램을 먼저 살펴봄
+
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 15cm, height = 13cm]{Figures/datatype-diagram}
+  \caption[R 데이터 타입 구조 다이어그램]{R 데이터 타입 구조 다이어그램}\label{fig:R-datatype}
+} \end{figure}
+
+\vspace{1cm}
+
+### 객체 입력 및 할당
+
+- R의 가장 기본적인 
+
+앞서 열거한 7 가지 데이터 타입을 설명하기 전, 
+
+1. 객체를 할당하는 두 가지 방법
+    1) `=`
+    2) `<-` 또는 `->`
+    3) 두 할당지시자의 차이점: 
 
 ## 스칼라 
 
@@ -455,13 +594,35 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
 
 ## 데이터 프레임
 
+## 데이터 연산
+
 
 # 데이터 조작
 
+## 실습 데이터 설명
+
+
+
 ## 파일 입출력
+
+### 외부 파일 읽어오기/내보내기
+
+`read.table()`, `write.table()`
+`readxl::read_excel()`
+
+
+RStudio 메뉴 명령을 통한 파일 입출력
+
+## 벡터화 연산(apply 계열 함)
+
+## `dplyr + tidyr`을 이용한 data wrangling 
 
 
 # `ggplot2`를 이용한 자료 시각화
+
+## `ggplot()` vs. `plot()`
+
+## Grammar of Graphics
 
 
 # 재현가능한 데이터 연동 문서 작성 

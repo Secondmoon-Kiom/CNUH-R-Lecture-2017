@@ -308,7 +308,7 @@ Fundamental Research Division \vspace{2cm}}
     \item R에서 구현한 모든 package들은 CRAN (The Comprehensive R Archive Network, http://cran.r-project.org/web/view)에서 살펴볼 수 있음
     \item R과 관련한 대부분의 문제는 Google 검색과 스텍 오버플로우(http://stackoverflow.com)에서 해결할 수 있음
     \item 해당 문서는 서민구 선생님의 ``R을 이용한 데이터 처리 \& 실무'' \citep{Seo-2014} 와 고석범 선생님의 ``R과 Knitr을 활용한 데이터 연동형 문서 만들기'' \citep{Ko-2014} 의 내용을 주로 참조함. 
-    \item: 해당 문서는 \texttt{RMarkdown} + \latex + \texttt{knitr}로 작성된 문서이며, 이를 위해 작성한 모든 소스 코드 및 자료는 https://github.com/Secondmoon-Kiom/CNUH-R-Lecture-2017 에서 확인할 수 있음. 
+    \item 해당 문서는 \texttt{RMarkdown} + \latex + \texttt{knitr}로 작성된 문서이며, 이를 위해 작성한 모든 소스 코드 및 자료는 https://github.com/Secondmoon-Kiom/CNUH-R-Lecture-2017 에서 확인할 수 있음. 
   \end{itemize}
 \end{minipage}}
 \end{quote}
@@ -723,6 +723,13 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
   \endgroup
 \end{table}
 
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{Tips}
+\texttt{vignette}에서 제공하는 문서는 실제 분석을 기반으로 작성한 문서이기 때문에 초보자들이 R 패키지의 접근성을 높혀줌. \texttt{browseVignettes()}으로 현존하는 모든 R 패키지들의 vignette을 볼 수 있기 때문에 매우 유용함.
+\end{minipage}}
+\end{quote}
+
 \subsection{이것으로 R 설치 완료??}\label{-r--}
 
 \begin{itemize}
@@ -877,88 +884,82 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
 }
 \end{figure}
 
-\section{RStudio 튜닝}\label{rstudio-}
+\section{RStudio의 구성}\label{rstudio-}
+
+\subsection{RStudio IDE 화면 구성}\label{rstudio-ide--}
+
+RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으로
+구성
+
+\begin{figure}[H]
+{
+  \centering
+  \includegraphics[width = 14cm, height = 12cm]{Figures/Rstudio-cap1.png}
+  \caption[RStudio 화면구성]{RStudio 화면구성: 우하단 그림은 http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html 에서 발췌}\label{fig:Rstudio-part-01}
+}
+\end{figure}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  RStudio IDE 화면 구성: 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게
-  4개 창으로 구성
+  콘솔(console)
 
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii})}
+  \begin{itemize}
   \tightlist
   \item
-    콘솔(console)
-
-    \begin{itemize}
-    \tightlist
-    \item
-      R 명령어 실행 공간(RGui, 정확하게는 \texttt{Rterm.exe}가 실행되고
-      있는 창)
-    \item
-      R 스크립트 또는 콘솔 창에서 작성한 명령어(프로그램) 실행 결과 출력
-    \item
-      경고, 에러/로그 등의 메세지 확인
-    \end{itemize}
+    R 명령어 실행 공간(RGui, 정확하게는 \texttt{Rterm.exe}가 실행되고
+    있는 창)
   \item
-    스크립트(script)
+    R 스크립트 또는 콘솔 창에서 작성한 명령어(프로그램) 실행 결과 출력
+  \item
+    경고, 에러/로그 등의 메세지 확인
+  \end{itemize}
+\item
+  스크립트(script) R 명령어 입력 공간으로 일괄처리(batch processing)
+  가능
+
+  \begin{itemize}
+  \tightlist
+  \item
+    일괄 처리를 위한 RStudio 제공 단축키
 
     \begin{itemize}
     \tightlist
-    \item
-      명령어의 일괄처리(batch processing)
     \item
       \keystroke{Ctrl} + \keystroke{Enter}: 선택한 블럭 내 명령어 실행
     \item
       \keystroke{Alt} + \keystroke{Enter}: 선택 없이 커서가 위치한
       라인의 명령어 실행
-    \item
-      \keystroke{Ctrl} + \keystroke{Alt} + \keystroke{R} 또는
-      \keystroke{Ctrl} + \keystroke{Shift} + \keystroke{Enter}:
-      실행하고자 하는 R 명령어들이 저장된 배치파일(\texttt{filename.R})
-      일괄실행(콘솔에 실행 명령어 출력)
-    \item
-      \keystroke{Ctrl} + \keystroke{Shift} + \keystroke{S}: 위 작업을
-      실행 명령어 출력 없이 실행
-
-      \begin{figure}[H]
-      {
-        \centering
-        \includegraphics[width = 14cm, height = 12cm]{Figures/Rstudio-cap1.png}
-        \caption[RStudio 화면구성]{RStudio 화면구성}\label{fig:Rstudio-part-01}
-      }
-      \end{figure}
     \end{itemize}
+  \end{itemize}
+\item
+  Environment/History
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii})}
+  \tightlist
   \item
-    Environment/History
+    Environment: 현재 R 작업환경에 저장되어 있는 객체의 특성을 요약 제시
 
     \begin{itemize}
     \tightlist
     \item
-      Environment: 현재 R 작업환경에 저장되어 있는 객체의 특성을 요약
-      제시
+      좌측 화살표 버튼 클릭: 해당 객체의 상세 정보 확인(그림
+      \ref{fig:Rstudio-envirn-01})
+    \item
+      우측 사각형 버튼 클릭: 스프레드 시트 형태로 데이터셋 확인(그림
+      \ref{fig:Rstudio-envirn-02})
 
-      \begin{itemize}
-      \tightlist
-      \item
-        좌측 화살표 버튼 클릭: 해당 객체의 상세 정보 확인(그림
-        \ref{fig:Rstudio-envirn-01})
-      \item
-        우측 사각형 버튼 클릭: 스프레드 시트 형태로 데이터셋 확인(그림
-        \ref{fig:Rstudio-envirn-02})
-
-        \begin{figure}[H] {
-          \centering
-          \includegraphics[width = 12cm, height = 10cm]{Figures/Rstudio-envwin-01.png}
-          \caption[RStudio Environment 창: 객체 상세정보]{RStudio Environment 창: 객체 상세정보}\label{fig:Rstudio-envirn-01}
-        } \end{figure}\begin{figure}[H] {
-          \centering
-          \includegraphics[width = 15cm, height = 10cm]{Figures/Rstudio-envwin-02.png}
-          \caption[RStudio Environment 창: 스프레드 시트]{RStudio Environment 창: 스프레드 시트}\label{fig:Rstudio-envirn-02}
-        } \end{figure}
-      \end{itemize}
+      \begin{figure}[H] {
+        \centering
+        \includegraphics[width = 12cm, height = 10cm]{Figures/Rstudio-envwin-01.png}
+        \caption[RStudio Environment 창: 객체 상세정보]{RStudio Environment 창: 객체 상세정보}\label{fig:Rstudio-envirn-01}
+      } \end{figure}\begin{figure}[H] {
+        \centering
+        \includegraphics[width = 15cm, height = 10cm]{Figures/Rstudio-envwin-02.png}
+        \caption[RStudio Environment 창: 스프레드 시트]{RStudio Environment 창: 스프레드 시트}\label{fig:Rstudio-envirn-02}
+      } \end{figure}
     \item
       History: R 콘솔에서 실행된 명령어(스크립트)들의 이력 확인
 
@@ -969,6 +970,96 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
       } \end{figure}
     \end{itemize}
   \end{enumerate}
+\item
+  File/Plots/Packages/Help/Viewer
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii})}
+  \tightlist
+  \item
+    File: Windows 탐색기와 유사
+
+    \begin{itemize}
+    \tightlist
+    \item
+      파일 및 폴더 생성, 삭제 수정, 그리고 작업경로 설정
+
+      \begin{figure}[H] {
+        \centering
+        \includegraphics[width = 8cm, height = 8cm]{Figures/Rstudio-file.png}
+        \caption[RStudio File 창]{RStudio File 창}\label{fig:Rstudio-file}
+      } \end{figure}
+    \end{itemize}
+  \item
+    Plots: 콘솔 또는 스크립트 창으로부터 생성한 그래프 출력
+
+    \begin{itemize}
+    \tightlist
+    \item
+      작업 중 생성한 그래프가 이력에 따라 저장: \keystroke{$\Leftarrow$}
+      이전, \keystroke{$\Rightarrow$} 최근
+    \item
+      \keystroke{Zoom} 기능으로 그래프 확대 가능
+    \item
+      \keystroke{Export}를 통해 선택 그래프를 이미지 파일(\texttt{.png},
+      \texttt{.jpeg} 등), PDF 파일 및 PDF 출력 파일로 저장 가능
+    \item
+      엑스박스는 현재 화면에 출력된 그래프 삭제, 빗자루 아이콘은 생성한
+      모든 그래프 삭제
+
+      \begin{figure}[H] {
+        \centering
+        \includegraphics[width = 8cm, height = 8cm]{Figures/Rstudio-plotwin.png}
+        \caption[RStudio Plots 창 화면]{RStudio Plots 창 화면}\label{fig:Rstudio-plot}
+      } \end{figure}
+    \end{itemize}
+  \item
+    Packages: 현재 컴퓨터에 설치된 R 패키지 목록 출력
+
+    \begin{itemize}
+    \tightlist
+    \item
+      신규 설치 및 업데이트 가능
+
+      \begin{figure}[H] {
+        \centering
+        \includegraphics[width = 8cm, height = 8cm]{Figures/RStudio-packagewin.png}
+        \caption[RStudio Packages 창 화면]{RStudio Packages 창 화면}\label{fig:Rstudio-pkgwin}
+      } \end{figure}
+    \end{itemize}
+  \item
+    Help: \texttt{help(명령어)} 입력 시 도움말 창이 출력되는 공간
+  \end{enumerate}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{help}\NormalTok{(lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 8cm, height = 8cm]{Figures/RStudio-helpwin.png}
+  \caption[\texttt{help(lm)} 실행 후 RStudio Help 창 화면]{\texttt{help(lm)} 실행 후 RStudio Help 창 화면}\label{fig:Rstudio-hlpwin}
+} \end{figure}
+
+\section{RStudio에서 배치 파일 생성 및 실행}\label{rstudio-----}
+
+\section{R 패키지 설치하기}\label{r--}
+
+\section{rJava 설치하기}\label{rjava-}
+
+\section{\texorpdfstring{RStudio 프로젝트 생성 및
+\texttt{ProjectTemplate} 패키지
+연동}{RStudio 프로젝트 생성 및 ProjectTemplate 패키지 연동}}\label{rstudio----projecttemplate--}
+
+\section{RStudio를 잘 활용 하려면?}\label{rstudio---}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
 \item
   창 순서는 사용자의 편의에 따라 변경 가능
 
@@ -981,15 +1072,39 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
   \end{itemize}
 \end{enumerate}
 
-\begin{figure}[H]
-{
-  \centering
-  \includegraphics[width = 12cm, height = 10cm]{Figures/Rstudio-layout.png}
-  \caption[RStudio Global Options: Pane layout]{RStudio Global Options에서 화면 레이아웃 조정}\label{fig:Rstudio-layout}
-}
-\end{figure}
-
 \chapter{R의 기본 사용}\label{r--}
+
+\begin{itemize}
+\tightlist
+\item
+  R을 다룰 수 있으려면 기본적인 R의 데이터 할당 방식과 데이터 타입,
+  그리고 연산 방법에 대한 이해가 있어야 함.
+\item
+  특히 데이터 타입에 따라 사용하는 함수 또는 분석 방법이 조금씩 다른
+  것이 R의 특징임
+\item
+  들어가기에 앞서 R의 데이터 타입에 대한 개괄적인 모식도를 먼저 확인
+\end{itemize}
+
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 15cm, height = 13cm]{Figures/datatype-diagram}
+  \caption[R 데이터 타입 구조 다이어그램]{R 데이터 타입 구조 다이어그램}\label{fig:Rstudio-hlpwin}
+} \end{figure}
+
+\vspace{1cm}
+
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{Tips: R을 본격적으로 다루기 앞서 알아두면 유용한 단축키 및 명령어}
+  \begin{itemize}
+    \item R console에 저장된 모든 객체들을 일괄 삭제: \texttt{rm(list = ls())}
+    \item R console 화면 청소: \keystroke{Ctrl} + \keystroke{L} 
+  \end{itemize}
+\end{minipage}}
+\end{quote}
+
+\section{R 객체 입력 방법 및 변수 설정 규칙}\label{r-------}
 
 \section{변수}
 
@@ -1005,9 +1120,20 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
 
 \section{데이터 프레임}\label{-}
 
+\section{연}
+
 \chapter{데이터 조작}\label{-}
 
 \section{파일 입출력}\label{-}
+
+\subsection{외부 파일 읽어오기/내보내기}\label{--}
+
+\texttt{read.table()}, \texttt{write.table()}
+\texttt{readxl::read\_excel()}
+
+RStudio 메뉴 명령을 통한 파일 입출력
+
+\section{}\label{section}
 
 \chapter{\texorpdfstring{\texttt{ggplot2}를 이용한 자료
 시각화}{ggplot2를 이용한 자료 시각화}}\label{ggplot2---}
@@ -1015,7 +1141,7 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
 \chapter{재현가능한 데이터 연동 문서 작성}\label{----}
 
 \renewcommand\bibname{References}
-\bibliography{CNUH.bib}
+\bibliography{CNUH}
 
 
 \end{document}
