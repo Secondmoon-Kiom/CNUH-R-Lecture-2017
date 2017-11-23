@@ -307,7 +307,7 @@ Fundamental Research Division \vspace{2cm}}
   \begin{itemize}
     \item R에서 구현한 모든 package들은 CRAN (The Comprehensive R Archive Network, http://cran.r-project.org/web/view)에서 살펴볼 수 있음
     \item R과 관련한 대부분의 문제는 Google 검색과 스텍 오버플로우(http://stackoverflow.com)에서 해결할 수 있음
-    \item 해당 문서는 서민구 선생님의 ``R을 이용한 데이터 처리 \& 실무'' \citep{Seo-2014}, 고석범 선생님의 ``R과 Knitr을 활용한 데이터 연동형 문서 만들기'' \citep{Ko-2014}, R Friend 님의 블로그 ``R, Phython 분석과 프로그래밍'' \citep{RFriend} 의 내용을 주로 참조함. 
+    \item 해당 문서는 서민구 선생님의 ``R을 이용한 데이터 처리 \& 실무'' \citep{Seo-2014}, 고석범 선생님의 ``R과 Knitr을 활용한 데이터 연동형 문서 만들기'' \citep{Ko-2014}, R Friend 님의 블로그 ``R, Phython 분석과 프로그래밍'' \citep{R-Friend} 의 내용을 주로 참조함. 
     \item 해당 문서는 \texttt{RMarkdown} + \latex + \texttt{knitr}로 작성된 문서이며, 이를 위해 작성한 모든 소스 코드 및 자료는 https://github.com/Secondmoon-Kiom/CNUH-R-Lecture-2017 에서 확인할 수 있음. 
   \end{itemize}
 \end{minipage}}
@@ -343,7 +343,7 @@ R은 공개 소프트웨어로 \url{http://www.r-project.org/} 에서 다운로�
 \setcounter{enumi}{2}
 \tightlist
 \item
-  클릭 후 연결 창에서 스크롤 후 ``Korea'' 아래 링크 클릭 (그림
+  클릭 후 연결한 페이지를 스크롤 후 ``Korea'' 아래 링크 클릭 (그림
   \ref{fig:R-install-02} 참조)
 \end{enumerate}
 
@@ -828,7 +828,7 @@ $digits
     웹 브라우저를 통해 \url{https://www.rstudio.com} 연결 후 메인
     화면에서 ``Download Rstudio'' 클릭
   \item
-    혹은 상단 Pop-up manu 중 Products \(\rightarrow\) RStudio 클릭 후
+    혹은 상단 Pop-up 메뉴 중 Products \(\rightarrow\) RStudio 클릭 후
     연결된 화면에서 다운로드 진행
   \end{itemize}
 \end{enumerate}
@@ -978,8 +978,8 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
     \begin{itemize}
     \tightlist
     \item
-      R 상단 메뉴: \keystroke{File} \(\rightarrow\) \keystroke{New File}
-      \(\rightarrow\) \keystroke{R Script}
+      R 상단 메뉴: \texttt{{[}File{]}} \(\rightarrow\)
+      \texttt{{[}New\ File{]}} \(\rightarrow\) \texttt{{[}R\ Script{]}}
     \item
       단축키: \keystroke{Ctrl} + \keystroke{Shift} + \keystroke{N}
     \end{itemize}
@@ -1106,8 +1106,8 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
 \setcounter{enumi}{4}
 \tightlist
 \item
-  RStudio의 창 layout은 \texttt{{[}Tools{]}} \(\rhd\)
-  \texttt{{[}Global\ Options{]}} \(\rhd\)
+  RStudio의 창 layout은 \texttt{{[}Tools{]}} \(\rightarrow\)
+  \texttt{{[}Global\ Options{]}} \(\rightarrow\)
   \texttt{{[}Pane\ Layout{]}}에서 변경 가능
 \end{enumerate}
 
@@ -1119,14 +1119,94 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
 
 \section{RStudio에서 배치 파일 생성 및 실행}\label{rstudio-----}
 
-\section{R 패키지 설치하기}\label{r--}
+스크립트 파일 생성, 저장, 실행
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  RStudio
+  R 소스 파일 실행
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \keystroke{Ctrl} + \keystroke{Shift} + \keystroke{S}
+  \item
+    \keystroke{Ctrl} + \keystroke{Shift} + \keystroke{Enter}
+  \item
+    \texttt{source("파일이름")}
+  \end{itemize}
+\item
+  파일 경로 설정
+
+  \begin{itemize}
+  \tightlist
+  \item
+    R에서 디렉토리 구분자는 \texttt{/}임
+  \item
+    Windows에서 사용하는 \texttt{\textbackslash{}}는 특수문자로 간주
+  \item
+    경로 복사 후 R에서 사용하는 경우 \texttt{\textbackslash{}}를
+    \texttt{\textbackslash{}\textbackslash{}}로 변경해야 인식
+  \end{itemize}
 \end{enumerate}
+
+\section{R 패키지 설치}\label{r--}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  RStudio 메뉴 \texttt{{[}Tools{]}} \(\rightarrow\)
+  \texttt{{[}Install\ packages{]}} 클릭 후 생성된 팝업 창에서 설치하고자
+  하는 패키지 입력 후 설치
+\item
+  RStudio \texttt{Packages} 창에서 \keystroke{Install} 버튼 누르고
+  설치(위와 동일)
+\item
+  R 콘솔 또는 스크립트 창에서 \texttt{install.packages()}
+\end{enumerate}
+
+\subsection{패키지 불러오기}\label{-}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{library()} vs. \texttt{require()}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{library()}: 불러오고자 하는 패키지가 시스템에 존재하지 않는
+    경우 에러 메세지 출력(에러 이후 명령어들이 실행되지 않음)
+  \item
+    \texttt{require()}: 패키지가 시스템에 존재하지 않는 경우 경고 메세지
+    출력(경고 이후 명령어 정상적으로 실행)
+  \end{itemize}
+\item
+  다중 패키지 동시에 불러오기
+
+  \begin{itemize}
+  \tightlist
+  \item
+    RStudio \texttt{Packages} 창에서 설치하고자 하는 패키지 선택 버튼
+    클릭하면 R workspace로 해당 패키지 로드 가능
+  \item
+    스크립트 이용
+  \end{itemize}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{pkgName <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"MASS"}\NormalTok{, }\StringTok{"tidyverse"}\NormalTok{, }\StringTok{"ggthemes"}\NormalTok{, }\StringTok{"readxl"}\NormalTok{, }
+\OperatorTok{+}\StringTok{     "ProjectTemplate"}\NormalTok{, }\StringTok{"kableExtra"}\NormalTok{, }\StringTok{"ztable"}\NormalTok{, }\StringTok{"car"}\NormalTok{, }
+\OperatorTok{+}\StringTok{     "lsmeans"}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\CommentTok{# 'lapply()': 벡터, 리스트 또는 표현식에 함수를}
+\ErrorTok{>}\StringTok{ }\CommentTok{# 적용하여 그 결과를 리스트로 반환}
+\ErrorTok{>}\StringTok{ }\KeywordTok{lapply}\NormalTok{(pkgName, require, }\DataTypeTok{character.only =}\NormalTok{ T)}
+\end{Highlighting}
+\end{Shaded}
 
 \section{\texorpdfstring{\texttt{rJava}
 설치하기}{rJava 설치하기}}\label{rjava-}
@@ -1141,7 +1221,7 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
   \item
     Java 계열 머신러닝 어플리케이션 활용 또는 최근까지 Excel 파일을
     불러오기 위해 설치 필수(Excel에 관해서는 Hadley Wickham의
-    \texttt{readxl} 개발 이전에만\ldots{})
+    \texttt{readxl} 개발 이전에는\ldots{})
   \item
     다음은 Java가 설치되지 않은 환경에서 \texttt{rJava}를 불렀을 때
     발생한 오류 예시임
@@ -1162,7 +1242,7 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
   \begin{itemize}
   \tightlist
   \item
-    \texttt{{[}Java\ Platform\ (JDK){]}} \(\rhd\)
+    \texttt{{[}Java\ Platform\ (JDK){]}} \(\rightarrow\)
     \texttt{{[}Download{]}} 클릭
 
     \begin{figure}[H] {
@@ -1178,7 +1258,7 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
   \begin{itemize}
   \tightlist
   \item
-    R 세션 시작 시 또는 RStudio에서 \texttt{{[}Tools{]}} \(\rhd\)
+    R 세션 시작 시 또는 RStudio에서 \texttt{{[}Tools{]}} \(\rightarrow\)
     \texttt{{[}Global\ Options{]}}에서 R 버전 확인 가능
   \item
     라이센스 계약에 동의 후 확인한 R 버전에 대응하는 링크 클릭 후
@@ -1261,16 +1341,305 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
 \texttt{ProjectTemplate} 패키지
 연동}{RStudio 프로젝트 생성 및 ProjectTemplate 패키지 연동}}\label{rstudio----projecttemplate--}
 
-\section{R + RStudio를 잘 활용 하려면?}\label{r-rstudio---}
+\subsection{RStudio 프로젝트}\label{rstudio-}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  주기적인 update
+  프로젝트
+
+  \begin{itemize}
+  \tightlist
+  \item
+    물리적 측면: 최종 산출물(문서)를 생성하기 위한 데이터, 사진, 그림
+    등을 모아 놓은 폴더
+  \item
+    논리적 측면: R 세션 및 작업의 버전 관리
+  \end{itemize}
 \item
-  RStudio 제 
+  프로젝트의 필요성
+
+  \begin{itemize}
+  \tightlist
+  \item
+    자료의 정합성 보장
+  \item
+    다양한 확장자를 갖는 한 폴더 내에 뒤섞일 때 곤란해 질 수 있음
+  \item
+    실제 분석 및 그래프 생성에 사용한 정확한 프로그램 또는 코드 연결이
+    어려움
+  \end{itemize}
+\item
+  좋은 프로젝트 구성을 위한 방법
+
+  \begin{itemize}
+  \tightlist
+  \item
+    원자료(raw data)의 보호: 가급적 자료를 읽기 전용(read only) 형태로
+    다루기
+  \item
+    데이터 정제(data wrangling 또는 data munging)를 위한 스크립트와 정제
+    자료를 보관하는 읽기 전용 데이터 디렉토리 생성
+  \item
+    작성한 스크립트로 생성한 모든 산출물(테이블, 그래프 등)을
+    ``일회용품''처럼 처리 \(\rightarrow\) 스크립트로 재현 가능
+  \item
+    한 프로젝트 내 각기 다른 분석마다 다른 하위 디렉토리에 출력결과
+    저장하는 것이 유용
+  \end{itemize}
+\item
+  RStudio 새로운 프로젝트 생성
+
+  \begin{itemize}
+  \tightlist
+  \item
+    RStudio의 가장 강력하고 유용한 기능
+  \item
+    새로운 프로젝트 생성
+
+    \begin{enumerate}
+    \def\labelenumii{\arabic{enumii})}
+    \tightlist
+    \item
+      RStudio 메뉴에서 \texttt{{[}File{]}} \(\rightarrow\)
+      \texttt{{[}New\ Project{]}} 선택하면 아래와 같은 팝업 메뉴 생성
+
+      \begin{figure}[H] {
+        \centering 
+        \includegraphics[width = 10cm, height = 10cm]{Figures/R-newproject-01.png}
+        \caption[RStudio 새로운 프로젝트 생성]{RStudio 새로운 프로젝트 생성}\label{fig:RStudio-project-01}
+      } \end{figure}
+
+      \begin{itemize}
+      \tightlist
+      \item
+        \keystroke{Existing Directory}: 이미 작업공간이 존재하고 있는
+        경우 해당 디렉토리 선택(다루지 않음)
+      \item
+        \keystroke{Version Control}: 버전관리 시스템(Git, SVN)의
+        저장소에 존재하는 프로젝트 작업 시 선택(다루지 않음)
+      \end{itemize}
+    \item
+      그림 \ref{fig:RStudio-project-01}에서 \keystroke{New Directory}
+      선택 후 다음 창으로 이동
+
+      \begin{figure}[H] {
+        \centering 
+        \includegraphics[width = 8cm, height = 8cm]{Figures/R-newproject-02.png}
+        \caption[RStudio 새로운 프로젝트 유형 선택]{RStudio 새로운 프로젝트 유형 선택}\label{fig:RStudio-project-02}
+      } \end{figure}
+
+      \begin{itemize}
+      \tightlist
+      \item
+        \keystroke{New Project}: 자료분석을 위한 프로젝트 생성
+      \item
+        \keystroke{R Package}: 패키지 개발을 위한 작업 프로젝트 생성
+      \item
+        \keystroke{Shiny Web Application}: Shiny를 이용한 데이터 연동형
+        웹 어플리케이션 개발 프로젝트 생성
+      \item
+        \keystroke{Book Project using bookdown}: 책 지필 작업을 위한
+        프로젝트 생성
+      \end{itemize}
+    \item
+      \keystroke{New Project} 선택 후 프로젝트 저장 폴더 생성 창으로
+      이동
+
+      \begin{figure}[H] {
+        \centering 
+        \includegraphics[width = 8cm, height = 8cm]{Figures/R-newproject-03.png}
+        \caption[새로운 프로젝트의 폴더명 지정]{새로운 프로젝트의 폴더명 지정}\label{fig:RStudio-project-03}
+      } \end{figure}
+
+      \begin{itemize}
+      \tightlist
+      \item
+        여기서는 \texttt{CNUH-Test}라는 프로젝트 이름으로 폴더 생성
+      \item
+        아래 \texttt{{[}Create\ projects\ as\ subdirectories\ of{]}}에서
+        생성하고자 하는 프로젝트의 상위 디렉토리 설정 \(\rightarrow\)
+        보통 RStudio의 default working directory로 기본 설정되어 있음.
+      \item
+        입력 완료 후 \keystroke{Create Project} 클릭 후 새로운 R 세션
+        화면이 열리는 것을 확인 했으면 새로운 프로젝트 생성 완료
+      \end{itemize}
+    \item
+      생성한 프로젝트 확인
+
+      \begin{itemize}
+      \tightlist
+      \item
+        새로운 R 세션 콘솔 창에 \texttt{getwd()}로 생성한 프로젝트 폴더
+        확인
+      \item
+        아래 그림처럼 생성 프로젝트 폴더에 \texttt{CNUH-Test.RProj}
+        실행파일 확인\\
+
+        \begin{figure}[H] {
+          \centering 
+          \includegraphics[width = 10cm, height = 8cm]{Figures/R-newproject-04.png}
+          \caption[프로젝트 폴더 내 실행 파일 생성 확인]{프로젝트 폴더 내 실행 파일 생성 확인}\label{fig:RStudio-project-04}
+        } \end{figure}
+      \end{itemize}
+    \end{enumerate}
+  \end{itemize}
 \end{enumerate}
+
+\subsection{\texorpdfstring{\texttt{ProjectTemplate}}{ProjectTemplate}}\label{projecttemplate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  프로젝트 관리를 자동화 하기 위한 솔루션을 제공하는 R 패키지
+
+  \begin{itemize}
+  \tightlist
+  \item
+    프로젝트 관리에 이상적인 directory 구조 제공
+  \item
+    자동으로 분석 파이프라인 및 작업흐름을 구성해서 구조화 함
+  \item
+    RStudio Project + \texttt{ProjectTemplate} + Git: 작업 기록 및 공동
+    작업 가능
+  \item
+    \texttt{ProjectTemplate}의 자세한 사항은 다음 링크
+    \url{http://projecttemplate.net/index.html} 참조
+  \end{itemize}
+\item
+  \texttt{ProjectTemplate} 설치 및 생성
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  \texttt{install.packages()} 함수를 이용해 설치
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{install.packages}\NormalTok{(}\StringTok{"ProjectTemplate"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  패키지 불러오기
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{library}\NormalTok{(ProjectTemplate)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \texttt{ProjectTemplate} 작업환경 생성
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# '..'는 default working directory 지시변수}
+\ErrorTok{>}\StringTok{ }\KeywordTok{create.project}\NormalTok{(}\StringTok{"../CNUH-Test"}\NormalTok{, }\DataTypeTok{merge.strategy =} \StringTok{"allow.non.conflict"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  프로젝트 폴더 내 아래 폴더 생성 확인
+
+  \begin{figure}[H] {
+    \centering 
+    \includegraphics[width = 10cm, height = 8cm]{Figures/R-projecttemplate-01.png}
+    \caption[\texttt{create.project()} 후 프로젝트 폴더 내 생성 디렉토리]{\texttt{create.project()} 후 프로젝트 폴더 내 생성 디렉토리}\label{fig:RStudio-projtemp-01}
+  } \end{figure}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{cache/}: 자료 전처리 과정 중 생성한 cache 처리 데이터 저장
+  \item
+    \texttt{confing/}: 프로젝트 설정(\texttt{global.gcf}에 저장) 관리
+  \item
+    \texttt{data/}: 원자료 또는 읽기 전용 분석 자료 저장
+  \item
+    \texttt{diagnostics/}: 자료의 오류 및 이상치 탐지를 위한 스크립트
+    저장
+  \item
+    \texttt{doc/}: 프로젝트 산출물을 위한 모든 종류의 문서 저장
+  \item
+    \texttt{graphs/}: 스크립트로 출력된 그래프 저장
+  \item
+    \texttt{libs/}: 재사용 혹은 자체 제작한 R 함수 스크립트 저장
+  \item
+    \texttt{munge/}: 자료 전처리를 위한 스크립트 저장
+  \item
+    \texttt{profiling/}: 코드 실행 시간 체크를 위해 작성산 스크립트 저장
+  \item
+    \texttt{reports/}: 프로젝트 보고 문서(HTML, PDF 등) 저장
+  \item
+    \texttt{src/}: 자료분석을 위해 사용한 스크립트 저장
+  \item
+    \texttt{tests/}: 함수 작성을 위해 생성한 test 스크립트 저장
+  \end{itemize}
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \texttt{ProjectTemplate} 관리
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii})}
+  \item
+    \texttt{ProjectTemplate}는 \texttt{config/global.dcf} 파일로
+    프로젝트 불러올 때 옵션 설정 가능
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{version:}\AttributeTok{ 0.8 }\CommentTok{# 현재 `ProjectTemplate` 버전 정보}
+\FunctionTok{data_loading:}\AttributeTok{ TRUE }\CommentTok{# 'data/' 폴더 내 자료읽기 여부 }
+\FunctionTok{data_loading_header:}\AttributeTok{ TRUE }\CommentTok{# 'data/' 폴더 내 자료읽기 여부 }
+\FunctionTok{data_ignore:}\AttributeTok{ }\CommentTok{# 'data/' 폴더 내 읽기무시 파일 목록}
+\FunctionTok{cache_loading:}\AttributeTok{ TRUE }\CommentTok{# 'cache/' 자료읽기 여부}
+\FunctionTok{recursive_loading:}\AttributeTok{ FALSE}
+\FunctionTok{munging:}\AttributeTok{ TRUE }\CommentTok{# 'munging/' 자료전처리 스크립트 읽기여부}
+\FunctionTok{logging:}\AttributeTok{ FALSE }\CommentTok{# Log 정보 기록여부 }
+\FunctionTok{logging_level:}\AttributeTok{ INFO}
+\FunctionTok{load_libraries:}\AttributeTok{ FALSE }\CommentTok{# 아래 패키지 리스트 불러오기 여부}
+\FunctionTok{libraries:}\AttributeTok{ reshape, plyr, dplyr, ggplot2, stringr, lubridate}
+\FunctionTok{as_factors:}\AttributeTok{ TRUE }\CommentTok{# 문자형 변수 요인화 여부}
+\FunctionTok{data_tables:}\AttributeTok{ FALSE }\CommentTok{# data.frame에 data.table 속성 추가}
+\FunctionTok{attach_internal_libraries:}\AttributeTok{ FALSE }\CommentTok{# 'lib\textbackslash{}'에 저장된 자체 함수 스크립트 읽기 여부}
+\FunctionTok{cache_loaded_data:}\AttributeTok{  TRUE }
+\FunctionTok{sticky_variables:}\AttributeTok{ NONE}
+\end{Highlighting}
+\end{Shaded}
+  \end{enumerate}
+\end{enumerate}
+
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{실습}
+
+새로 만든 \texttt{CNUH-Test} 프로젝트에서 데이터 불러오기
+\end{minipage}}
+\end{quote}
 
 \chapter{R의 기본 사용}\label{r--}
 
@@ -1308,6 +1677,7 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
 \colorbox{gray!10}{\begin{minipage}{15cm}
 \textbf{Tips: 들어가기 앞서  알아두면 유용한 단축키 및 명령어}
   \begin{itemize}
+    \item 현재 R 작업공간에 저장된 객체 리스트 출력: \texttt{ls()}
     \item R console에 저장된 모든 객체들을 일괄 삭제: \texttt{rm(list = ls())}
     \item R console 화면 청소: \keystroke{Ctrl} + \keystroke{L} 
   \end{itemize}
@@ -1327,84 +1697,972 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
 
 \begin{figure}[H] {
   \centering
-  \includegraphics[width = 15cm, height = 13cm]{Figures/datatype-diagram}
-  \caption[R 데이터 타입 구조 다이어그램]{R 데이터 타입 구조 다이어그램}\label{fig:R-datatype}
+  \includegraphics[width = 15cm, height = 14cm]{Figures/datatype-diagram}
+  \caption[R 데이터 타입 구조 다이어그램]{R 데이터 타입 구조 다이어그램: R, Python 분석과 프로그래밍 (by R Friend)에서 발췌 후 수정}\label{fig:R-datatype}
 } \end{figure}
 
 \vspace{1cm}
 
 \subsection{객체 입력 및 할당}\label{---}
 
-\begin{itemize}
-\tightlist
-\item
-  R의 가장 기본적인
-\end{itemize}
-
-앞서 열거한 7 가지 데이터 타입을 설명하기 전,
+R의 가장 기본적인 데이터 입력 및 할당 방법과 객체 또는 변수의 명명 규칙
+설명
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  객체를 할당하는 두 가지 방법
+  객체를 할당하는 두 가지 방법:\texttt{=}, \texttt{\textless{}-}
 
   \begin{enumerate}
   \def\labelenumii{\arabic{enumii})}
   \tightlist
   \item
-    \texttt{=}
-  \item
-    \texttt{\textless{}-} 또는 \texttt{-\textgreater{}}
-  \item
-    두 할당지시자의 차이점:
+    두 할당 지시자의 차이점
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \texttt{=}: 명령의 최상 수준에사만 사용 가능
+    \item
+      \texttt{\textless{}-}: 어디서든 사용 가능
+    \item
+      함수 호출과 동시에 변수에 값을 할당할 목적으로는
+      \texttt{\textless{}-}만 사용 가능
+    \end{itemize}
   \end{enumerate}
 \end{enumerate}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 이전 히스토그램 생성 위해 생성한 x 삭제}
+\ErrorTok{>}\StringTok{ }\KeywordTok{rm}\NormalTok{(x)}
+\OperatorTok{>}\StringTok{ }\CommentTok{# `mean()` 입력 벡터의 평균 계산}
+\ErrorTok{>}\StringTok{ }\KeywordTok{mean}\NormalTok{(y <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1 2 3 4 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{mean}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Error in eval(expr, envir, enclos): 객체 'x'를 찾을 수 없습니다
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  객체 또는 변수의 명명 규칙
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii})}
+  \tightlist
+  \item
+    알파벳, 한글, 숫자, \texttt{\_}, \texttt{.}의 조합으로 구성
+    가능(\texttt{-}은 사용 불가)
+  \item
+    변수명의 알파벳, 한글, \texttt{.}로 시작 가능
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \texttt{.}로 시작한 경우 뒤에 숫자 올 수 없음(숫자로 인지)
+    \end{itemize}
+  \item
+    대소문자 구분
+  \end{enumerate}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 1:10은 1부터 10까지 정수 생성 'c()'는 벡터 생성}
+\ErrorTok{>}\StringTok{ }\CommentTok{# 함수}
+\ErrorTok{>}\StringTok{ }\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\CommentTok{# 1:10으로 구성된 행렬 생성}
+\ErrorTok{>}\StringTok{ }\NormalTok{X <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{), }\DataTypeTok{nrow =} \DecValTok{2}\NormalTok{, }\DataTypeTok{ncol =} \DecValTok{5}\NormalTok{, }\DataTypeTok{byrow =}\NormalTok{ T)}
+\OperatorTok{>}\StringTok{ }\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1]  1  2  3  4  5  6  7  8  9 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{X}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    2    3    4    5
+[2,]    6    7    8    9   10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 논리형 객체}
+\ErrorTok{>}\StringTok{ }\NormalTok{.x <-}\StringTok{ }\OtherTok{TRUE}
+\OperatorTok{>}\StringTok{ }\NormalTok{.x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 알파벳 + 숫자}
+\ErrorTok{>}\StringTok{ }\NormalTok{a1 <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{1}\NormalTok{, }\DataTypeTok{to =} \DecValTok{10}\NormalTok{, }\DataTypeTok{by =} \DecValTok{2}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\CommentTok{# 한글 변수명}
+\ErrorTok{>}\StringTok{ }\NormalTok{가수 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Damian Rice"}\NormalTok{, }\StringTok{"Beatles"}\NormalTok{, }\StringTok{"최백호"}\NormalTok{, }\StringTok{"Queen"}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\NormalTok{가수}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Damian Rice" "Beatles"     "최백호"      "Queen"      
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  잘못된 객체 또는 변수 명명 예시
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{3x <-}\StringTok{ }\DecValTok{7}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Error: <text>:1:2: 예상하지 못한 기호(symbol)입니다.
+1: 3x
+     ^
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{_x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"M"}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"F"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Error: <text>:1:1: 예상하지 못한 입력입니다.
+1: _
+    ^
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\FloatTok{0.3}\NormalTok{ <-}\StringTok{ }\DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Error in 0.3 <- 10: 대입에 유효하지 않은 (do_set) 좌변입니다
+\end{verbatim}
+
 \section{스칼라}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  단일 차원의 값(하나의 값): \(1 \times 1\) 벡터로 간주 가능
+
+  \begin{itemize}
+  \tightlist
+  \item
+    R 데이터타입의 기본은 벡터
+  \end{itemize}
+\item
+  자료형은 크게 숫자형, 문자열, 논리형이 있음
+
+  \begin{itemize}
+  \tightlist
+  \item
+    숫자형 스칼라:
+    수치연산(\texttt{+,\ -,\ *,\ \^{},\ **,\ /,\ \%\%,\ \%/\%}) 가능
+  \end{itemize}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 숫자형 스칼라}
+\ErrorTok{>}\StringTok{ }\NormalTok{a <-}\StringTok{ }\DecValTok{3}
+\OperatorTok{>}\StringTok{ }\NormalTok{b <-}\StringTok{ }\DecValTok{10}
+\OperatorTok{>}\StringTok{ }\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 덧셈}
+\ErrorTok{>}\StringTok{ }\NormalTok{c <-}\StringTok{ }\NormalTok{a }\OperatorTok{+}\StringTok{ }\NormalTok{b}
+\OperatorTok{>}\StringTok{ }\NormalTok{c}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 13
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 뺄셈}
+\ErrorTok{>}\StringTok{ }\NormalTok{d <-}\StringTok{ }\NormalTok{b }\OperatorTok{-}\StringTok{ }\NormalTok{a}
+\OperatorTok{>}\StringTok{ }\NormalTok{d}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 곱셈}
+\ErrorTok{>}\StringTok{ }\NormalTok{a }\OperatorTok{*}\StringTok{ }\NormalTok{b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 30
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 멱승}
+\ErrorTok{>}\StringTok{ }\NormalTok{b}\OperatorTok{^}\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{b}\OperatorTok{^}\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 나누기}
+\ErrorTok{>}\StringTok{ }\NormalTok{b}\OperatorTok{/}\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3.33
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 나누기 나머지 반환}
+\ErrorTok{>}\StringTok{ }\NormalTok{b}\OperatorTok{%%}\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 나누기 몫 반환}
+\ErrorTok{>}\StringTok{ }\NormalTok{b}\OperatorTok{%/%}\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 연산 우선순위}
+\ErrorTok{>}\StringTok{ }\NormalTok{n <-}\StringTok{ }\NormalTok{(}\DecValTok{3} \OperatorTok{+}\StringTok{ }\DecValTok{5}\NormalTok{) }\OperatorTok{*}\StringTok{ }\DecValTok{3} \OperatorTok{-}\StringTok{ }\DecValTok{4}\OperatorTok{^}\DecValTok{2}\OperatorTok{/}\DecValTok{2}
+\OperatorTok{>}\StringTok{ }\NormalTok{n}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 16
+\end{verbatim}
+
+\begin{verbatim}
+- 문자형 스칼라: 수치연산 불가능
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{h1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Hello CNU Hospital CTS."}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\NormalTok{g2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"R is not too difficult."}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\NormalTok{h1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Hello CNU Hospital CTS."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{g2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "R is not too difficult."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{h1 }\OperatorTok{+}\StringTok{ }\NormalTok{g2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Error in h1 + g2: 이항연산자에 수치가 아닌 인수입니다
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  논리형
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{TRUE,\ T}: 참
+  \item
+    \texttt{FALSE,\ F}: 거짓
+  \item
+    \texttt{\&,\ \&\&\ (AND);\ \textbar{},\ \textbar{}\textbar{}\ (OR);\ !\ (NOT)}
+    연산자 사용 가능
+  \end{itemize}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\OtherTok{TRUE} \OperatorTok{&}\StringTok{ }\OtherTok{TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\OtherTok{TRUE} \OperatorTok{&}\StringTok{ }\OtherTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\OtherTok{TRUE} \OperatorTok{|}\StringTok{ }\OtherTok{TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\OtherTok{TRUE} \OperatorTok{|}\StringTok{ }\OtherTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\OperatorTok{!}\OtherTok{TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\OperatorTok{!}\OtherTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# T/F는 각각 TRUE/FALSE의 전역변수}
+\ErrorTok{>}\StringTok{ }\NormalTok{T <-}\StringTok{ }\OtherTok{FALSE}
+\OperatorTok{>}\StringTok{ }\NormalTok{T}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\OtherTok{TRUE}\NormalTok{ <-}\StringTok{ }\OtherTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Error in TRUE <- FALSE: 대입에 유효하지 않은 (do_set) 좌변입니다
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{T <-}\StringTok{ }\OtherTok{TRUE}
+\OperatorTok{>}\StringTok{ }\CommentTok{# &와 &&의 차이}
+\ErrorTok{>}\StringTok{ }\NormalTok{l1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\NormalTok{l2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OtherTok{FALSE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\NormalTok{l1 }\OperatorTok{&}\StringTok{ }\NormalTok{l2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE  TRUE FALSE  TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{l1 }\OperatorTok{&&}\StringTok{ }\NormalTok{l2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  결측 표시: \texttt{NA}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{one <-}\StringTok{ }\DecValTok{80}
+\OperatorTok{>}\StringTok{ }\NormalTok{two <-}\StringTok{ }\DecValTok{90}
+\OperatorTok{>}\StringTok{ }\NormalTok{three <-}\StringTok{ }\DecValTok{75}
+\OperatorTok{>}\StringTok{ }\NormalTok{four <-}\StringTok{ }\OtherTok{NA}
+\OperatorTok{>}\StringTok{ }\NormalTok{four}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 'is.na()' 결측 NA가 포함되어 있으면 TRUE}
+\ErrorTok{>}\StringTok{ }\KeywordTok{is.na}\NormalTok{(}\OtherTok{NA}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  초기화되지 않은 변수 지정: \texttt{NULL}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# NA와 NULL의 차이점 'is.null()' 객체 또는 변수에}
+\ErrorTok{>}\StringTok{ }\CommentTok{# NULL이 저장되어 있는지 판단}
+\ErrorTok{>}\StringTok{ }\NormalTok{x <-}\StringTok{ }\OtherTok{NULL}
+\OperatorTok{>}\StringTok{ }\KeywordTok{is.null}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{is.null}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{is.null}\NormalTok{(}\OtherTok{NA}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{is.na}\NormalTok{(}\OtherTok{NULL}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+logical(0)
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  범주형 변수 생성: \texttt{factor()}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    데이터가 사전에 정해진 특정 유형으로만 분류되는 경우
+
+    \begin{itemize}
+    \tightlist
+    \item
+      성별, 인종, 혈액형 등
+    \end{itemize}
+  \item
+    범주형 자료는 명목형과 순서형으로 구분 가능
+
+    \begin{itemize}
+    \tightlist
+    \item
+      순서형 자료 예: 성적, 교육수준, 선호도, 중증도 등
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# factor() 기본 사용법 factor(x, levels, labels,}
+\ErrorTok{>}\StringTok{ }\CommentTok{# ordered = is.ordered(x)) x: factor 형으로}
+\ErrorTok{>}\StringTok{ }\CommentTok{# 지정하고자 하는 스칼라 또는 벡터 levels: factor의}
+\ErrorTok{>}\StringTok{ }\CommentTok{# 수준 지정 labels: factor의 레이블 지정}
+\ErrorTok{>}\StringTok{ }\NormalTok{sex <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(}\StringTok{"M"}\NormalTok{, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"M"}\NormalTok{, }\StringTok{"F"}\NormalTok{))}
+\OperatorTok{>}\StringTok{ }\NormalTok{sex}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] M
+Levels: M F
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{is.factor}\NormalTok{(sex)  }\CommentTok{# factor 형 판단 TRUE/FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{nlevels}\NormalTok{(sex)  }\CommentTok{# factor의 level 개수 반환}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{levels}\NormalTok{(sex)  }\CommentTok{# factor의 level 목록 반환}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "M" "F"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{levels}\NormalTok{(sex) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{, }\StringTok{"Female"}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\NormalTok{sex}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] Male
+Levels: Male Female
+\end{verbatim}
 
 \section{벡터}
 
-\section{리스트}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  동일한 유형의 자료가 2개 이상 1차원 (\(n \times 1\), \(n \geq 2\))
+  으로 구성되어 있는 구조
+\item
+  벡터는 앞의 예시에서 본 바와 같이 \texttt{c()} 함수를 사용해 생성
+\item
+  서로 다른 자료형으로 벡터를 구성한 경우 표현력이 돞은 자료형으로
+  변환한 값 반
+\item
+  벡터 각 원소에 이름 부여 가능
+\end{enumerate}
 
 \section{행렬}
 
+동일한 유형의 2차원 데이터 구조 (\(n \times p\) 자료행렬) -
+\(n \times 1\) 차원 벡터 \(p\)개로 묶여진 데이터 덩어리
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 1~12까지의 숫자에 대한 행(row)의 개수가 4개인}
+\ErrorTok{>}\StringTok{ }\CommentTok{# 행렬 생성}
+\ErrorTok{>}\StringTok{ }\NormalTok{m1 <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{12}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{4}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\NormalTok{m1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2] [,3]
+[1,]    1    5    9
+[2,]    2    6   10
+[3,]    3    7   11
+[4,]    4    8   12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 1~12까지의 숫자로 행 기준 행 개수가 4개인 행렬}
+\ErrorTok{>}\StringTok{ }\CommentTok{# 생성}
+\ErrorTok{>}\StringTok{ }\NormalTok{m2 <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{12}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{4}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{TRUE}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\NormalTok{m2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2] [,3]
+[1,]    1    2    3
+[2,]    4    5    6
+[3,]    7    8    9
+[4,]   10   11   12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 행렬 연산}
+\ErrorTok{>}\StringTok{ }\NormalTok{m1 }\OperatorTok{+}\StringTok{ }\NormalTok{m2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2] [,3]
+[1,]    2    7   12
+[2,]    6   11   16
+[3,]   10   15   20
+[4,]   14   19   24
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{m1 }\OperatorTok{-}\StringTok{ }\NormalTok{m2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2] [,3]
+[1,]    0    3    6
+[2,]   -2    1    4
+[3,]   -4   -1    2
+[4,]   -6   -3    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 곱과 나누기 연산이 각 원소에 대응해서 이루어진}
+\ErrorTok{>}\StringTok{ }\CommentTok{# 것에 주의}
+\ErrorTok{>}\StringTok{ }\NormalTok{m1}\OperatorTok{/}\NormalTok{m2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+      [,1]  [,2] [,3]
+[1,] 1.000 2.500 3.00
+[2,] 0.500 1.200 1.67
+[3,] 0.429 0.875 1.22
+[4,] 0.400 0.727 1.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{m1 }\OperatorTok{*}\StringTok{ }\NormalTok{m2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2] [,3]
+[1,]    1   10   27
+[2,]    8   30   60
+[3,]   21   56   99
+[4,]   40   88  144
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 원래 행렬의 곱셈과 나누기}
+\ErrorTok{>}\StringTok{ }\KeywordTok{t}\NormalTok{(m1) }\OperatorTok{%*%}\StringTok{ }\NormalTok{m2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2] [,3]
+[1,]   70   80   90
+[2,]  158  184  210
+[3,]  246  288  330
+\end{verbatim}
+
 \section{배열}
+
+\begin{itemize}
+\tightlist
+\item
+  동일한 유형의 데이터가 2차원 이상으로 구성된 구조
+
+  \begin{itemize}
+  \tightlist
+  \item
+    동일 차원(\(n\times p\))의 행렬 \(k\)개의 방에 저장되어 있는 구조
+  \end{itemize}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 1~24까지의 숫자를 '2 x 3 행렬'로 해서 '4층'}
+\ErrorTok{>}\StringTok{ }\CommentTok{# 짜리의 데이터 구조를 만들어라}
+\ErrorTok{>}\StringTok{ }\NormalTok{a1 <-}\StringTok{ }\KeywordTok{array}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{24}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{))}
+\OperatorTok{>}\StringTok{ }\NormalTok{a1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+, , 1
+
+     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+
+, , 2
+
+     [,1] [,2] [,3]
+[1,]    7    9   11
+[2,]    8   10   12
+
+, , 3
+
+     [,1] [,2] [,3]
+[1,]   13   15   17
+[2,]   14   16   18
+
+, , 4
+
+     [,1] [,2] [,3]
+[1,]   19   21   23
+[2,]   20   22   24
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 1~24까지의 숫자를 '3 x 4' 행렬로 해서 '2층'짜리의}
+\ErrorTok{>}\StringTok{ }\CommentTok{# 데이터 구조를 만들어라}
+\ErrorTok{>}\StringTok{ }\NormalTok{a2 <-}\StringTok{ }\KeywordTok{array}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{23}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\OperatorTok{>}\StringTok{ }\NormalTok{a2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+, , 1
+
+     [,1] [,2] [,3] [,4]
+[1,]    1    4    7   10
+[2,]    2    5    8   11
+[3,]    3    6    9   12
+
+, , 2
+
+     [,1] [,2] [,3] [,4]
+[1,]   13   16   19   22
+[2,]   14   17   20   23
+[3,]   15   18   21    1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 출처:}
+\ErrorTok{>}\StringTok{ }\CommentTok{# http://rfriend.tistory.com/14?category=601862 [R,}
+\ErrorTok{>}\StringTok{ }\CommentTok{# Python 분석과 프로그래밍 (by R Friend)]}
+\end{Highlighting}
+\end{Shaded}
 
 \section{데이터 프레임}\label{-}
 
-\section{데이터 연산}\label{-}
+\begin{itemize}
+\tightlist
+\item
+  데이터 프레임은 데이터 유형에 상관없이 2차원 형태의 데이터 구조
 
-\chapter{데이터 조작}\label{-}
+  \begin{itemize}
+  \tightlist
+  \item
+    외부로부터 불러오는 자료의 형태 대부분은 데이터 프레임
+  \end{itemize}
+\item
+  참고: 행렬은 동일한 유형의 자료형으로 이루어짐
+\end{itemize}
 
-\section{실습 데이터 설명}\label{--}
+\section{리스트}
 
-\section{파일 입출력}\label{-}
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# Vector(L1), Matrix(L2), Array(L3), Data}
+\ErrorTok{>}\StringTok{ }\CommentTok{# Frame(L4)를 만들어서, 하나의 List(L5)로 묶어라}
+\ErrorTok{>}\StringTok{ }\NormalTok{L1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{)  }\CommentTok{# Vector}
+\OperatorTok{>}\StringTok{ }\NormalTok{L2 <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{TRUE}\NormalTok{)  }\CommentTok{# Matrix}
+\OperatorTok{>}\StringTok{ }\NormalTok{L3 <-}\StringTok{ }\KeywordTok{array}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{24}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{))  }\CommentTok{# Array}
+\OperatorTok{>}\StringTok{ }\NormalTok{L4 <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{cust_id =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{), }\DataTypeTok{last_name =} \KeywordTok{c}\NormalTok{(}\StringTok{"Kim"}\NormalTok{, }
+\OperatorTok{+}\StringTok{     "Lee"}\NormalTok{, }\StringTok{"Choi"}\NormalTok{, }\StringTok{"Park"}\NormalTok{))  }\CommentTok{# Data Frame}
+\OperatorTok{>}\StringTok{ }\NormalTok{L5 <-}\StringTok{ }\KeywordTok{list}\NormalTok{(L1, L2, L3, L4)  }\CommentTok{# List}
+\OperatorTok{>}\StringTok{ }\CommentTok{# [[1]]는 Vector(L1), [[2]]는 Matrix(L2), [[3]]는}
+\ErrorTok{>}\StringTok{ }\CommentTok{# Array(L3), [[4]]는 Data Frame(L4)가 묶인 것임}
+\ErrorTok{>}\StringTok{ }\NormalTok{L5}
+\end{Highlighting}
+\end{Shaded}
 
-\subsection{외부 파일 읽어오기/내보내기}\label{--}
+\begin{verbatim}
+[[1]]
+[1] 1 2 3 4
 
-\texttt{read.table()}, \texttt{write.table()}
-\texttt{readxl::read\_excel()}
+[[2]]
+     [,1] [,2]
+[1,]    1    2
+[2,]    3    4
+[3,]    5    6
 
-RStudio 메뉴 명령을 통한 파일 입출력
+[[3]]
+, , 1
 
-\section{벡터화 연산(apply 계열 함)}\label{-apply--}
+     [,1] [,2] [,3] [,4]
+[1,]    1    4    7   10
+[2,]    2    5    8   11
+[3,]    3    6    9   12
 
-\section{\texorpdfstring{\texttt{dplyr\ +\ tidyr}을 이용한 data
-wrangling}{dplyr + tidyr을 이용한 data wrangling}}\label{dplyr-tidyr--data-wrangling}
+, , 2
 
-\chapter{\texorpdfstring{\texttt{ggplot2}를 이용한 자료
-시각화}{ggplot2를 이용한 자료 시각화}}\label{ggplot2---}
+     [,1] [,2] [,3] [,4]
+[1,]   13   16   19   22
+[2,]   14   17   20   23
+[3,]   15   18   21   24
 
-\section{\texorpdfstring{\texttt{ggplot()} vs.
-\texttt{plot()}}{ggplot() vs. plot()}}\label{ggplot-vs.-plot}
 
-\section{Grammar of Graphics}\label{grammar-of-graphics}
+[[4]]
+  cust_id last_name
+1       1       Kim
+2       2       Lee
+3       3      Choi
+4       4      Park
+\end{verbatim}
 
-\chapter{재현가능한 데이터 연동 문서 작성}\label{----}
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 출처:}
+\ErrorTok{>}\StringTok{ }\CommentTok{# http://rfriend.tistory.com/14?category=601862 [R,}
+\ErrorTok{>}\StringTok{ }\CommentTok{# Python 분석과 프로그래밍 (by R Friend)]}
+\end{Highlighting}
+\end{Shaded}
 
 \renewcommand\bibname{References}
-\bibliography{CNUH.bib}
+\bibliography{CNUH}
 
 
 \end{document}
