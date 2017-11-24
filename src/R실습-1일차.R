@@ -64,7 +64,7 @@ write_excel_csv(DBP, "output/DBP.csv")
 ## 데이터프레임 조작
 head(DBP); dim(DBP); summary(DBP)
 ## 데이터 프레임 색인
-DBP[c(1,3,5), ] # 1,3,5열 자료만 추
+DBP[c(1,3,5), ] # 1,3,5열 자료만 추출
 
 
 ## dplyr 기본 사용법
