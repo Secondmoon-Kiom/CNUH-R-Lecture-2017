@@ -281,6 +281,7 @@ is.na(NULL)
     - `labels()`: level에 대응하는 label 목록 반환
     - `ordered()`: 순서형 factor 생성
     - `is.ordered()`: 순서형 factor 확인
+    
 ```{r eval = T, echo = T, prompt = T}
 # factor() 기본 사용법
 # factor(x, levels, labels, ordered = F)
@@ -733,7 +734,7 @@ save(DBP, DBP2, DF, file = "output/실습2.Rdata")
 
 - `dplyr` + `tidyr` 전처리를 위한 기본함수
 ```{r dplyr-table, echo = F}
-함수명 <- c("filter()", "select()", "mutate()", "arrange()", "group_by", "summmarise()", "gather()", "spread()", "separate()")
+함수명 <- c("filter()", "select()", "mutate()", "arrange()", "group_by", "summarise()", "gather()", "spread()", "separate()")
 패키지 <- c("dplyr", "dplyr", "dplyr", "dplyr", "dplyr", "dplyr", "tidyr", "tidyr", "tidyr")
 내용 <- c("지정 식에 맞는 데이터 추출", "열의 추출", "열 추가 및 변환", "정렬", "지정한 열의 수준으로 그룹화", "자료 요약", "Long-format 데이터셋 생성", "Wide-format 데이터셋 생성", "문자열 분리 후 변수 생성")
 
@@ -800,8 +801,6 @@ mDBP <- DBP %>%
 1. **문제 2**와 동일하게 1-3 과정을 진행한 후(단 `tmp`를 `Visit`으로 바꿔서), 
 2. 각 `TRT`에 따른 `VISIT` 별 평균을 계산한 뒤, 
 3. 다시 `VISIT`의 각 `DBP1`부터 `DBP5`의 수준을 wide-format으로 변경
-4.
-5.
 
 
 ```{r dplyr-ex-03, echo = T}
@@ -866,7 +865,7 @@ ggplot(data = mtcars) + aes(x = hp, y = mpg, color = factor(cyl), shape = factor
 
 DBP 자료를 처리군 별로 성별에 따른 visit별 혈압 별 평균에 대한 프로파일 도표(표준편차 포함) 만들기
 
-```{r ggplot-ex-2}
+```{r ggplot-ex-2, fig.align = "center", fig.height = 6, fig.width = 10}
 library(ggthemes)
 
 mDBP2 <- DBP %>% 
@@ -879,10 +878,11 @@ mDBP2 <- DBP %>%
   ungroup(.) %>% 
   mutate(VISIT = factor(VISIT, levels = unique(VISIT)))
 
-ggplot(mDBP2) + aes(x = VISIT, y = Mean, colour = Sex) + 
+ggplot(mDBP2) + aes(x = VISIT, y = Mean, colour = Sex, group = Sex) + 
   geom_errorbar(aes(ymin = Mean - SD, ymax = Mean + SD), position = position_dodge(0.8)) + 
-  geom_point(position = position_dodge(0.8)) + 
-  geom_line(position = position_dodge(0.8)) + 
+  geom_point(position = position_dodge(0.8), size = 3) + 
+  geom_line(position = position_dodge(0.8), size = 0.5, linetype = "dashed") + 
+  scale_colour_manual(name = "Sex", values = c("red", "black")) + 
   facet_grid(~ TRT) + theme_base()
 
 ```

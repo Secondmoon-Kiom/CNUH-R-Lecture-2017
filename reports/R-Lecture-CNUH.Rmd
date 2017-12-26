@@ -19,20 +19,20 @@ link-citation: yes
 colorlinkgs: yes
 lot: no
 lof: no
-fontsize: 12pt
+fontsize: 11pt
 urlcolor: blue
 bibliography: CNUH.bib
-
+editor_options: 
+  chunk_output_type: console
 ---
 
 
 ```{r knitr_init, echo=FALSE, results="hide", message=FALSE, cache=FALSE}
- 
+require(highlight)
+
 knitr::opts_knit$set(root.dir = '..') 
 options(max.print = 5000)
-knitr::opts_chunk$set(eval = TRUE, echo = FALSE, cache = FALSE, include = TRUE, collapse = FALSE, tidy=TRUE, message=FALSE, warning=FALSE,
-                      dependson = NULL, engine = "R", error = TRUE, fig.path="Figures/", fig.align = "center", fig.width = 7, fig.height = 7,
-                     fig.keep='all', fig.retina=2, background = '#F7F7F7', highlight = T, comment = NA, tidy = TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50))
+knitr::opts_chunk$set(eval = TRUE, echo = FALSE, cache = FALSE, include = TRUE, collapse = FALSE, tidy=TRUE, message=FALSE, warning=FALSE, dependson = NULL, engine = "R", error = TRUE, fig.path="Figures/", fig.align = "center", fig.width = 7, fig.height = 7, fig.keep='all', fig.retina=2, background = '#F7F7F7', highlight = T, comment = NA, tidy = TRUE, tidy.opts=list(blank=FALSE, width.cutoff=75), size = "footnotesize")
 ```
 
 # R을 사용하기 위한 환경 설정
@@ -128,7 +128,7 @@ R은 공개 소프트웨어로 http://www.r-project.org/ 에서 다운로드 및
 }
 \end{figure} 
 
-6. R을 구성하는 하위구조 중 "base" 링크 클릭 후 다음 화면에서 "Downloads R 3.4.2 for Windows"를 클릭 후 설치 파일을 임의의 디렉토리에 저장 후 실행(그림 \ref{fig:R-install-05} 참조)
+6. R을 구성하는 하위구조 중 "base" 링크 클릭 후 다음 화면에서 가장 최신버전2017-11-20 현재 "Downloads R 3.4.2 for Windows")를 클릭 후 설치 파일을 임의의 디렉토리에 저장 후 실행(그림 \ref{fig:R-install-05} 참조)
 
 7. 참고로 3개 subdirectories에 대한 간략한 설명은 아래와 같음
     - `base`: R 실행 프로그램 
@@ -720,7 +720,7 @@ load_libraries: FALSE # 아래 패키지 리스트 불러오기 여부
 libraries: reshape, plyr, dplyr, ggplot2, stringr, lubridate
 as_factors: TRUE # 문자형 변수 요인화 여부
 data_tables: FALSE # data.frame에 data.table 속성 추가
-attach_internal_libraries: FALSE # 'lib\'에 저장된 자체 함수 스크립트 읽기 여부
+attach_internal_libraries: FALSE # 'lib\'에 저장된 자체 생성 함수 읽기 여부
 cache_loaded_data:  TRUE 
 sticky_variables: NONE
 ```
@@ -743,7 +743,15 @@ sticky_variables: NONE
 
 # R의 기본 사용
 
-- R은 객체지향언어(object-oriented language)임
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{목적: R 활용을 위해 기초적으로 알아야 할 객체 속성 및 기본 연산 논리 학습}
+\end{minipage}}
+\end{quote}
+
+\vspace{0.5cm}
+
+- R은 객체지향언어(object-oriented language)
 - 객체: 숫자, 데이터셋, 단어, 테이블, 분석결과 등 모든 것을 칭함
     - "객체지향"의 의미는 R의 모든 명령어는 객체를 대상으로 이루어진다는 것을 의미
 - R에서 사용자가 데이터 입력을 위해 생성 또는 읽어온 객체(object)는 종종 변수(variable)라는 말과 혼용됨. 
@@ -752,31 +760,22 @@ sticky_variables: NONE
 - 특히 데이터 타입에 따라 사용하는 함수 또는 분석 방법이 조금씩 다른 것이 R의 특징임
 - 따라서 R의 데이터 타입에 좀 더 익숙해져야 R을 보다 쉽게 다룰 수 있음
 
-\begin{quote}
-\colorbox{gray!10}{\begin{minipage}{15cm}
-\textbf{Tips: 들어가기 앞서  알아두면 유용한 단축키 및 명령어}
-  \begin{itemize}
-    \item 현재 R 작업공간에 저장된 객체 리스트 출력: \texttt{ls()}
-    \item R console에 저장된 모든 객체들을 일괄 삭제: \texttt{rm(list = ls())}
-    \item R console 화면 청소: \keystroke{Ctrl} + \keystroke{L} 
-  \end{itemize}
-\end{minipage}}
-\end{quote}
+<!-- \begin{quote} -->
+<!-- \colorbox{gray!10}{\begin{minipage}{15cm} -->
+<!-- \textbf{Tips: 들어가기 앞서  알아두면 유용한 단축키 및 명령어} -->
+<!--   \begin{itemize} -->
+<!--     \item 현재 R 작업공간에 저장된 객체 리스트 출력: \texttt{ls()} -->
+<!--     \item R console에 저장된 모든 객체들을 일괄 삭제: \texttt{rm(list = ls())} -->
+<!--     \item R console 화면 청소: \keystroke{Ctrl} + \keystroke{L}  -->
+<!--   \end{itemize} -->
+<!-- \end{minipage}} -->
+<!-- \end{quote} -->
 
-## R 객체 입력 방법 및 변수 설정 규칙
+## R의 데이터 유형
 
-- R의 데이터 타입은 1)스칼라, 2)벡터, 3)요인, 4)행렬, 5)배열, 6)데이터프레임, 7)리스트 로 나눌 수 있음.
-- 자세히 들어가기 전 R 데이터 타입의 구조 다이어그램을 먼저 살펴봄
+### R 객체 입력 방법 및 변수 설정 규칙
 
-\begin{figure}[H] {
-  \centering
-  \includegraphics[width = 15cm, height = 14cm]{Figures/datatype-diagram}
-  \caption[R 데이터 타입 구조 다이어그램]{R 데이터 타입 구조 다이어그램: R, Python 분석과 프로그래밍 (by R Friend)에서 발췌 후 수정}\label{fig:R-datatype}
-} \end{figure}
-
-\vspace{1cm}
-
-### 객체 입력 및 할당
+#### 객체 입력 및 할당
 
 R의 가장 기본적인 데이터 입력 및 할당 방법과 객체 또는 변수의 명명 규칙 설명 
 
@@ -831,12 +830,48 @@ _x <- c("M", "M", "F")
 .3 <- 10
 ```
 
-## 스칼라 
+## R 객체 유형
+
+1. 객체의 종류
+
+- 스칼라(scalar)
+- 벡터(vector): **R의 기본연산 단위**
+- 행렬(matrix)
+- 배열(array)
+- 데이터프레임(data frame)
+- 리스트(list)
+
+2. 객체에 입력 가능한 값
+
+- **수치형(numeric)**: 숫자(정수, 소수)
+
+- **문자열(string)**: `"충남대학교"`, `"R강의"`
+
+- **논리형(logical)**: `TRUE`/`FALSE`
+
+- **결측값(`NA`)**: 자료에서 발생한 결측 표현
+
+- **공백(`NULL`)**: 지정하지 않은 값
+
+- **요인(factor)**: 범주형 자료 표현(수치 + 문자 결합 형태로 이해하면 편함)
+
+- **기타**: 숫자아님(`NaN`), 무한대(`Inf`) 등
+
+
+<!-- - R의 데이터 타입은 1)스칼라, 2)벡터, 3)요인, 4)행렬, 5)배열, 6)데이터프레임, 7)리스트 로 나눌 수 있음. -->
+<!-- - 자세히 들어가기 전 R 데이터 타입의 구조 다이어그램을 먼저 살펴봄 -->
+
+### 스칼라 
 
 1. 단일 차원의 값(하나의 값): $1 \times 1$ 벡터로 간주 가능
-    - R 데이터타입의 기본은 벡터
+    - R 자료형의 기본은 벡터
 2. 자료형은 크게 숫자형, 문자열, 논리형이 있음
-    - 숫자형 스칼라: 수치연산(`+, -, *, ^, **, /, %%, %/%`) 가능
+
+> **참고: 스칼라를 입력시 R의 벡터 지정 함수인 `c()`를 꼭 사용해서 입력할 필요가 없다. 단, 두 개 이상 스칼라면 벡터이므로 꼭 c()를 써야 한다.**
+
+
+#### 숫자형: 수치연산(`+, -, *, ^, **, /, %%, %/%`) 가능
+
 ```{r, echo = T, eval = T, prompt = T}
 # 숫자형 스칼라
 a <- 3
@@ -864,7 +899,9 @@ b %/% a
 n <- (3+5)*3 - 4**2/2
 n
 ```
-    - 문자형 스칼라: 수치연산 불가능
+
+#### 문자형 스칼라: 수치연산 불가능
+
 ```{r, echo = T, eval = T, prompt = T}
 h1 <- c("Hello CNU Hospital CTS.")
 g2 <- c("R is not too difficult.")
@@ -872,10 +909,21 @@ h1
 g2
 h1 + g2
 ```
-   - 논리형 
-      - `TRUE, T`: 참
-      - `FALSE, F`: 거짓
-      - `&, && (AND); |, || (OR); ! (NOT)` 연산자 사용 가능
+
+#### 논리형 스칼라
+
+- `TRUE, T`: 참
+- `FALSE, F`: 거짓
+- `&, && (AND); |, || (OR); ! (NOT)` 연산자 사용 가능
+- 비교연산: 숫자값들의 비교를 통해 논리값 반환
+    - `>, <, >=, <=, ==, !=`
+    - 문자형 비교 연산은 `==, !=`만 가능
+
+> **참고 1: 논리형 스칼라도 숫자형 연산 가능하다. 왜냐하면 컴퓨터는 TRUE/FALSE를 1과 0의 숫자로 인식하기 때문이다.**
+
+> **참고 2: `&`와 `&&`는 동일하게 AND를 의미하지만 연산 결과가 다르다. `&`의 연산 대상이 벡터인 경우 백터 구성 값 각각에 대해 `&` 연산을 실행 하지만 `&&`는 한 개(스칼라)에만  논리 연산이 적용된다(아래 예시 참고).**
+
+      
 ```{r echo = T, eval = T, prompt = T}
 TRUE & TRUE
 TRUE & FALSE
@@ -894,54 +942,223 @@ l2 <- c(FALSE, TRUE, TRUE, TRUE)
 
 l1 & l2
 l1 && l2
+
+x <- 10
+y <- 13
+
+x > y
+x < y
+x >= y
+x <= y
+
+x == y
+x != y
+y <- 10
+x != y
 ```
 
+#### 결측값(`NA`)
 
-3. 결측 표시: `NA`
+- 데이터 값이 없음을 의미
+- 예를 들어 4명의 학생 중 3명의 수학 시험 점수가 80, 95, 90 점인데 한 학생의 점수를 모르는 경우 `NA`를 이용해 점수 표현
+- `is.na()` 함수를 이용해 해당 값이 결측을 포함하고 있는지 확인
+
 ```{r, echo = T, eval = T, prompt = T}
 one <- 80; two <- 90; three <- 75; four <- NA
 four
 # 'is.na()' 결측 NA가 포함되어 있으면 TRUE 
 is.na(NA)
 ```
-4. 초기화되지 않은 변수 지정: `NULL`
+
+#### NULL 값(`NULL`)
+
+- 초기화 되지 않은 값 표현
+- `is.null()` 함수를 통해 NULL 지정 여부 확인
+
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{참고: \texttt{NA}와 \texttt{NULL}은 자료의 공백을 의미한다는 점에서 유사한 측면이 있으나 아래 측면에서 큰 차이가 있음!!}
+\begin{itemize}
+  \item \texttt{NULL}: 값을 지정하지 않은 객체(object) 표현
+  \item \texttt{NA}: 자료값이 결측임을 지정해주는 논리형 상수
+\end{itemize}
+\end{minipage}}
+\end{quote}
+
+\vspace{0.5cm}
+
 ```{r, echo = T, eval = T, prompt = T}
 # NA와 NULL의 차이점
 # 'is.null()' 객체 또는 변수에 NULL이 저장되어 있는지 판단
+# 'class()' 객체의 유형을 반환
 x <- NULL
 is.null(x)
 is.null(1)
 is.null(NA)
 is.na(NULL)
+class(NA)
+class(NULL)
 ```
 
-5. 범주형 변수 생성: `factor()`
-    - 데이터가 사전에 정해진 특정 유형으로만 분류되는 경우
+#### 요인형
+
+- 범주형 자료를 표현하기 위한 값
+- 범주형 자료
+   - 데이터가 사전에 정해진 특정 유형으로만 분류되는 경우
         - 성별, 인종, 혈액형 등
     - 범주형 자료는 명목형과 순서형으로 구분 가능
         - 순서형 자료 예: 성적, 교육수준, 선호도, 중증도 등 
+- `factor()` 함수를 통해 표현 가능
+    - 프로토타입: `factor(x, levels, labels, ordered)` (`help(factor)` 참조)
+        - `x` 벡터(스칼라)에 대응하는 요인의 수준(`levels`)과 수준의 레이블(`labels`)을 지정. 만약 요인 `x`가 순서형이면 `ordered`인지 아닌지를 입력
+    - 숫자형에 적용되는 연산 불가
+    - 요인형을 조금 더 부연설명 하면 숫자 또는 문자 값에 수준의 속성을 부여한 값의 형태임
+
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{예시 사용 함수}
+\begin{itemize}
+  \item `is.factor()`: 벡터(스칼라)가 요인형인지 확인
+  \item `nlevels()`: factor의 level 개수 반환
+  \item `levels()`: level 목록 반환
+  \item `labels()`: level에 대응하는 label 목록 반환
+  \item `ordered()`: 순서형 factor 생성
+  \item `is.ordered()`: 순서형 factor 확인
+\end{itemize}
+\end{minipage}}
+\end{quote}
+
+\vspace{0.5cm}   
+
 ```{r eval = T, echo = T, prompt = T}
 # factor() 기본 사용법
-# factor(x, levels, labels, ordered = is.ordered(x))
+# factor(x, levels, labels, ordered = F)
 # x: factor 형으로 지정하고자 하는 스칼라 또는 벡터
 # levels: factor의 수준 지정
 # labels: factor의 레이블 지정
 sex <- factor("M", levels = c("M", "F"))
 sex
-is.factor(sex) # factor 형 판단 TRUE/FALSE
-nlevels(sex) # factor의 level 개수 반환
-levels(sex) # factor의 level 목록 반환
+# factor 형 판단 TRUE/FALSE
+is.factor(sex)
+# factor의 level 개수 반환
+nlevels(sex)
+# factor의 level 목록 반환
+levels(sex) 
+# factor의 level 목록 수정
 levels(sex) <- c("Male", "Female")
 sex
+
+# 순서형 factor
+severity <- factor(1, levels = c(1, 2, 3), labels = c("Mild", "Moderate", "Severe"))
+# severity <- ordered(severity)
+# 또는 factor() 함수 내에서 ordered 옵션을 TRUE로 지정
+severity <- factor(1, levels = c(1, 2, 3), labels = c("Mild", "Moderate", "Severe"), ordered = TRUE)
+severity
+is.ordered(severity)
 ```
 
 
-## 벡터
+### 벡터
 
-1. 동일한 유형의 자료가 2개 이상 1차원 ($n \times 1$, $n \geq 2$) 으로 구성되어 있는 구조
-2. 벡터는 앞의 예시에서 본 바와 같이 `c()` 함수를 사용해 생성
-3. 서로 다른 자료형으로 벡터를 구성한 경우 표현력이 돞은 자료형으로 변환한 값 반
-4. 벡터 각 원소에 이름 부여 가능
+- 동일한 유형의 자료(스칼라)가 2개 이상 1차원 ($n \times 1$, $n \geq 2$) 으로 구성되어 있는 자료 형태
+- 벡터는 앞의 예시에서 본 바와 같이 `c()` 함수를 사용해 생성
+- 서로 다른 자료형으로 벡터를 구성한 경우 표현력이 돞은 자료형으로 변환한 값 반환
+    - 예: 문자열 + 숫자로 구성된 벡터 $\rightarrow$ 문자형 벡터
+- 벡터 각 원소에 이름 부여 가능
+    - `names()` 함수를 이용해 원소 이름 지정
+        - 사용 프로토타입: `names(x) <- 문자열 벡터`, 단 `x`와 이름에 입력할 문자열 벡터의 길이는 같아야 함. 
+    - 벡터의 길이(차원) 확인
+        - `length()` 또는 `NROW()` 사용
+- 색인(indexing)을 통해 벡터의 원소에 접근 가능
+    - `x[i]`: 벡터 `x`의 `i`번 째 요소
+    - `x[-i]`: 벡터 `x`에서 `i`번 째 요소를 제외한 나머지
+    - `x[I]`: `I`가 인덱싱 벡터라고 할 때 `I`에 지정된 요소를 얻어옴. 일반적으로 `I`는 백터의 행 순서 번호 또는 각 벡터 원소의 이름에 대응하는 문자열 벡터를 인덱싱 벡터로 사용할 수 있음. 
+    - `x[start:end]`: `x`의 `start`부터 `end`까지 값 반환
+    
+- 벡터의 원소가 `NULL`을 포함한 경우 해당 원소가 완전히 삭제(예시 참조)
+
+```{r echo = T, eval = T, size = "footnotesize"}
+# 숫자형 벡터
+x <- c(1:25)
+y <- c(26:50)
+is.numeric(x)
+
+# 벡터의 연산
+## 사칙연산
+x + y
+x - y
+x/y
+x*y
+
+## 비교 연산
+a <- c(1, 2, 3, 3, 4, 2, 5, 1, 2, 3, 4, 4, 4)
+b <- c(2, 2, 4, 4, 3, 2, 5, 1, 2, 4, 4, 4, 3)
+
+a > b
+a >= b
+a < b
+a <= b
+a == b
+a != b
+
+# 벡터의 길이: `length()` 또는 `NROW` 함수 이용
+z <- 1
+length(z)
+NROW(x)
+
+# 문자형 벡터
+str1 <- c("Boncho Ku", "Linear Regression", "307", "Male")
+str1
+# 벡터 원소의 이름 지정
+names(str1) <- c("Name", "Subject", "Room", "Sex")
+str1
+is.numeric(str1)
+is.character(str1)
+
+# 숫자와 문자를 동시에 포함한 벡터라면? 
+vec1 <- c(1, 2, 5, "1", "Clinical Trial") 
+### 모두 문자열으로 변환된 벡터 
+
+# 논리형 벡터
+boolen <- c(TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE)
+is.numeric(boolen)
+is.logical(boolen)
+
+# 결측을 포함한 벡터
+vecNA <- c(1:10, NA, NA)
+is.na(vecNA)
+is.numeric(vecNA)
+
+# NULL 포함 벡터
+vecNULL <- c(NULL, 1, 2, NULL, 3)
+vecNULL
+
+# seq_along(), rep() 함수 사용 
+seq_along(x)
+z <- c(3,8)
+# `rep(x, each)` 사용 예
+rep(z, each = 3)
+# `rep(x, times)` 사용 예
+rep(z, times = 3)
+# `rep(x, each, times)` 사용 예
+rep(z, each = 2, times = 3)
+
+# 요인 벡터
+## rep() 함수를 이용한 0,1 벡터 생성
+sex <- rep(c(0,1), each = 10)
+sex
+sex <- factor(sex, levels = c(0,1), labels = c("Male", "Female"))
+sex
+str(sex)
+
+# 벡터의 색인
+x[10]
+x[-3]
+x[1:5]
+x[c(1:3, 10:12)]
+x[-c(1:10)]
+str1["Name"]
+```
 
 ## 행렬
 
@@ -1000,6 +1217,15 @@ L5 <- list(L1, L2, L3, L4) # List
 L5
 # 출처: http://rfriend.tistory.com/14?category=601862 [R, Python 분석과 프로그래밍 (by R Friend)]
 ```
+
+\begin{figure}[H] {
+  \centering
+  \includegraphics[width = 15cm, height = 14cm]{Figures/datatype-diagram}
+  \caption[R 데이터 타입 구조 다이어그램]{R 데이터 타입 구조 다이어그램: R, Python 분석과 프로그래밍 (by R Friend)에서 발췌 후 수정}\label{fig:R-datatype}
+} \end{figure}
+
+\vspace{1cm}
+
 
 
 <!-- # 데이터 조작 -->
