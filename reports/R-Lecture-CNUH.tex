@@ -121,15 +121,13 @@
   \title{\textbf{\LARGE R을 이용한 자료처리 및 시각화}}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-\subtitle{\textbf{\Large 기본 환경 설정부터 재현가능한 연구 방법 입문}\vspace{2cm}\linebreak 한국한의학연구원
-한의기반연구부\linebreak Korea Institute of Oriental Medicine, KM
-Fundamental Research Division \vspace{2cm}}
+\subtitle{\textbf{\Large 기본 환경 설정부터 재현가능한 연구 방법 입문}\vspace{2cm}\linebreak 충남대학교
+병원 임상시험센터 R 교육 강의자료}
   \author{\textbf{\Large 구본초, Ph.D. in Statistics}}
   \preauthor{\centering\large\emph}
   \postauthor{\par}
-  \predate{\centering\large\emph}
-  \postdate{\par}
-  \date{2017-11-23}
+  \date{}
+  \predate{}\postdate{}
 
 \usepackage{kotex}
 \usepackage{xspace}
@@ -656,6 +654,8 @@ R은 공개 소프트웨어로 \url{http://www.r-project.org/} 에서 다운로�
   \end{enumerate}
 \end{itemize}
 
+\footnotesize
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{>}\StringTok{ }\CommentTok{# 문자열 출력}
@@ -667,8 +667,12 @@ R은 공개 소프트웨어로 \url{http://www.r-project.org/} 에서 다운로�
 [1] "Hello R"
 \end{verbatim}
 
+\normalsize
+
 여기서 \texttt{\#} 기호는 주석의 시작을 의미하며 같은 행에서 \texttt{\#}
 뒤 내용의 코드는 실행되지 않음
+
+\footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -686,6 +690,10 @@ R은 공개 소프트웨어로 \url{http://www.r-project.org/} 에서 다운로�
  [86]  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100
 \end{verbatim}
 
+\normalsize
+
+\footnotesize
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{>}\StringTok{ }\CommentTok{# 간단한 히스토그램}
@@ -696,6 +704,8 @@ R은 공개 소프트웨어로 \url{http://www.r-project.org/} 에서 다운로�
 \end{Shaded}
 
 \begin{center}\includegraphics[width=10 cm,height=10 cm]{Figures/check-03-1} \end{center}
+
+\normalsize
 
 \begin{quote}
 \colorbox{gray!10}{\begin{minipage}{15cm}
@@ -737,6 +747,8 @@ R 명령어 실행 시 간혹 아니 매우 빈번히 오류가 나타나는데,
 
 \emph{참고}
 
+\footnotesize
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{>}\StringTok{ }\CommentTok{# 현재 설정된 출력 자리수 확인}
@@ -770,6 +782,8 @@ $digits
 \begin{verbatim}
 [1] 3.14
 \end{verbatim}
+
+\normalsize
 
 \subsection{이것으로 R 설치 완료??}\label{-r--}
 
@@ -1087,6 +1101,7 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
     } \end{figure}
   \item
     Help: \texttt{help(topic)} 입력 시 도움말 창이 출력되는 공간
+    \footnotesize
   \end{enumerate}
 \end{enumerate}
 
@@ -1095,6 +1110,8 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
 \OperatorTok{>}\StringTok{ }\KeywordTok{help}\NormalTok{(lm)}
 \end{Highlighting}
 \end{Shaded}
+
+\normalsize
 
 \begin{figure}[H] {
   \centering
@@ -1198,15 +1215,18 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
   \end{itemize}
 \end{enumerate}
 
+\footnotesize
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\NormalTok{pkgName <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"MASS"}\NormalTok{, }\StringTok{"tidyverse"}\NormalTok{, }\StringTok{"ggthemes"}\NormalTok{, }\StringTok{"readxl"}\NormalTok{, }\StringTok{"ProjectTemplate"}\NormalTok{, }\StringTok{"kableExtra"}\NormalTok{, }
-\OperatorTok{+}\StringTok{     "ztable"}\NormalTok{, }\StringTok{"car"}\NormalTok{, }\StringTok{"lsmeans"}\NormalTok{)}
-\OperatorTok{>}\StringTok{ }\CommentTok{# 'lapply()': 벡터, 리스트 또는 표현식에 함수를 적용하여 그 결과를 리스트로}
-\ErrorTok{>}\StringTok{ }\CommentTok{# 반환}
-\ErrorTok{>}\StringTok{ }\KeywordTok{lapply}\NormalTok{(pkgName, require, }\DataTypeTok{character.only =}\NormalTok{ T)}
+\NormalTok{pkgName <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"MASS"}\NormalTok{, }\StringTok{"tidyverse"}\NormalTok{, }\StringTok{"ggthemes"}\NormalTok{, }\StringTok{"readxl"}\NormalTok{, }\StringTok{"ProjectTemplate"}\NormalTok{, }\StringTok{"kableExtra"}\NormalTok{, }
+    \StringTok{"ztable"}\NormalTok{, }\StringTok{"car"}\NormalTok{, }\StringTok{"lsmeans"}\NormalTok{)}
+\CommentTok{# 'lapply()': 벡터, 리스트 또는 표현식에 함수를 적용하여 그 결과를 리스트로 반환}
+\KeywordTok{lapply}\NormalTok{(pkgName, require, }\DataTypeTok{character.only =}\NormalTok{ T)}
 \end{Highlighting}
 \end{Shaded}
+
+\normalsize
 
 \section{\texorpdfstring{\texttt{rJava}
 설치하기}{rJava 설치하기}}\label{rjava-}
@@ -1519,19 +1539,18 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
   \texttt{install.packages()} 함수를 이용해 설치
 \end{enumerate}
 
+\footnotesize
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{>}\StringTok{ }\KeywordTok{install.packages}\NormalTok{(}\StringTok{"ProjectTemplate"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  패키지 불러오기
-\end{enumerate}
+\normalsize
+ 2) 패키지 불러오기
+
+\footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1539,13 +1558,8 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
 \end{Highlighting}
 \end{Shaded}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  \texttt{ProjectTemplate} 작업환경 생성
-\end{enumerate}
+\normalsize
+ 3) \texttt{ProjectTemplate} 작업환경 생성 \footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1553,6 +1567,8 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
 \ErrorTok{>}\StringTok{ }\KeywordTok{create.project}\NormalTok{(}\StringTok{"../CNUH-Test"}\NormalTok{, }\DataTypeTok{merge.strategy =} \StringTok{"allow.non.conflict"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\normalsize
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
@@ -1606,40 +1622,37 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
 
   \begin{enumerate}
   \def\labelenumii{\arabic{enumii})}
+  \tightlist
   \item
     \texttt{ProjectTemplate}는 \texttt{config/global.dcf} 파일로
     프로젝트 불러올 때 옵션 설정 가능
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{version:}\AttributeTok{ 0.8 }\CommentTok{# 현재 `ProjectTemplate` 버전 정보}
-\FunctionTok{data_loading:}\AttributeTok{ TRUE }\CommentTok{# 'data/' 폴더 내 자료읽기 여부 }
-\FunctionTok{data_loading_header:}\AttributeTok{ TRUE }\CommentTok{# 'data/' 폴더 내 자료읽기 여부 }
-\FunctionTok{data_ignore:}\AttributeTok{ }\CommentTok{# 'data/' 폴더 내 읽기무시 파일 목록}
-\FunctionTok{cache_loading:}\AttributeTok{ TRUE }\CommentTok{# 'cache/' 자료읽기 여부}
-\FunctionTok{recursive_loading:}\AttributeTok{ FALSE}
-\FunctionTok{munging:}\AttributeTok{ TRUE }\CommentTok{# 'munging/' 자료전처리 스크립트 읽기여부}
-\FunctionTok{logging:}\AttributeTok{ FALSE }\CommentTok{# Log 정보 기록여부 }
-\FunctionTok{logging_level:}\AttributeTok{ INFO}
-\FunctionTok{load_libraries:}\AttributeTok{ FALSE }\CommentTok{# 아래 패키지 리스트 불러오기 여부}
-\FunctionTok{libraries:}\AttributeTok{ reshape, plyr, dplyr, ggplot2, stringr, lubridate}
-\FunctionTok{as_factors:}\AttributeTok{ TRUE }\CommentTok{# 문자형 변수 요인화 여부}
-\FunctionTok{data_tables:}\AttributeTok{ FALSE }\CommentTok{# data.frame에 data.table 속성 추가}
-\FunctionTok{attach_internal_libraries:}\AttributeTok{ FALSE }\CommentTok{# 'lib\textbackslash{}'에 저장된 자체 생성 함수 읽기 여부}
-\FunctionTok{cache_loaded_data:}\AttributeTok{  TRUE }
-\FunctionTok{sticky_variables:}\AttributeTok{ NONE}
-\end{Highlighting}
-\end{Shaded}
   \end{enumerate}
 \end{enumerate}
 
-\begin{quote}
-\colorbox{gray!10}{\begin{minipage}{15cm}
-\textbf{실습}
+\footnotesize
 
-새로 만든 \texttt{CNUH-Test} 프로젝트에서 데이터 불러오기
-\end{minipage}}
-\end{quote}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{version}\OperatorTok{:}\StringTok{ }\FloatTok{0.8} \CommentTok{# 현재 `ProjectTemplate` 버전 정보}
+\NormalTok{data_loading}\OperatorTok{:}\StringTok{ }\OtherTok{TRUE} \CommentTok{# 'data/' 폴더 내 자료읽기 여부 }
+\NormalTok{data_loading_header}\OperatorTok{:}\StringTok{ }\OtherTok{TRUE} \CommentTok{# 'data/' 폴더 내 자료읽기 여부 }
+\NormalTok{data_ignore}\OperatorTok{:}\StringTok{ }\CommentTok{# 'data/' 폴더 내 읽기무시 파일 목록}
+\NormalTok{cache_loading}\OperatorTok{:}\StringTok{ }\OtherTok{TRUE} \CommentTok{# 'cache/' 자료읽기 여부}
+\NormalTok{recursive_loading}\OperatorTok{:}\StringTok{ }\OtherTok{FALSE}
+\NormalTok{munging}\OperatorTok{:}\StringTok{ }\OtherTok{TRUE} \CommentTok{# 'munging/' 자료전처리 스크립트 읽기여부}
+\NormalTok{logging}\OperatorTok{:}\StringTok{ }\OtherTok{FALSE} \CommentTok{# Log 정보 기록여부 }
+\NormalTok{logging_level}\OperatorTok{:}\StringTok{ }\NormalTok{INFO}
+\NormalTok{load_libraries}\OperatorTok{:}\StringTok{ }\OtherTok{FALSE} \CommentTok{# 아래 패키지 리스트 불러오기 여부}
+\NormalTok{libraries}\OperatorTok{:}\StringTok{ }\NormalTok{reshape, plyr, dplyr, ggplot2, stringr, lubridate}
+\NormalTok{as_factors}\OperatorTok{:}\StringTok{ }\OtherTok{TRUE} \CommentTok{# 문자형 변수 요인화 여부}
+\NormalTok{data_tables}\OperatorTok{:}\StringTok{ }\OtherTok{FALSE} \CommentTok{# data.frame에 data.table 속성 추가}
+\NormalTok{attach_internal_libraries}\OperatorTok{:}\StringTok{ }\OtherTok{FALSE} \CommentTok{# 'lib\textbackslash{}'에 저장된 자체 생성 함수 읽기 여부}
+\NormalTok{cache_loaded_data}\OperatorTok{:}\StringTok{  }\OtherTok{TRUE} 
+\NormalTok{sticky_variables}\OperatorTok{:}\StringTok{ }\NormalTok{NONE}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
 
 \chapter{R의 기본 사용}\label{r--}
 
@@ -1715,12 +1728,14 @@ R의 가장 기본적인 데이터 입력 및 할당 방법과 객체 또는 변
   \end{enumerate}
 \end{enumerate}
 
+\footnotesize
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# 이전 히스토그램 생성 위해 생성한 x 삭제}
-\ErrorTok{>}\StringTok{ }\KeywordTok{rm}\NormalTok{(x)}
-\OperatorTok{>}\StringTok{ }\CommentTok{# `mean()` 입력 벡터의 평균 계산}
-\ErrorTok{>}\StringTok{ }\KeywordTok{mean}\NormalTok{(y <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{))}
+\CommentTok{# 이전 히스토그램 생성 위해 생성한 x 삭제}
+\KeywordTok{rm}\NormalTok{(x)}
+\CommentTok{# `mean()` 입력 벡터의 평균 계산}
+\KeywordTok{mean}\NormalTok{(y <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1730,7 +1745,7 @@ R의 가장 기본적인 데이터 입력 및 할당 방법과 객체 또는 변
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\NormalTok{y}
+\NormalTok{y}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1740,7 +1755,7 @@ R의 가장 기본적인 데이터 입력 및 할당 방법과 객체 또는 변
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\KeywordTok{mean}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{))}
+\KeywordTok{mean}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1750,13 +1765,15 @@ R의 가장 기본적인 데이터 입력 및 할당 방법과 객체 또는 변
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\NormalTok{x}
+\NormalTok{x}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 Error in eval(expr, envir, enclos): 객체 'x'를 찾을 수 없습니다
 \end{verbatim}
+
+\normalsize
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1780,17 +1797,17 @@ Error in eval(expr, envir, enclos): 객체 'x'를 찾을 수 없습니다
       \texttt{.}로 시작한 경우 뒤에 숫자 올 수 없음(숫자로 인지)
     \end{itemize}
   \item
-    대소문자 구분
+    대소문자 구분 \footnotesize
   \end{enumerate}
 \end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# 1:10은 1부터 10까지 정수 생성 'c()'는 벡터 생성 함수}
-\ErrorTok{>}\StringTok{ }\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{)}
-\OperatorTok{>}\StringTok{ }\CommentTok{# 1:10으로 구성된 행렬 생성}
-\ErrorTok{>}\StringTok{ }\NormalTok{X <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{), }\DataTypeTok{nrow =} \DecValTok{2}\NormalTok{, }\DataTypeTok{ncol =} \DecValTok{5}\NormalTok{, }\DataTypeTok{byrow =}\NormalTok{ T)}
-\OperatorTok{>}\StringTok{ }\NormalTok{x}
+\CommentTok{# 1:10은 1부터 10까지 정수 생성 'c()'는 벡터 생성 함수}
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{)}
+\CommentTok{# 1:10으로 구성된 행렬 생성}
+\NormalTok{X <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{), }\DataTypeTok{nrow =} \DecValTok{2}\NormalTok{, }\DataTypeTok{ncol =} \DecValTok{5}\NormalTok{, }\DataTypeTok{byrow =}\NormalTok{ T)}
+\NormalTok{x}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1800,7 +1817,7 @@ Error in eval(expr, envir, enclos): 객체 'x'를 찾을 수 없습니다
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\NormalTok{X}
+\NormalTok{X}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1812,9 +1829,9 @@ Error in eval(expr, envir, enclos): 객체 'x'를 찾을 수 없습니다
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# 논리형 객체}
-\ErrorTok{>}\StringTok{ }\NormalTok{.x <-}\StringTok{ }\OtherTok{TRUE}
-\OperatorTok{>}\StringTok{ }\NormalTok{.x}
+\CommentTok{# 논리형 객체}
+\NormalTok{.x <-}\StringTok{ }\OtherTok{TRUE}
+\NormalTok{.x}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1824,11 +1841,11 @@ Error in eval(expr, envir, enclos): 객체 'x'를 찾을 수 없습니다
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# 알파벳 + 숫자}
-\ErrorTok{>}\StringTok{ }\NormalTok{a1 <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{1}\NormalTok{, }\DataTypeTok{to =} \DecValTok{10}\NormalTok{, }\DataTypeTok{by =} \DecValTok{2}\NormalTok{)}
-\OperatorTok{>}\StringTok{ }\CommentTok{# 한글 변수명}
-\ErrorTok{>}\StringTok{ }\NormalTok{가수 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Damian Rice"}\NormalTok{, }\StringTok{"Beatles"}\NormalTok{, }\StringTok{"최백호"}\NormalTok{, }\StringTok{"Queen"}\NormalTok{)}
-\OperatorTok{>}\StringTok{ }\NormalTok{가수}
+\CommentTok{# 알파벳 + 숫자}
+\NormalTok{a1 <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{1}\NormalTok{, }\DataTypeTok{to =} \DecValTok{10}\NormalTok{, }\DataTypeTok{by =} \DecValTok{2}\NormalTok{)}
+\CommentTok{# 한글 변수명}
+\NormalTok{가수 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Damian Rice"}\NormalTok{, }\StringTok{"Beatles"}\NormalTok{, }\StringTok{"최백호"}\NormalTok{, }\StringTok{"Queen"}\NormalTok{)}
+\NormalTok{가수}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1836,17 +1853,19 @@ Error in eval(expr, envir, enclos): 객체 'x'를 찾을 수 없습니다
 [1] "Damian Rice" "Beatles"     "최백호"      "Queen"      
 \end{verbatim}
 
+\normalsize
+
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{2}
 \tightlist
 \item
-  잘못된 객체 또는 변수 명명 예시
+  잘못된 객체 또는 변수 명명 예시 \footnotesize
 \end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\NormalTok{3x <-}\StringTok{ }\DecValTok{7}
+\NormalTok{3x <-}\StringTok{ }\DecValTok{7}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1856,9 +1875,13 @@ Error: <text>:1:2: 예상하지 못한 기호(symbol)입니다.
      ^
 \end{verbatim}
 
+\normalsize
+
+\footnotesize
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\NormalTok{_x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"M"}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"F"}\NormalTok{)}
+\NormalTok{_x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"M"}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"F"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1868,15 +1891,21 @@ Error: <text>:1:1: 예상하지 못한 입력입니다.
     ^
 \end{verbatim}
 
+\normalsize
+
+\footnotesize
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\FloatTok{0.3}\NormalTok{ <-}\StringTok{ }\DecValTok{10}
+\FloatTok{0.3}\NormalTok{ <-}\StringTok{ }\DecValTok{10}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 Error in 0.3 <- 10: 대입에 유효하지 않은 (do_set) 좌변입니다
 \end{verbatim}
+
+\normalsize
 
 \section{R 객체 유형}\label{r--}
 
@@ -1955,6 +1984,8 @@ Error in 0.3 <- 10: 대입에 유효하지 않은 (do_set) 좌변입니다
 \subsubsection{\texorpdfstring{숫자형:
 수치연산(\texttt{+,\ -,\ *,\ \^{},\ **,\ /,\ \%\%,\ \%/\%})
 가능}{숫자형: 수치연산(+, -, *, \^{}, **, /, \%\%, \%/\%) 가능}}\label{----}
+
+\footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2080,7 +2111,11 @@ Error in 0.3 <- 10: 대입에 유효하지 않은 (do_set) 좌변입니다
 [1] 16
 \end{verbatim}
 
+\normalsize
+
 \subsubsection{문자형 스칼라: 수치연산 불가능}\label{---}
+
+\footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2113,6 +2148,8 @@ Error in 0.3 <- 10: 대입에 유효하지 않은 (do_set) 좌변입니다
 \begin{verbatim}
 Error in h1 + g2: 이항연산자에 수치가 아닌 인수입니다
 \end{verbatim}
+
+\normalsize
 
 \subsubsection{논리형 스칼라}\label{-}
 
@@ -2148,6 +2185,8 @@ TRUE/FALSE를 1과 0의 숫자로 인식하기 때문이다.}
 각각에 대해 \texttt{\&} 연산을 실행 하지만 \texttt{\&\&}는 한
 개(스칼라)에만 논리 연산이 적용된다(아래 예시 참고).}
 \end{quote}
+
+\footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2328,6 +2367,8 @@ Error in TRUE <- FALSE: 대입에 유효하지 않은 (do_set) 좌변입니다
 [1] FALSE
 \end{verbatim}
 
+\normalsize
+
 \subsubsection{\texorpdfstring{결측값(\texttt{NA})}{결측값(NA)}}\label{na}
 
 \begin{itemize}
@@ -2340,6 +2381,8 @@ Error in TRUE <- FALSE: 대입에 유효하지 않은 (do_set) 좌변입니다
 \item
   \texttt{is.na()} 함수를 이용해 해당 값이 결측을 포함하고 있는지 확인
 \end{itemize}
+
+\footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2366,6 +2409,8 @@ Error in TRUE <- FALSE: 대입에 유효하지 않은 (do_set) 좌변입니다
 [1] TRUE
 \end{verbatim}
 
+\normalsize
+
 \subsubsection{\texorpdfstring{NULL
 값(\texttt{NULL})}{NULL 값(NULL)}}\label{null-null}
 
@@ -2389,10 +2434,12 @@ Error in TRUE <- FALSE: 대입에 유효하지 않은 (do_set) 좌변입니다
 
 \vspace{0.5cm}
 
+\footnotesize
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# NA와 NULL의 차이점 'is.null()' 객체 또는 변수에 NULL이 저장되어 있는지}
-\ErrorTok{>}\StringTok{ }\CommentTok{# 판단 'class()' 객체의 유형을 반환}
+\OperatorTok{>}\StringTok{ }\CommentTok{# NA와 NULL의 차이점 'is.null()' 객체 또는 변수에 NULL이 저장되어 있는지 판단}
+\ErrorTok{>}\StringTok{ }\CommentTok{# 'class()' 객체의 유형을 반환}
 \ErrorTok{>}\StringTok{ }\NormalTok{x <-}\StringTok{ }\OtherTok{NULL}
 \OperatorTok{>}\StringTok{ }\KeywordTok{is.null}\NormalTok{(x)}
 \end{Highlighting}
@@ -2452,6 +2499,8 @@ logical(0)
 [1] "NULL"
 \end{verbatim}
 
+\normalsize
+
 \subsubsection{요인형}
 
 \begin{itemize}
@@ -2503,23 +2552,25 @@ logical(0)
 \colorbox{gray!10}{\begin{minipage}{15cm}
 \textbf{예시 사용 함수}
 \begin{itemize}
-  \item `is.factor()`: 벡터(스칼라)가 요인형인지 확인
-  \item `nlevels()`: factor의 level 개수 반환
-  \item `levels()`: level 목록 반환
-  \item `labels()`: level에 대응하는 label 목록 반환
-  \item `ordered()`: 순서형 factor 생성
-  \item `is.ordered()`: 순서형 factor 확인
+  \item \texttt{is.factor()}: 벡터(스칼라)가 요인형인지 확인
+  \item \texttt{nlevels()}: factor의 level 개수 반환
+  \item \texttt{levels()}: level 목록 반환
+  \item \texttt{labels()}: level에 대응하는 label 목록 반환
+  \item \texttt{ordered()}: 순서형 factor 생성
+  \item \texttt{is.ordered()}: 순서형 factor 확인
 \end{itemize}
 \end{minipage}}
 \end{quote}
 
 \vspace{0.5cm}
 
+\footnotesize
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# factor() 기본 사용법 factor(x, levels, labels, ordered = F) x: factor}
-\ErrorTok{>}\StringTok{ }\CommentTok{# 형으로 지정하고자 하는 스칼라 또는 벡터 levels: factor의 수준 지정 labels:}
-\ErrorTok{>}\StringTok{ }\CommentTok{# factor의 레이블 지정}
+\OperatorTok{>}\StringTok{ }\CommentTok{# factor() 기본 사용법 factor(x, levels, labels, ordered = F) x: factor 형으로}
+\ErrorTok{>}\StringTok{ }\CommentTok{# 지정하고자 하는 스칼라 또는 벡터 levels: factor의 수준 지정 labels: factor의 레이블}
+\ErrorTok{>}\StringTok{ }\CommentTok{# 지정}
 \ErrorTok{>}\StringTok{ }\NormalTok{sex <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(}\StringTok{"M"}\NormalTok{, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"M"}\NormalTok{, }\StringTok{"F"}\NormalTok{))}
 \OperatorTok{>}\StringTok{ }\NormalTok{sex}
 \end{Highlighting}
@@ -2580,10 +2631,8 @@ Levels: Male Female
 \begin{Highlighting}[]
 \OperatorTok{>}\StringTok{ }\CommentTok{# 순서형 factor}
 \ErrorTok{>}\StringTok{ }\NormalTok{severity <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{), }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"Mild"}\NormalTok{, }\StringTok{"Moderate"}\NormalTok{, }\StringTok{"Severe"}\NormalTok{))}
-\OperatorTok{>}\StringTok{ }\CommentTok{# severity <- ordered(severity) 또는 factor() 함수 내에서 ordered 옵션을}
-\ErrorTok{>}\StringTok{ }\CommentTok{# TRUE로 지정}
-\ErrorTok{>}\StringTok{ }\NormalTok{severity <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{), }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"Mild"}\NormalTok{, }\StringTok{"Moderate"}\NormalTok{, }\StringTok{"Severe"}\NormalTok{), }
-\OperatorTok{+}\StringTok{     }\DataTypeTok{ordered =} \OtherTok{TRUE}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\CommentTok{# severity <- ordered(severity) 또는 factor() 함수 내에서 ordered 옵션을 TRUE로 지정}
+\ErrorTok{>}\StringTok{ }\NormalTok{severity <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{), }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"Mild"}\NormalTok{, }\StringTok{"Moderate"}\NormalTok{, }\StringTok{"Severe"}\NormalTok{), }\DataTypeTok{ordered =} \OtherTok{TRUE}\NormalTok{)}
 \OperatorTok{>}\StringTok{ }\NormalTok{severity}
 \end{Highlighting}
 \end{Shaded}
@@ -2603,7 +2652,9 @@ Levels: Mild < Moderate < Severe
 [1] TRUE
 \end{verbatim}
 
-\subsection{벡터}
+\normalsize
+
+\subsection{벡터(vector)}\label{vector}
 
 \begin{itemize}
 \tightlist
@@ -2667,6 +2718,8 @@ Levels: Mild < Moderate < Severe
   벡터의 원소가 \texttt{NULL}을 포함한 경우 해당 원소가 완전히 삭제(예시
   참조)
 \end{itemize}
+
+\footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2870,7 +2923,18 @@ Levels: Mild < Moderate < Severe
 \begin{Highlighting}[]
 \CommentTok{# 숫자와 문자를 동시에 포함한 벡터라면?}
 \NormalTok{vec1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\StringTok{"1"}\NormalTok{, }\StringTok{"Clinical Trial"}\NormalTok{)}
-\NormalTok{### 모두 문자열으로 변환된 벡터}
+\NormalTok{## check: 모든 원소가 문자열로 변환된 것 확인}
+\NormalTok{vec1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "1"              "2"              "5"              "1"             
+[5] "Clinical Trial"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \CommentTok{# 논리형 벡터}
 \NormalTok{boolen <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{)}
 \KeywordTok{is.numeric}\NormalTok{(boolen)}
@@ -3070,32 +3134,228 @@ Levels: Male Female
 "Boncho Ku" 
 \end{verbatim}
 
-\section{행렬}
+\normalsize
 
-동일한 유형의 2차원 데이터 구조 (\(n \times p\) 자료행렬) -
-\(n \times 1\) 차원 벡터 \(p\)개로 묶여진 데이터 덩어리
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{알아두면 유용한 벡터 연산자: 벡터는 숫자, 문자열의 묶음, 즉 집합의 개념으로 볼 수 있기 때문에 집합연산이 가능함}
+\begin{itemize}
+  \item \texttt{identical(x, y)}: 객체 \texttt{x}와 객체 \texttt{y}가 동일한지 판단
+  \item \texttt{union(x, y)}: 객체 \texttt{x}와 객체 \texttt{y}의 합집합
+  \item \texttt{intersection(x, y)}: 객체 \texttt{x}와 객체 \texttt{y}의 교집합
+  \item \texttt{setdiff(x, y)}: 객체 \texttt{x}와 객체 \texttt{y}의 차집합
+  \item \texttt{x \%in\% y} :\texttt{y}에 \texttt{x}의 원소가 포함되어 있는지 판단
+\end{itemize}
+\end{minipage}}
+\end{quote}
+
+\vspace{0.5cm} \textbf{벡터 연산 예시}
+
+\footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# 1~12까지의 숫자에 대한 행(row)의 개수가 4개인 행렬 생성}
-\ErrorTok{>}\StringTok{ }\NormalTok{m1 <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{12}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{4}\NormalTok{)}
-\OperatorTok{>}\StringTok{ }\NormalTok{m1}
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{)}
+\NormalTok{y <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{)}
+\KeywordTok{identical}\NormalTok{(x, y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\KeywordTok{identical}\NormalTok{(x, y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{union}\NormalTok{(x, y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1 2 3 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{intersect}\NormalTok{(x, y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{setdiff}\NormalTok{(x, y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{setdiff}\NormalTok{(y, x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{%in%}\StringTok{ }\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1]  TRUE  TRUE FALSE
+\end{verbatim}
+
+\normalsize
+
+\section{행렬}
+
+\begin{itemize}
+\tightlist
+\item
+  동일한 유형의 2차원 데이터 구조 (\(n \times p\) 자료행렬)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(n \times 1\) 차원 벡터 \(p\)개로 묶여진 데이터 덩어리
+  \end{itemize}
+\item
+  행렬 관련 함수 프로토타입
+\end{itemize}
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{X <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DataTypeTok{data =} \OperatorTok{<}\NormalTok{DATA}\OperatorTok{>}\NormalTok{, }\DataTypeTok{nrow =} \OperatorTok{<}\NormalTok{N}\OperatorTok{>}\NormalTok{, }\DataTypeTok{ncol =} \OperatorTok{<}\NormalTok{P}\OperatorTok{>}\NormalTok{, }\DataTypeTok{byrow =} \OperatorTok{<}\OtherTok{TRUE}\OperatorTok{/}\OtherTok{FALSE}\OperatorTok{>}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{matrix(data,\ nrow,\ ncol,\ byrow\ =\ FALSE,\ dimnames=\ NULL)}:
+  \texttt{data}를 열의 개수가 \texttt{nrow}이고 열의 개수가
+  \texttt{ncol}인 행렬을 생성한다. 여기서 \texttt{byrow\ =\ FALSE} 열
+  우선으로 행렬의 entry를 채우고, \texttt{byrow\ =\ TRUE}이면 행
+  우선으로 행렬의 entry를 채운다
+\item
+  \texttt{dimnames{[}{[}i{]}{]}\ \textless{}-\ value}: 행렬의 이름을
+  설정하는 함수
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{i=1}이면 행, \texttt{i=2}이면 열을 의미하며
+  \item
+    \texttt{value}는 지정할 이름을 포함하고 있는 벡터이며 각 행과 열의
+    길이와 동일한 길이를 갖는다.
+  \end{itemize}
+\item
+  \texttt{rownames(X)}: 행의 이름을 가져온다
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{rownames(X)\ \textless{}-\ value}: 행의 이름을 지정
+  \end{itemize}
+\item
+  \texttt{colnames(X)}: 열의 이름을 가져온다
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{colnames(X)\ \textless{}-\ value}: 열의 이름을 지정
+  \end{itemize}
+\item
+  \texttt{NROW(X)}, \texttt{nrow(X)}: 행렬 \texttt{X}의 행 길이 반환
+\item
+  \texttt{NCOL(X)}, \texttt{ncol(X)}: 행렬 \texttt{X}의 열 길이 반환
+\item
+  \texttt{dim(X)}: 행렬 \texttt{X}의 차원 반환
+\item
+  행렬 색인: 행과 열의 번호 또는 이름으로 인덱싱 가능
+
+  \begin{itemize}
+  \tightlist
+  \item
+    행렬의 행과 열은 꺽쇠 \texttt{{[}{]}\textquotesingle{}\ 안에서},`
+    (콤마)로 구분
+  \item
+    \texttt{X{[}idx\_row,\ idx\_col{]}}: 행렬 \texttt{X}의
+    \texttt{idx\_row} 행, \texttt{idx\_col}행에 저장된 값 반환
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \texttt{idx\_row}, \texttt{idx\_col}을 지정하지 않으면 전체 행
+      또는 열을 선택
+    \end{itemize}
+  \end{itemize}
+\item
+  행렬 연산
+
+  \begin{itemize}
+  \tightlist
+  \item
+    행렬과 스칼라: 사칙연산 가능
+  \item
+    행렬과 행렬: 같은 차원의 행렬에 대해 \texttt{+,\ -} 연산 가능
+  \item
+    행렬과 행렬의 곱: \texttt{X\ \%*\%\ Y} 이때 \texttt{X}의 열과
+    \texttt{Y}의 행의 길이는 같아야 함
+  \item
+    행렬의 전치: \texttt{t(X)}
+  \item
+    정방행렬(행과 열의 길이가 같은 행렬)의 역행렬 구하기:
+    \texttt{solve(X)}
+  \end{itemize}
+\end{itemize}
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 행렬 생성}
+\NormalTok{X <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{9}\NormalTok{), }\DataTypeTok{nrow =} \DecValTok{3}\NormalTok{, }\DataTypeTok{ncol =} \DecValTok{3}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{Y <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{9}\NormalTok{), }\DataTypeTok{nrow =} \DecValTok{3}\NormalTok{, }\DataTypeTok{ncol =} \DecValTok{3}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{X}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
      [,1] [,2] [,3]
-[1,]    1    5    9
-[2,]    2    6   10
-[3,]    3    7   11
-[4,]    4    8   12
+[1,]    1    4    7
+[2,]    2    5    8
+[3,]    3    6    9
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# 1~12까지의 숫자로 행 기준 행 개수가 4개인 행렬 생성}
-\ErrorTok{>}\StringTok{ }\NormalTok{m2 <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{12}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{4}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{TRUE}\NormalTok{)}
-\OperatorTok{>}\StringTok{ }\NormalTok{m2}
+\NormalTok{Y}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3104,80 +3364,409 @@ Levels: Male Female
 [1,]    1    2    3
 [2,]    4    5    6
 [3,]    7    8    9
-[4,]   10   11   12
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# 행렬 연산}
-\ErrorTok{>}\StringTok{ }\NormalTok{m1 }\OperatorTok{+}\StringTok{ }\NormalTok{m2}
+\CommentTok{# 행렬 X에 행렬 이름 지정:`rownames()`, `colnames()` 사용}
+\KeywordTok{rownames}\NormalTok{(X) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\KeywordTok{colnames}\NormalTok{(X) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{)}
+\KeywordTok{dimnames}\NormalTok{(X)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[[1]]
+[1] "1" "2" "3"
+
+[[2]]
+[1] "A" "B" "C"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 행렬의 행/열 길이 차원 반환}
+\KeywordTok{nrow}\NormalTok{(X)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ncol}\NormalTok{(X)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dim}\NormalTok{(X)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 행렬 색인}
+\NormalTok{X[}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X[}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  A B C
+1 1 4 7
+2 2 5 8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X[, }\DecValTok{2}\OperatorTok{:}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  B C
+1 4 7
+2 5 8
+3 6 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X[, }\KeywordTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  A B
+1 1 4
+2 2 5
+3 3 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X[}\KeywordTok{c}\NormalTok{(}\StringTok{"2"}\NormalTok{, }\StringTok{"3"}\NormalTok{), ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  A B C
+2 2 5 8
+3 3 6 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## 행렬 연산 행렬-스칼라 또는 벡터}
+\NormalTok{X }\OperatorTok{+}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  A B  C
+1 2 5  8
+2 3 6  9
+3 4 7 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OperatorTok{-}\StringTok{ }\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   A B C
+1 -2 1 4
+2 -1 2 5
+3  0 3 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OperatorTok{*}\StringTok{ }\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  A  B  C
+1 2  8 14
+2 4 10 16
+3 6 12 18
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X}\OperatorTok{/}\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+      A    B    C
+1 0.333 1.33 2.33
+2 0.667 1.67 2.67
+3 1.000 2.00 3.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{)}
+\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1 2 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OperatorTok{+}\StringTok{ }\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  A B  C
+1 2 5  8
+2 4 7 10
+3 6 9 12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OperatorTok{-}\StringTok{ }\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  A B C
+1 0 3 6
+2 0 3 6
+3 0 3 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OperatorTok{*}\StringTok{ }\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  A  B  C
+1 1  4  7
+2 4 10 16
+3 9 18 27
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X}\OperatorTok{/}\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  A   B C
+1 1 4.0 7
+2 1 2.5 4
+3 1 2.0 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{### 행렬-행렬}
+\NormalTok{Y <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{10}\OperatorTok{:}\DecValTok{18}\NormalTok{), }\DataTypeTok{nrow =} \DecValTok{3}\NormalTok{, }\DataTypeTok{ncol =} \DecValTok{3}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{Z <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{), }\DataTypeTok{nrow =} \DecValTok{3}\NormalTok{, }\DataTypeTok{ncol =} \DecValTok{2}\NormalTok{)  }\CommentTok{# 확인용}
+\NormalTok{Y}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
      [,1] [,2] [,3]
-[1,]    2    7   12
-[2,]    6   11   16
-[3,]   10   15   20
-[4,]   14   19   24
+[1,]   10   11   12
+[2,]   13   14   15
+[3,]   16   17   18
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\NormalTok{m1 }\OperatorTok{-}\StringTok{ }\NormalTok{m2}
+\NormalTok{Z}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-     [,1] [,2] [,3]
-[1,]    0    3    6
-[2,]   -2    1    4
-[3,]   -4   -1    2
-[4,]   -6   -3    0
+     [,1] [,2]
+[1,]    1    4
+[2,]    2    5
+[3,]    3    6
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# 곱과 나누기 연산이 각 원소에 대응해서 이루어진 것에 주의}
-\ErrorTok{>}\StringTok{ }\NormalTok{m1}\OperatorTok{/}\NormalTok{m2}
+\NormalTok{X }\OperatorTok{+}\StringTok{ }\NormalTok{Y}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-      [,1]  [,2] [,3]
-[1,] 1.000 2.500 3.00
-[2,] 0.500 1.200 1.67
-[3,] 0.429 0.875 1.22
-[4,] 0.400 0.727 1.00
+   A  B  C
+1 11 15 19
+2 15 19 23
+3 19 23 27
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\NormalTok{m1 }\OperatorTok{*}\StringTok{ }\NormalTok{m2}
+\NormalTok{X }\OperatorTok{-}\StringTok{ }\NormalTok{Y}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-     [,1] [,2] [,3]
-[1,]    1   10   27
-[2,]    8   30   60
-[3,]   21   56   99
-[4,]   40   88  144
+    A   B  C
+1  -9  -7 -5
+2 -11  -9 -7
+3 -13 -11 -9
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# 원래 행렬의 곱셈과 나누기}
-\ErrorTok{>}\StringTok{ }\KeywordTok{t}\NormalTok{(m1) }\OperatorTok{%*%}\StringTok{ }\NormalTok{m2}
+\NormalTok{X }\OperatorTok{*}\StringTok{ }\NormalTok{Y  }\CommentTok{# X의 i행 j열 원소와 Y의 i행 j열 원소의 곱}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-     [,1] [,2] [,3]
-[1,]   70   80   90
-[2,]  158  184  210
-[3,]  246  288  330
+   A   B   C
+1 10  44  84
+2 26  70 120
+3 48 102 162
 \end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X}\OperatorTok{/}\NormalTok{Y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+      A     B     C
+1 0.100 0.364 0.583
+2 0.154 0.357 0.533
+3 0.188 0.353 0.500
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OperatorTok{%*%}\StringTok{ }\NormalTok{Y  }\CommentTok{# 행렬의 곱}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  [,1] [,2] [,3]
+1  174  186  198
+2  213  228  243
+3  252  270  288
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OperatorTok{+}\StringTok{ }\NormalTok{Z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Error in X + Z: 배열의 크기가 올바르지 않습니다
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OperatorTok{-}\StringTok{ }\NormalTok{Z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Error in X - Z: 배열의 크기가 올바르지 않습니다
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OperatorTok{*}\StringTok{ }\NormalTok{Z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Error in X * Z: 배열의 크기가 올바르지 않습니다
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t}\NormalTok{(Z) }\OperatorTok{%*%}\StringTok{ }\NormalTok{X}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+      A  B   C
+[1,] 14 32  50
+[2,] 32 77 122
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 역행렬 계산}
+\NormalTok{X <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{), }\DataTypeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\NormalTok{X}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Xinv <-}\StringTok{ }\KeywordTok{solve}\NormalTok{(X)}
+\NormalTok{Xinv}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2]
+[1,]   -2  1.5
+[2,]    1 -0.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OperatorTok{%*%}\StringTok{ }\NormalTok{Xinv}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2]
+[1,]    1    0
+[2,]    0    1
+\end{verbatim}
+
+\normalsize
 
 \section{배열}
 
@@ -3192,6 +3781,8 @@ Levels: Male Female
     동일 차원(\(n\times p\))의 행렬 \(k\)개의 방에 저장되어 있는 구조
   \end{itemize}
 \end{itemize}
+
+\footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3253,17 +3844,20 @@ Levels: Male Female
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# 출처: http://rfriend.tistory.com/14?category=601862 [R, Python 분석과}
-\ErrorTok{>}\StringTok{ }\CommentTok{# 프로그래밍 (by R Friend)]}
+\OperatorTok{>}\StringTok{ }\CommentTok{# 출처: http://rfriend.tistory.com/14?category=601862 [R, Python 분석과 프로그래밍 (by}
+\ErrorTok{>}\StringTok{ }\CommentTok{# R Friend)]}
 \end{Highlighting}
 \end{Shaded}
+
+\normalsize
 
 \section{데이터 프레임}\label{-}
 
 \begin{itemize}
 \tightlist
 \item
-  데이터 프레임은 데이터 유형에 상관없이 2차원 형태의 데이터 구조
+  데이터 프레임(data frame)은 데이터 유형에 상관없이 2차원 형태의 데이터
+  구조
 
   \begin{itemize}
   \tightlist
@@ -3276,18 +3870,19 @@ Levels: Male Female
 
 \section{리스트}
 
+\footnotesize
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# Vector(L1), Matrix(L2), Array(L3), Data Frame(L4)를 만들어서, 하나의}
-\ErrorTok{>}\StringTok{ }\CommentTok{# List(L5)로 묶어라}
+\OperatorTok{>}\StringTok{ }\CommentTok{# Vector(L1), Matrix(L2), Array(L3), Data Frame(L4)를 만들어서, 하나의 List(L5)로}
+\ErrorTok{>}\StringTok{ }\CommentTok{# 묶어라}
 \ErrorTok{>}\StringTok{ }\NormalTok{L1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{)  }\CommentTok{# Vector}
 \OperatorTok{>}\StringTok{ }\NormalTok{L2 <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{TRUE}\NormalTok{)  }\CommentTok{# Matrix}
 \OperatorTok{>}\StringTok{ }\NormalTok{L3 <-}\StringTok{ }\KeywordTok{array}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{24}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{))  }\CommentTok{# Array}
-\OperatorTok{>}\StringTok{ }\NormalTok{L4 <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{cust_id =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{), }\DataTypeTok{last_name =} \KeywordTok{c}\NormalTok{(}\StringTok{"Kim"}\NormalTok{, }\StringTok{"Lee"}\NormalTok{, }\StringTok{"Choi"}\NormalTok{, }
-\OperatorTok{+}\StringTok{     "Park"}\NormalTok{))  }\CommentTok{# Data Frame}
+\OperatorTok{>}\StringTok{ }\NormalTok{L4 <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{cust_id =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{), }\DataTypeTok{last_name =} \KeywordTok{c}\NormalTok{(}\StringTok{"Kim"}\NormalTok{, }\StringTok{"Lee"}\NormalTok{, }\StringTok{"Choi"}\NormalTok{, }\StringTok{"Park"}\NormalTok{))  }\CommentTok{# Data Frame}
 \OperatorTok{>}\StringTok{ }\NormalTok{L5 <-}\StringTok{ }\KeywordTok{list}\NormalTok{(L1, L2, L3, L4)  }\CommentTok{# List}
-\OperatorTok{>}\StringTok{ }\CommentTok{# [[1]]는 Vector(L1), [[2]]는 Matrix(L2), [[3]]는 Array(L3), [[4]]는 Data}
-\ErrorTok{>}\StringTok{ }\CommentTok{# Frame(L4)가 묶인 것임}
+\OperatorTok{>}\StringTok{ }\CommentTok{# [[1]]는 Vector(L1), [[2]]는 Matrix(L2), [[3]]는 Array(L3), [[4]]는 Data Frame(L4)가}
+\ErrorTok{>}\StringTok{ }\CommentTok{# 묶인 것임}
 \ErrorTok{>}\StringTok{ }\NormalTok{L5}
 \end{Highlighting}
 \end{Shaded}
@@ -3328,10 +3923,12 @@ Levels: Male Female
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# 출처: http://rfriend.tistory.com/14?category=601862 [R, Python 분석과}
-\ErrorTok{>}\StringTok{ }\CommentTok{# 프로그래밍 (by R Friend)]}
+\OperatorTok{>}\StringTok{ }\CommentTok{# 출처: http://rfriend.tistory.com/14?category=601862 [R, Python 분석과 프로그래밍 (by}
+\ErrorTok{>}\StringTok{ }\CommentTok{# R Friend)]}
 \end{Highlighting}
 \end{Shaded}
+
+\normalsize
 
 \begin{figure}[H] {
   \centering

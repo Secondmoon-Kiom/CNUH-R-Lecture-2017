@@ -1,8 +1,8 @@
 ---
 title: \textbf{\LARGE R을 이용한 자료처리 및 시각화}
-subtitle: \textbf{\Large 기본 환경 설정부터 재현가능한 연구 방법 입문}\vspace{2cm}\linebreak 한국한의학연구원 한의기반연구부\linebreak Korea Institute of Oriental Medicine, KM Fundamental Research Division \vspace{2cm} 
+subtitle: \textbf{\Large 기본 환경 설정부터 재현가능한 연구 방법 입문}\vspace{2cm}\linebreak 충남대학교 병원 임상시험센터 R 교육 강의자료
 author: \textbf{\Large 구본초, Ph.D. in Statistics}
-date: "2017-11-23"
+#date: "2017-11-23"
 output: 
   bookdown::pdf_book:
     includes: 
@@ -32,7 +32,13 @@ require(highlight)
 
 knitr::opts_knit$set(root.dir = '..') 
 options(max.print = 5000)
-knitr::opts_chunk$set(eval = TRUE, echo = FALSE, cache = FALSE, include = TRUE, collapse = FALSE, tidy=TRUE, message=FALSE, warning=FALSE, dependson = NULL, engine = "R", error = TRUE, fig.path="Figures/", fig.align = "center", fig.width = 7, fig.height = 7, fig.keep='all', fig.retina=2, background = '#F7F7F7', highlight = T, comment = NA, tidy = TRUE, tidy.opts=list(blank=FALSE, width.cutoff=75), size = "footnotesize")
+knitr::opts_chunk$set(eval = TRUE, echo = FALSE, cache = FALSE, include = TRUE, collapse = FALSE, tidy=TRUE, message=FALSE, warning=FALSE, dependson = NULL, engine = "R", error = TRUE, fig.path="Figures/", fig.align = "center", fig.width = 7, fig.height = 7, fig.keep='all', fig.retina=2, background = '#F7F7F7', highlight = T, comment = NA, tidy = TRUE, tidy.opts=list(blank=FALSE, width.cutoff=85), size = "footnotesize")
+
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
 ```
 
 # R을 사용하기 위한 환경 설정
@@ -533,7 +539,8 @@ help(lm)
 2. 다중 패키지 동시에 불러오기
     - RStudio `Packages` 창에서 설치하고자 하는 패키지 선택 버튼 클릭하면 R workspace로 해당 패키지 로드 가능
     - 스크립트 이용
-```{r multiple-package, echo = T, eval = F, prompt = T}
+    
+```{r multiple-package, echo = T, eval = F, size = "footnotesize"}
 pkgName <- c("MASS", "tidyverse", "ggthemes", "readxl", "ProjectTemplate", "kableExtra", "ztable", "car", "lsmeans")
 # 'lapply()': 벡터, 리스트 또는 표현식에 함수를 적용하여 그 결과를 리스트로 반환
 lapply(pkgName, require, character.only = T) 
@@ -706,7 +713,8 @@ create.project("../CNUH-Test", merge.strategy = "allow.non.conflict")
     
 3. `ProjectTemplate` 관리
     1) `ProjectTemplate`는 `config/global.dcf` 파일로 프로젝트 불러올 때 옵션 설정 가능
-```yaml
+    
+```{r, echo = T, eval = F, size = "footnotesize"}
 version: 0.8 # 현재 `ProjectTemplate` 버전 정보
 data_loading: TRUE # 'data/' 폴더 내 자료읽기 여부 
 data_loading_header: TRUE # 'data/' 폴더 내 자료읽기 여부 
@@ -725,13 +733,13 @@ cache_loaded_data:  TRUE
 sticky_variables: NONE
 ```
 
-\begin{quote}
-\colorbox{gray!10}{\begin{minipage}{15cm}
-\textbf{실습}
+<!-- \begin{quote} -->
+<!-- \colorbox{gray!10}{\begin{minipage}{15cm} -->
+<!-- \textbf{실습} -->
 
-새로 만든 \texttt{CNUH-Test} 프로젝트에서 데이터 불러오기
-\end{minipage}}
-\end{quote}
+<!-- 새로 만든 \texttt{CNUH-Test} 프로젝트에서 데이터 불러오기 -->
+<!-- \end{minipage}} -->
+<!-- \end{quote} -->
 
 
 <!-- R + RStudio를 잘 활용 하려면? -->
@@ -784,7 +792,8 @@ R의 가장 기본적인 데이터 입력 및 할당 방법과 객체 또는 변
         - `=`: 명령의 최상 수준에사만 사용 가능
         - `<-`: 어디서든 사용 가능
         - 함수 호출과 동시에 변수에 값을 할당할 목적으로는 `<-`만 사용 가능
-```{r assign-diff, echo = T, eval = T, prompt = T}
+        
+```{r assign-diff, echo = T, eval = T}
 # 이전 히스토그램 생성 위해 생성한 x 삭제
 rm(x)
 # `mean()` 입력 벡터의 평균 계산
@@ -799,7 +808,7 @@ x
     2) 변수명의 알파벳, 한글, `.`로 시작 가능
         - `.`로 시작한 경우 뒤에 숫자 올 수 없음(숫자로 인지)
     3) 대소문자 구분
-```{r objectName-ex01, echo = T, eval = T, prompt = T}
+```{r objectName-ex01, echo = T, eval = T}
 # 1:10은 1부터 10까지 정수 생성
 # 'c()'는 벡터 생성 함수
 x <- c(1:10) 
@@ -818,15 +827,15 @@ a1 <- seq(from = 1, to = 10, by = 2)
 ```
 
 3. 잘못된 객체 또는 변수 명명 예시
-```{r objName-ex02, echo = T, eval = T, prompt = T}
+```{r objName-ex02, echo = T, eval = T}
 3x <- 7
 ```
 
-```{r objName-ex03, echo = T, eval = T, prompt = T}
+```{r objName-ex03, echo = T, eval = T}
 _x <- c("M", "M", "F")
 ```
 
-```{r objName-ex04, echo = T, eval = T, prompt = T}
+```{r objName-ex04, echo = T, eval = T}
 .3 <- 10
 ```
 
@@ -1018,12 +1027,12 @@ class(NULL)
 \colorbox{gray!10}{\begin{minipage}{15cm}
 \textbf{예시 사용 함수}
 \begin{itemize}
-  \item `is.factor()`: 벡터(스칼라)가 요인형인지 확인
-  \item `nlevels()`: factor의 level 개수 반환
-  \item `levels()`: level 목록 반환
-  \item `labels()`: level에 대응하는 label 목록 반환
-  \item `ordered()`: 순서형 factor 생성
-  \item `is.ordered()`: 순서형 factor 확인
+  \item \texttt{is.factor()}: 벡터(스칼라)가 요인형인지 확인
+  \item \texttt{nlevels()}: factor의 level 개수 반환
+  \item \texttt{levels()}: level 목록 반환
+  \item \texttt{labels()}: level에 대응하는 label 목록 반환
+  \item \texttt{ordered()}: 순서형 factor 생성
+  \item \texttt{is.ordered()}: 순서형 factor 확인
 \end{itemize}
 \end{minipage}}
 \end{quote}
@@ -1058,7 +1067,7 @@ is.ordered(severity)
 ```
 
 
-### 벡터
+### 벡터(vector)
 
 - 동일한 유형의 자료(스칼라)가 2개 이상 1차원 ($n \times 1$, $n \geq 2$) 으로 구성되어 있는 자료 형태
 - 벡터는 앞의 예시에서 본 바와 같이 `c()` 함수를 사용해 생성
@@ -1117,7 +1126,8 @@ is.character(str1)
 
 # 숫자와 문자를 동시에 포함한 벡터라면? 
 vec1 <- c(1, 2, 5, "1", "Clinical Trial") 
-### 모두 문자열으로 변환된 벡터 
+## check: 모든 원소가 문자열로 변환된 것 확인 
+vec1
 
 # 논리형 벡터
 boolen <- c(TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE)
@@ -1160,26 +1170,129 @@ x[-c(1:10)]
 str1["Name"]
 ```
 
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{알아두면 유용한 벡터 연산자: 벡터는 숫자, 문자열의 묶음, 즉 집합의 개념으로 볼 수 있기 때문에 집합연산이 가능함}
+\begin{itemize}
+  \item \texttt{identical(x, y)}: 객체 \texttt{x}와 객체 \texttt{y}가 동일한지 판단
+  \item \texttt{union(x, y)}: 객체 \texttt{x}와 객체 \texttt{y}의 합집합
+  \item \texttt{intersection(x, y)}: 객체 \texttt{x}와 객체 \texttt{y}의 교집합
+  \item \texttt{setdiff(x, y)}: 객체 \texttt{x}와 객체 \texttt{y}의 차집합
+  \item \texttt{x \%in\% y} :\texttt{y}에 \texttt{x}의 원소가 포함되어 있는지 판단
+\end{itemize}
+\end{minipage}}
+\end{quote}
+
+\vspace{0.5cm}
+\textbf{벡터 연산 예시}
+
+```{r, echo = T, eval = T}
+x <- c(1:3)
+y <- c(1:3)
+identical(x, y)
+
+y <- c(1,2,4)
+
+identical(x, y)
+union(x, y)
+intersect(x, y)
+setdiff(x, y)
+setdiff(y, x)
+
+x %in% y
+```
+
 ## 행렬
 
-동일한 유형의 2차원 데이터 구조 ($n \times p$ 자료행렬)
+- 동일한 유형의 2차원 데이터 구조 ($n \times p$ 자료행렬)
     - $n \times 1$ 차원 벡터 $p$개로 묶여진 데이터 덩어리
+- 행렬 관련 함수 프로토타입
 
-```{r, echo = T, eval = T, prompt = T}
-# 1~12까지의 숫자에 대한 행(row)의 개수가 4개인 행렬 생성
-m1 <- matrix(1:12, nrow=4)
-m1
-# 1~12까지의 숫자로 행 기준 행 개수가 4개인 행렬 생성
-m2 <- matrix(1:12, nrow=4, byrow=TRUE)
-m2
-# 행렬 연산
-m1 + m2
-m1 - m2
-# 곱과 나누기 연산이 각 원소에 대응해서 이루어진 것에 주의
-m1 / m2
-m1 * m2
-# 원래 행렬의 곱셈과 나누기
-t(m1) %*% m2
+```{r echo = T, eval = F, prompt = T}
+X <- matrix(data = <DATA>, nrow = <N>, ncol = <P>, byrow = <TRUE/FALSE>)
+```
+
+- `matrix(data, nrow, ncol, byrow = FALSE, dimnames= NULL)`: `data`를 열의 개수가 `nrow`이고 열의 개수가 `ncol`인 행렬을 생성한다. 여기서 `byrow = FALSE` 열 우선으로 행렬의 entry를 채우고, `byrow = TRUE`이면 행 우선으로 행렬의 entry를 채운다
+- `dimnames[[i]] <- value`: 행렬의 이름을 설정하는 함수
+    - `i=1`이면 행, `i=2`이면 열을 의미하며
+    - `value`는 지정할 이름을 포함하고 있는 벡터이며 각 행과 열의 길이와 동일한 길이를 갖는다. 
+- `rownames(X)`: 행의 이름을 가져온다
+    - `rownames(X) <- value`: 행의 이름을 지정
+- `colnames(X)`: 열의 이름을 가져온다
+    - `colnames(X) <- value`: 열의 이름을 지정
+- `NROW(X)`, `nrow(X)`: 행렬 `X`의 행 길이 반환
+- `NCOL(X)`, `ncol(X)`: 행렬 `X`의 열 길이 반환
+- `dim(X)`: 행렬 `X`의 차원 반환
+- 행렬 색인: 행과 열의 번호 또는 이름으로 인덱싱 가능
+    - 행렬의 행과 열은 꺽쇠 `[]' 안에서 `,` (콤마)로 구분
+    - `X[idx_row, idx_col]`: 행렬 `X`의 `idx_row` 행, `idx_col`행에 저장된 값 반환 
+        - `idx_row`, `idx_col`을 지정하지 않으면 전체 행 또는 열을 선택
+- 행렬 연산
+    - 행렬과 스칼라: 사칙연산 가능
+    - 행렬과 행렬: 같은 차원의 행렬에 대해 `+, -` 연산 가능
+    - 행렬과 행렬의 곱: `X %*% Y` 이때 `X`의 열과 `Y`의 행의 길이는 같아야 함
+    - 행렬의 전치: `t(X)`
+    - 정방행렬(행과 열의 길이가 같은 행렬)의 역행렬 구하기: `solve(X)`
+
+```{r matrix-ex, echo = T, eval = T}
+# 행렬 생성
+X <- matrix(c(1:9), nrow = 3, ncol = 3, byrow = FALSE)
+Y <- matrix(c(1:9), nrow = 3, ncol = 3, byrow = TRUE)
+X
+Y
+# 행렬 X에 행렬 이름 지정:`rownames()`, `colnames()` 사용
+rownames(X) <- c(1, 2, 3)
+colnames(X) <- c("A", "B", "C")
+dimnames(X)
+# 행렬의 행/열 길이 차원 반환
+nrow(X)
+ncol(X)
+dim(X)
+
+# 행렬 색인
+X[1, 2]
+X[1:2, ]
+X[, 2:3]
+X[, c("A","B")]
+X[c("2", "3"), ]
+
+## 행렬 연산
+### 행렬-스칼라 또는 벡터
+X + 1
+X - 3
+X * 2
+X / 3
+
+z <- c(1:3)
+z
+X + z
+X - z
+X * z
+X / z
+
+### 행렬-행렬
+Y <- matrix(c(10:18), nrow = 3, ncol = 3, byrow = TRUE)
+Z <- matrix(c(1:6), nrow = 3, ncol = 2) # 확인용
+Y
+Z
+
+X + Y
+X - Y
+X * Y # X의 i행 j열 원소와 Y의 i행 j열 원소의 곱
+X / Y
+X %*% Y # 행렬의 곱
+
+X + Z
+X - Z
+X * Z
+t(Z) %*% X
+
+# 역행렬 계산
+X <- matrix(c(1:4), ncol = 2)
+X
+Xinv <- solve(X)
+Xinv
+X %*% Xinv
 ```
 
 ## 배열
@@ -1199,7 +1312,7 @@ a2
 
 ## 데이터 프레임
 
-- 데이터 프레임은 데이터 유형에 상관없이 2차원 형태의 데이터 구조
+- 데이터 프레임(data frame)은 데이터 유형에 상관없이 2차원 형태의 데이터 구조
     - 외부로부터 불러오는 자료의 형태 대부분은 데이터 프레임
 - 참고: 행렬은 동일한 유형의 자료형으로 이루어짐
 
