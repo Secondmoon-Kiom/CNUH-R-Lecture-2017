@@ -3228,7 +3228,7 @@ Levels: Male Female
 
 \normalsize
 
-\section{행렬}
+\section{행렬(matrix)}\label{matrix}
 
 \begin{itemize}
 \tightlist
@@ -3729,7 +3729,7 @@ Error in X * Z: 배열의 크기가 올바르지 않습니다
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# 역행렬 계산}
+\CommentTok{# 역행렬}
 \NormalTok{X <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{), }\DataTypeTok{ncol =} \DecValTok{2}\NormalTok{)}
 \NormalTok{X}
 \end{Highlighting}
@@ -3743,6 +3743,7 @@ Error in X * Z: 배열의 크기가 올바르지 않습니다
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# 역행렬 계산}
 \NormalTok{Xinv <-}\StringTok{ }\KeywordTok{solve}\NormalTok{(X)}
 \NormalTok{Xinv}
 \end{Highlighting}
@@ -3756,6 +3757,7 @@ Error in X * Z: 배열의 크기가 올바르지 않습니다
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# 역행렬 계산 확인}
 \NormalTok{X }\OperatorTok{%*%}\StringTok{ }\NormalTok{Xinv}
 \end{Highlighting}
 \end{Shaded}
@@ -3768,7 +3770,7 @@ Error in X * Z: 배열의 크기가 올바르지 않습니다
 
 \normalsize
 
-\section{배열}
+\section{배열(array)}\label{array}
 
 \begin{itemize}
 \tightlist
@@ -3786,9 +3788,9 @@ Error in X * Z: 배열의 크기가 올바르지 않습니다
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# 1~24까지의 숫자를 '2 x 3 행렬'로 해서 '4층' 짜리의 데이터 구조를 만들어라}
-\ErrorTok{>}\StringTok{ }\NormalTok{a1 <-}\StringTok{ }\KeywordTok{array}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{24}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{))}
-\OperatorTok{>}\StringTok{ }\NormalTok{a1}
+\CommentTok{# 1~24까지의 숫자를 '2 x 3 행렬'로 해서 '4층' 짜리 배열 생성}
+\NormalTok{a1 <-}\StringTok{ }\KeywordTok{array}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{24}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{))}
+\NormalTok{a1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3820,9 +3822,9 @@ Error in X * Z: 배열의 크기가 올바르지 않습니다
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# 1~24까지의 숫자를 '3 x 4' 행렬로 해서 '2층'짜리의 데이터 구조를 만들어라}
-\ErrorTok{>}\StringTok{ }\NormalTok{a2 <-}\StringTok{ }\KeywordTok{array}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{23}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{))}
-\OperatorTok{>}\StringTok{ }\NormalTok{a2}
+\CommentTok{# 1~24까지의 숫자를 '3 x 4' 행렬로 해서 '2층'짜리 배열 생성}
+\NormalTok{a2 <-}\StringTok{ }\KeywordTok{array}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{23}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\NormalTok{a2}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3844,29 +3846,493 @@ Error in X * Z: 배열의 크기가 올바르지 않습니다
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# 출처: http://rfriend.tistory.com/14?category=601862 [R, Python 분석과 프로그래밍 (by}
-\ErrorTok{>}\StringTok{ }\CommentTok{# R Friend)]}
+\CommentTok{# 출처: http://rfriend.tistory.com/14?category=601862 [R, Python 분석과 프로그래밍 (by}
+\CommentTok{# R Friend)]}
 \end{Highlighting}
 \end{Shaded}
 
 \normalsize
 
-\section{데이터 프레임}\label{-}
+\section{데이터 프레임(data frame)}\label{-data-frame}
 
 \begin{itemize}
 \tightlist
 \item
-  데이터 프레임(data frame)은 데이터 유형에 상관없이 2차원 형태의 데이터
-  구조
+  Excel 스프레드시트와 같은 형태
+\item
+  데이터 프레임은 데이터 유형에 상관없이 2차원 형태의 데이터 구조
+\item
+  행렬과 유사한 구조를 갖고 있지만 각기 다른 유형의 자료형태로
+  자료행렬을 구성할 수 있다는 점에서 행렬과 차이를 갖음
+\item
+  R에서 가장 빈번하게 활용되고 있는 데이터 형태임
+\end{itemize}
+
+\begin{quote}
+\textbf{참고: 행렬은 동일한 유형의 자료형으로 이루어짐}
+\end{quote}
+
+\begin{quote}
+\textbf{유용한 함수: \texttt{ls()} \(\rightarrow\) 작업공간(메모리)에
+존재하는 객체 리스트 출력}
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  다음은 일반적인 데이터프레임 형태
+\end{itemize}
+
+\footnotesize
+
+\begin{tabular}{l|r|r}
+\hline
+성명 & 국어 & 수학\\
+\hline
+홍길동 & 80 & 94\\
+\hline
+박길동 & 97 & 100\\
+\hline
+김길동 & 85 & 76\\
+\hline
+\end{tabular}
+
+\normalsize
+
+\subsection{데이터 프레임 생성 및 관련 명령어}\label{-----}
+
+\begin{itemize}
+\tightlist
+\item
+  데이터 프레임 생성 함수
+\end{itemize}
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 벡터 vector1 (열 이름 V1)과 vector2 (열 이름 V2)로 구성된 데이터 프레임 DF 생성}
+\ErrorTok{>}\StringTok{ }\CommentTok{# data.frame() 함수에 대한 보다 자세한 내용은 help(data.frame)으로 확인}
+\ErrorTok{>}\StringTok{ }\NormalTok{DF <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{V1 =}\NormalTok{ vector1, }\DataTypeTok{V2 =}\NormalTok{ vector2, ...)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  데이터 프레임 사용 문법
 
   \begin{itemize}
   \tightlist
   \item
-    외부로부터 불러오는 자료의 형태 대부분은 데이터 프레임
+    \texttt{DF\$colname}: 데이터 프레임 \texttt{DF}에서 변수명
+    \texttt{colname}에 접근
+  \item
+    \texttt{DF\$colname\ \textless{}-\ x}: 데이터 프레밍 \texttt{DF}에
+    \texttt{colname}의 변수명을 갖는 열에 \texttt{x}를 저장. 여기서
+    \texttt{x}의 길이와 \texttt{DF} 행의 길이는 같아야 제대로 저장
   \end{itemize}
 \item
-  참고: 행렬은 동일한 유형의 자료형으로 이루어짐
+  데이터프레임 색인
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{DF\$colname}
+  \item
+    \texttt{DF{[}i,\ j,\ drop\ =\ T{]}}: 행렬과 유사한 형태로
+    \texttt{DF}의 \texttt{i}번째 행과 \texttt{j}번째 열의 원소 지정
+  \item
+    행이름 및 컬럼이름으로 지정 가능
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \texttt{DF{[},\ j{]}}처럼 특정 컬럼만 가져올 수 있음.
+    \item
+      하나의 컬럼만 선택한 경우 자동으로 벡터 변환
+    \item
+      이를 방지하기 위한 옵션이 \texttt{drop\ =\ F}
+    \item
+      \texttt{DF{[}-i,\ -j{]}}: \texttt{i}번째 행과 \texttt{j}번째 열을
+      제외한 나머지 반환
+    \end{itemize}
+  \end{itemize}
+\item
+  많이 활용되는 데이터프레임 유틸리티 함수
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{is.data.frame()}으로 데이터프레임 여부 확인
+  \item
+    \texttt{names(DF)}: 데이터프레임 \texttt{DF}의 변수명 출력
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \texttt{names(DF){[}j{]}\ \textless{}-\ "vname1"}: \texttt{DF}의
+      \texttt{j}번째 열에 해당하는 변수명을 \texttt{"vname1"}로 바꾸기
+    \end{itemize}
+  \item
+    \texttt{with(DF,\ 명령문)}: \texttt{DF} 내에서 \texttt{DF\$} 사용
+    없이 변수명 사용하고 싶을 때
+  \item
+    \texttt{head(DF)}, \texttt{tail(DF)}: 자료의 처음 또는 마지막
+    행(보통 5개 행) 부분 반환
+  \item
+    \texttt{str(DF)}: 자료의 내부구조 확인
+  \item
+    \texttt{View(DF)}: \texttt{DF}를 스프레드 시트 형태로 확인할 수 있는
+    뷰어 명령어
+  \item
+    \texttt{summary(DF)}: \texttt{DF}에 포함된 변수들의 요약통계량(예:
+    평균, 중위수, 최솟값, 최댓값 등) 출력
+  \end{itemize}
 \end{itemize}
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 데이터프레임 생성 rm(list = ls()) # 메모리상 모든 객체 삭제하는 명령어!!}
+\NormalTok{ID <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{)}
+\NormalTok{SEX <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{each =} \DecValTok{5}\NormalTok{)}
+\NormalTok{SEX <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(SEX, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"Female"}\NormalTok{, }\StringTok{"Male"}\NormalTok{))}
+\NormalTok{AGE <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{34}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{54}\NormalTok{, }\DecValTok{43}\NormalTok{, }\DecValTok{44}\NormalTok{, }\DecValTok{39}\NormalTok{, }\DecValTok{38}\NormalTok{, }\DecValTok{28}\NormalTok{, }\DecValTok{31}\NormalTok{, }\DecValTok{42}\NormalTok{)}
+\NormalTok{AGE2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{32}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{52}\NormalTok{, }\DecValTok{41}\NormalTok{, }\DecValTok{44}\NormalTok{, }\DecValTok{39}\NormalTok{, }\DecValTok{35}\NormalTok{, }\DecValTok{28}\NormalTok{, }\DecValTok{31}\NormalTok{, }\DecValTok{40}\NormalTok{)}
+\NormalTok{AGE3 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{32}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{52}\NormalTok{, }\DecValTok{41}\NormalTok{, }\DecValTok{44}\NormalTok{, }\DecValTok{39}\NormalTok{, }\DecValTok{35}\NormalTok{, }\DecValTok{28}\NormalTok{, }\DecValTok{31}\NormalTok{)}
+\NormalTok{DBP <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{112}\NormalTok{, }\DecValTok{118}\NormalTok{, }\DecValTok{132}\NormalTok{, }\DecValTok{128}\NormalTok{, }\DecValTok{128}\NormalTok{, }\DecValTok{124}\NormalTok{, }\DecValTok{121}\NormalTok{, }\DecValTok{119}\NormalTok{, }\DecValTok{124}\NormalTok{, }\DecValTok{109}\NormalTok{)}
+\NormalTok{HEIGHT <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{165}\NormalTok{, }\DecValTok{158}\NormalTok{, }\DecValTok{161}\NormalTok{, }\DecValTok{160}\NormalTok{, }\DecValTok{168}\NormalTok{, }\DecValTok{172}\NormalTok{, }\DecValTok{175}\NormalTok{, }\DecValTok{182}\NormalTok{, }\DecValTok{168}\NormalTok{, }\DecValTok{162}\NormalTok{)}
+\NormalTok{WEIGHT <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{52}\NormalTok{, }\DecValTok{48}\NormalTok{, }\DecValTok{59}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{48}\NormalTok{, }\DecValTok{72}\NormalTok{, }\DecValTok{73}\NormalTok{, }\DecValTok{82}\NormalTok{, }\DecValTok{64}\NormalTok{, }\DecValTok{60}\NormalTok{)}
+\NormalTok{DF <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{ID =}\NormalTok{ ID, }\DataTypeTok{Sex =}\NormalTok{ SEX, }\DataTypeTok{Age =}\NormalTok{ AGE, }\DataTypeTok{DBP =}\NormalTok{ DBP, }\DataTypeTok{HEIGHT =}\NormalTok{ HEIGHT, }\DataTypeTok{WEIGHT =}\NormalTok{ WEIGHT)}
+\CommentTok{# DF 확인}
+\KeywordTok{str}\NormalTok{(DF)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+'data.frame':   10 obs. of  6 variables:
+ $ ID    : int  1 2 3 4 5 6 7 8 9 10
+ $ Sex   : Factor w/ 2 levels "Female","Male": 1 1 1 1 1 2 2 2 2 2
+ $ Age   : num  34 22 54 43 44 39 38 28 31 42
+ $ DBP   : num  112 118 132 128 128 124 121 119 124 109
+ $ HEIGHT: num  165 158 161 160 168 172 175 182 168 162
+ $ WEIGHT: num  52 48 59 60 48 72 73 82 64 60
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{names}\NormalTok{(DF)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "ID"     "Sex"    "Age"    "DBP"    "HEIGHT" "WEIGHT"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ncol}\NormalTok{(DF)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{nrow}\NormalTok{(DF)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dim}\NormalTok{(DF)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 10  6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 데이터 프레임 자료 확인}
+\NormalTok{DF}\OperatorTok{$}\NormalTok{Age}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1] 34 22 54 43 44 39 38 28 31 42
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 데이터프레임 변수 값 변환: DF$AGE를 AGE2로 변경}
+\NormalTok{DF}\OperatorTok{$}\NormalTok{Age <-}\StringTok{ }\NormalTok{AGE2}
+\NormalTok{DF}\OperatorTok{$}\NormalTok{Age}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1] 32 22 52 41 44 39 35 28 31 40
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 만약 입력하고자 하는 벡터의 길이가 DF의 행길이와 다르다면?}
+\NormalTok{DF}\OperatorTok{$}\NormalTok{Age <-}\StringTok{ }\NormalTok{AGE3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Error in `$<-.data.frame`(`*tmp*`, Age, value = c(32, 22, 52, 41, 44, : replacement has 9 rows, data has 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 데이터 프레임에 BMI라는 변수를 추가하고 싶다면?}
+\NormalTok{DF}\OperatorTok{$}\NormalTok{Age <-}\StringTok{ }\NormalTok{AGE}
+\NormalTok{DF}\OperatorTok{$}\NormalTok{BMI <-}\StringTok{ }\NormalTok{WEIGHT}\OperatorTok{/}\NormalTok{((HEIGHT}\OperatorTok{/}\DecValTok{100}\NormalTok{)}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+\KeywordTok{dim}\NormalTok{(DF)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 10  7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DF}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   ID    Sex Age DBP HEIGHT WEIGHT  BMI
+1   1 Female  34 112    165     52 19.1
+2   2 Female  22 118    158     48 19.2
+3   3 Female  54 132    161     59 22.8
+4   4 Female  43 128    160     60 23.4
+5   5 Female  44 128    168     48 17.0
+6   6   Male  39 124    172     72 24.3
+7   7   Male  38 121    175     73 23.8
+8   8   Male  28 119    182     82 24.8
+9   9   Male  31 124    168     64 22.7
+10 10   Male  42 109    162     60 22.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 데이터프레임 색인 6 번째 대상자의 성별확인}
+\NormalTok{DF[}\DecValTok{6}\NormalTok{, }\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] Male
+Levels: Female Male
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DF[}\DecValTok{6}\NormalTok{, }\StringTok{"Sex"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] Male
+Levels: Female Male
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## ID, 성별, BMI만 추출}
+\NormalTok{DF[, }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{7}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   ID    Sex  BMI
+1   1 Female 19.1
+2   2 Female 19.2
+3   3 Female 22.8
+4   4 Female 23.4
+5   5 Female 17.0
+6   6   Male 24.3
+7   7   Male 23.8
+8   8   Male 24.8
+9   9   Male 22.7
+10 10   Male 22.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DF[, }\KeywordTok{c}\NormalTok{(}\StringTok{"ID"}\NormalTok{, }\StringTok{"Sex"}\NormalTok{, }\StringTok{"BMI"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   ID    Sex  BMI
+1   1 Female 19.1
+2   2 Female 19.2
+3   3 Female 22.8
+4   4 Female 23.4
+5   5 Female 17.0
+6   6   Male 24.3
+7   7   Male 23.8
+8   8   Male 24.8
+9   9   Male 22.7
+10 10   Male 22.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DF[, }\KeywordTok{names}\NormalTok{(DF) }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"ID"}\NormalTok{, }\StringTok{"Sex"}\NormalTok{, }\StringTok{"BMI"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   ID    Sex  BMI
+1   1 Female 19.1
+2   2 Female 19.2
+3   3 Female 22.8
+4   4 Female 23.4
+5   5 Female 17.0
+6   6   Male 24.3
+7   7   Male 23.8
+8   8   Male 24.8
+9   9   Male 22.7
+10 10   Male 22.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## 남자만 추출}
+\NormalTok{DF[Sex }\OperatorTok{==}\StringTok{ "Male"}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Error in `[.data.frame`(DF, Sex == "Male", ): 객체 'Sex'를 찾을 수 없습니다
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DF[DF}\OperatorTok{$}\NormalTok{Sex }\OperatorTok{==}\StringTok{ "Male"}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   ID  Sex Age DBP HEIGHT WEIGHT  BMI
+6   6 Male  39 124    172     72 24.3
+7   7 Male  38 121    175     73 23.8
+8   8 Male  28 119    182     82 24.8
+9   9 Male  31 124    168     64 22.7
+10 10 Male  42 109    162     60 22.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{with}\NormalTok{(DF, DF[Sex }\OperatorTok{==}\StringTok{ "Male"}\NormalTok{, ])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   ID  Sex Age DBP HEIGHT WEIGHT  BMI
+6   6 Male  39 124    172     72 24.3
+7   7 Male  38 121    175     73 23.8
+8   8 Male  28 119    182     82 24.8
+9   9 Male  31 124    168     64 22.7
+10 10 Male  42 109    162     60 22.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## 첫 번째 대상자와 아이디 정보 제외}
+\NormalTok{DF[}\OperatorTok{-}\DecValTok{1}\NormalTok{, }\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+      Sex Age DBP HEIGHT WEIGHT  BMI
+2  Female  22 118    158     48 19.2
+3  Female  54 132    161     59 22.8
+4  Female  43 128    160     60 23.4
+5  Female  44 128    168     48 17.0
+6    Male  39 124    172     72 24.3
+7    Male  38 121    175     73 23.8
+8    Male  28 119    182     82 24.8
+9    Male  31 124    168     64 22.7
+10   Male  42 109    162     60 22.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(DF)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  ID    Sex Age DBP HEIGHT WEIGHT  BMI
+1  1 Female  34 112    165     52 19.1
+2  2 Female  22 118    158     48 19.2
+3  3 Female  54 132    161     59 22.8
+4  4 Female  43 128    160     60 23.4
+5  5 Female  44 128    168     48 17.0
+6  6   Male  39 124    172     72 24.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{tail}\NormalTok{(DF)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   ID    Sex Age DBP HEIGHT WEIGHT  BMI
+5   5 Female  44 128    168     48 17.0
+6   6   Male  39 124    172     72 24.3
+7   7   Male  38 121    175     73 23.8
+8   8   Male  28 119    182     82 24.8
+9   9   Male  31 124    168     64 22.7
+10 10   Male  42 109    162     60 22.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 데이터프레임을 스프레드시트 형태로 보기 View(DF)}
+\CommentTok{# 데이터프레임 요약 통계량}
+\KeywordTok{summary}\NormalTok{(DF)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+       ID            Sex         Age            DBP          HEIGHT   
+ Min.   : 1.00   Female:5   Min.   :22.0   Min.   :109   Min.   :158  
+ 1st Qu.: 3.25   Male  :5   1st Qu.:31.8   1st Qu.:118   1st Qu.:161  
+ Median : 5.50              Median :38.5   Median :122   Median :166  
+ Mean   : 5.50              Mean   :37.5   Mean   :122   Mean   :167  
+ 3rd Qu.: 7.75              3rd Qu.:42.8   3rd Qu.:127   3rd Qu.:171  
+ Max.   :10.00              Max.   :54.0   Max.   :132   Max.   :182  
+     WEIGHT          BMI      
+ Min.   :48.0   Min.   :17.0  
+ 1st Qu.:53.8   1st Qu.:20.1  
+ Median :60.0   Median :22.8  
+ Mean   :61.8   Mean   :22.0  
+ 3rd Qu.:70.0   3rd Qu.:23.7  
+ Max.   :82.0   Max.   :24.8  
+\end{verbatim}
+
+\normalsize
 
 \section{리스트}
 

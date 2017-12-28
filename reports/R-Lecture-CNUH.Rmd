@@ -1202,7 +1202,7 @@ setdiff(y, x)
 x %in% y
 ```
 
-## 행렬
+## 행렬(matrix)
 
 - 동일한 유형의 2차원 데이터 구조 ($n \times p$ 자료행렬)
     - $n \times 1$ 차원 벡터 $p$개로 묶여진 데이터 덩어리
@@ -1287,48 +1287,170 @@ X - Z
 X * Z
 t(Z) %*% X
 
-# 역행렬 계산
+# 역행렬
 X <- matrix(c(1:4), ncol = 2)
 X
+# 역행렬 계산
 Xinv <- solve(X)
 Xinv
+# 역행렬 계산 확인
 X %*% Xinv
 ```
 
-## 배열
+## 배열(array)
 
 - 동일한 유형의 데이터가 2차원 이상으로 구성된 구조 
     - 동일 차원($n\times p$)의 행렬 $k$개의 방에 저장되어 있는 구조
 
-```{r, echo = T, eval = T, prompt = T}
-# 1~24까지의 숫자를 '2 x 3 행렬'로 해서 '4층' 짜리의 데이터 구조를 만들어라
+```{r, echo = T, eval = T, prompt = F}
+# 1~24까지의 숫자를 '2 x 3 행렬'로 해서 '4층' 짜리 배열 생성
 a1 <- array(1:24, c(2,3,4))
 a1
-# 1~24까지의 숫자를 '3 x 4' 행렬로 해서 '2층'짜리의 데이터 구조를 만들어라
+# 1~24까지의 숫자를 '3 x 4' 행렬로 해서 '2층'짜리 배열 생성
 a2 <- array(1:23, c(3,4,2))
 a2
 # 출처: http://rfriend.tistory.com/14?category=601862 [R, Python 분석과 프로그래밍 (by R Friend)]
 ```
 
-## 데이터 프레임
+## 데이터 프레임(data frame)
 
-- 데이터 프레임(data frame)은 데이터 유형에 상관없이 2차원 형태의 데이터 구조
-    - 외부로부터 불러오는 자료의 형태 대부분은 데이터 프레임
-- 참고: 행렬은 동일한 유형의 자료형으로 이루어짐
+- Excel 스프레드시트와 같은 형태
+- 데이터 프레임은 데이터 유형에 상관없이 2차원 형태의 데이터 구조
+- 행렬과 유사한 구조를 갖고 있지만 각기 다른 유형의 자료형태로 자료행렬을 구성할 수 있다는 점에서 행렬과 차이를 갖음
+- R에서 가장 빈번하게 활용되고 있는 데이터 형태임
 
-## 리스트
+> **참고: 행렬은 동일한 유형의 자료형으로 이루어짐**
+
+> **유용한 함수: `ls()` $\rightarrow$ 작업공간(메모리)에 존재하는 객체 리스트 출력**
+
+- 다음은 일반적인 데이터프레임 형태
+
+```{r echo = F}
+# library(knit)
+df <- data.frame(성명 = c("홍길동", "박길동", "김길동"), 
+                 국어 = c(80, 97, 85), 수학 = c(94, 100, 76))
+knitr::kable(df)
+```
+
+### 데이터 프레임 생성 및 관련 명령어
+
+- 데이터 프레임 생성 함수
+
+```{r echo = T, eval = F, prompt = T}
+# 벡터 vector1 (열 이름 V1)과 vector2 (열 이름 V2)로 구성된 데이터 프레임 DF 생성
+# data.frame() 함수에 대한 보다 자세한 내용은 help(data.frame)으로 확인
+DF <- data.frame(V1 = vector1, V2 = vector2, ...)
+```
+
+- 데이터 프레임 사용 문법
+    - `DF$colname`: 데이터 프레임 `DF`에서 변수명 `colname`에 접근
+    - `DF$colname <- x`: 데이터 프레밍 `DF`에 `colname`의 변수명을 갖는 열에 `x`를 저장. 여기서 `x`의 길이와 `DF` 행의 길이는 같아야 제대로 저장
+
+- 데이터프레임 색인
+    - `DF$colname`
+    - `DF[i, j, drop = T]`: 행렬과 유사한 형태로 `DF`의 `i`번째 행과 `j`번째 열의 원소 지정
+    - 행이름 및 컬럼이름으로 지정 가능
+        - `DF[, j]`처럼 특정 컬럼만 가져올 수 있음. 
+        - 하나의 컬럼만 선택한 경우 자동으로 벡터 변환
+        - 이를 방지하기 위한 옵션이 `drop = F`
+        - `DF[-i, -j]`: `i`번째 행과 `j`번째 열을 제외한 나머지 반환
+
+- 많이 활용되는 데이터프레임 유틸리티 함수
+    - `is.data.frame()`으로 데이터프레임 여부 확인
+    - `names(DF)`: 데이터프레임 `DF`의 변수명 출력
+        - `names(DF)[j] <- "vname1"`: `DF`의 `j`번째 열에 해당하는 변수명을 `"vname1"`로 바꾸기
+    - `with(DF, 명령문)`: `DF` 내에서 `DF$` 사용 없이 변수명 사용하고 싶을 때
+    - `head(DF)`, `tail(DF)`: 자료의 처음 또는 마지막 행(보통 5개 행) 부분 반환
+    - `str(DF)`: 자료의 내부구조 확인
+    - `View(DF)`: `DF`를 스프레드 시트 형태로 확인할 수 있는 뷰어 명령어
+    - `summary(DF)`: `DF`에 포함된 변수들의 요약통계량(예: 평균, 중위수, 최솟값, 최댓값 등) 출력
+
+```{r dataframe-ex, echo = T, eval = T}
+# 데이터프레임 생성
+# rm(list = ls()) # 메모리상 모든 객체 삭제하는 명령어!!
+
+ID <- c(1:10)
+SEX <- rep(c(0,1), each = 5)
+SEX <- factor(SEX, levels = c(0, 1), labels = c("Female", "Male"))
+AGE <- c(34, 22, 54, 43, 44, 39, 38, 28, 31, 42)
+AGE2 <- c(32, 22, 52, 41, 44, 39, 35, 28, 31, 40)
+AGE3 <- c(32, 22, 52, 41, 44, 39, 35, 28, 31)
+DBP <- c(112, 118, 132, 128, 128, 124, 121, 119, 124, 109)
+HEIGHT <- c(165, 158, 161, 160, 168, 172, 175, 182, 168, 162)
+WEIGHT <- c(52, 48, 59, 60, 48, 72, 73, 82, 64, 60)
+
+DF <- data.frame(ID = ID, Sex = SEX, Age = AGE, DBP = DBP, HEIGHT = HEIGHT, WEIGHT = WEIGHT)
+
+# DF 확인
+str(DF); names(DF); ncol(DF); nrow(DF); dim(DF)
+
+# 데이터 프레임 자료 확인
+DF$Age
+
+# 데이터프레임 변수 값 변환: DF$AGE를 AGE2로 변경
+DF$Age <- AGE2
+DF$Age
+
+# 만약 입력하고자 하는 벡터의 길이가 DF의 행길이와 다르다면?
+DF$Age <- AGE3
+
+# 데이터 프레임에 BMI라는 변수를 추가하고 싶다면?
+DF$Age <- AGE
+DF$BMI <- WEIGHT/((HEIGHT/100)^2)
+dim(DF)
+DF
+
+# 데이터프레임 색인
+## 6 번째 대상자의 성별확인
+DF[6, 2]; DF[6, "Sex"]
+## ID, 성별, BMI만 추출
+DF[, c(1,2,7)]; DF[, c("ID", "Sex", "BMI")]; DF[, names(DF) %in% c("ID", "Sex", "BMI")]
+
+## 남자만 추출
+DF[Sex == "Male", ]
+DF[DF$Sex == "Male", ]; with(DF, DF[Sex == "Male", ])
+
+## 첫 번째 대상자와 아이디 정보 제외
+DF[-1, -1]
+
+head(DF); tail(DF)
+
+# 데이터프레임을 스프레드시트 형태로 보기
+# View(DF)
+
+# 데이터프레임 요약 통계량
+summary(DF)
+
+```
+
+## 리스트(list)
+
+- 서로 다른 구조를 갖는 데이터를 모두 묵은 객체 형태
+    - 예를 들어 행렬과 배열은 자료 구조가 다름
+    - R 패키지를 이용한 분석결과는 일반적으로 리스트 구조로 출력
+- 다른 구조를 갖는 다수의 데이터 객체 정리에 용이
+- 리스트 색인(index)
+    - 리스트 내 객체명이 존재하는 경우 `LIST$객체명`과 같이 리스트 내 객체 접근 가능
+    - 일반적으로 `LIST[[index]]` 또는 `LIST[["객체명"]]`으로도 접근 가능
 
 ```{r echo = T, eval = T, prompt = T}
-# Vector(L1), Matrix(L2), Array(L3), Data Frame(L4)를 만들어서, 하나의 List(L5)로 묶어라
+# Vector (V), matrix (M), array (A), data frame(DF)를 만들어서, 하나의 list (L)로 묶기
+# 예시 출처: http://rfriend.tistory.com/14?category=601862 [R, Python 분석과 프로그래밍 (by R Friend)]
 
-L1 <- c(1, 2, 3, 4) # Vector
-L2 <- matrix(1:6, 3, byrow=TRUE) # Matrix
-L3 <- array(1:24, c(3,4,2)) # Array
-L4 <- data.frame(cust_id = c(1, 2, 3, 4), last_name = c("Kim", "Lee", "Choi", "Park")) # Data Frame
-L5 <- list(L1, L2, L3, L4) # List
-# [[1]]는 Vector(L1), [[2]]는 Matrix(L2), [[3]]는 Array(L3), [[4]]는 Data Frame(L4)가 묶인 것임
-L5
-# 출처: http://rfriend.tistory.com/14?category=601862 [R, Python 분석과 프로그래밍 (by R Friend)]
+V <- c(1, 2, 3, 4) # Vector
+M <- matrix(1:6, 3, byrow=TRUE) # Matrix
+A <- array(1:24, c(3,4,2)) # Array
+DF <- data.frame(cust_id = c(1, 2, 3, 4), last_name = c("Kim", "Lee", "Choi", "Park")) # Data Frame
+L <- list(L1, L2, L3, L4) # List
+
+# 통계분석 시 리스트 결과 출력 예시: 일변량 회귀분석
+data(mtcars)
+linreg <- lm(mpg ~ hp, data = mtcars) 
+is.list(linreg) # 리스트 객체 여부 확인
+
+# 회귀계수 접근("coefficients")
+linreg[["coefficients"]] 
+linreg[]
 ```
 
 \begin{figure}[H] {
