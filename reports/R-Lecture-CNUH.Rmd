@@ -8,7 +8,7 @@ output:
     includes: 
       in_header: preamble.tex
     toc: true 
-    toc_depth: 2
+    toc_depth: 3
     highlight: tango
     fig_caption: yes
     citation_package: natbib
@@ -28,7 +28,10 @@ editor_options:
 
 
 ```{r knitr_init, echo=FALSE, results="hide", message=FALSE, cache=FALSE}
+require(tidyverse)
 require(highlight)
+require(knitr)
+require(kableExtra)
 
 knitr::opts_knit$set(root.dir = '..') 
 options(max.print = 5000)
@@ -39,6 +42,9 @@ knitr::knit_hooks$set(chunk = function(x, options) {
   x <- def.chunk.hook(x, options)
   ifelse(options$size != "normalsize", paste0("\\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
 })
+
+options(width = 85)
+options(knitr.table.format = "latex")
 ```
 
 # R을 사용하기 위한 환경 설정
@@ -779,11 +785,9 @@ sticky_variables: NONE
 <!-- \end{minipage}} -->
 <!-- \end{quote} -->
 
-## R의 데이터 유형
+## R의 기초
 
 ### R 객체 입력 방법 및 변수 설정 규칙
-
-#### 객체 입력 및 할당
 
 R의 가장 기본적인 데이터 입력 및 할당 방법과 객체 또는 변수의 명명 규칙 설명 
 
@@ -1202,13 +1206,13 @@ setdiff(y, x)
 x %in% y
 ```
 
-## 행렬(matrix)
+### 행렬(matrix)
 
 - 동일한 유형의 2차원 데이터 구조 ($n \times p$ 자료행렬)
     - $n \times 1$ 차원 벡터 $p$개로 묶여진 데이터 덩어리
 - 행렬 관련 함수 프로토타입
 
-```{r echo = T, eval = F, prompt = T}
+```{r echo = T, eval = F, prompt = F}
 X <- matrix(data = <DATA>, nrow = <N>, ncol = <P>, byrow = <TRUE/FALSE>)
 ```
 
@@ -1297,7 +1301,7 @@ Xinv
 X %*% Xinv
 ```
 
-## 배열(array)
+### 배열(array)
 
 - 동일한 유형의 데이터가 2차원 이상으로 구성된 구조 
     - 동일 차원($n\times p$)의 행렬 $k$개의 방에 저장되어 있는 구조
@@ -1312,7 +1316,7 @@ a2
 # 출처: http://rfriend.tistory.com/14?category=601862 [R, Python 분석과 프로그래밍 (by R Friend)]
 ```
 
-## 데이터 프레임(data frame)
+### 데이터 프레임(data frame)
 
 - Excel 스프레드시트와 같은 형태
 - 데이터 프레임은 데이터 유형에 상관없이 2차원 형태의 데이터 구조
@@ -1332,7 +1336,7 @@ df <- data.frame(성명 = c("홍길동", "박길동", "김길동"),
 knitr::kable(df)
 ```
 
-### 데이터 프레임 생성 및 관련 명령어
+#### 데이터 프레임 생성 및 관련 명령어
 
 - 데이터 프레임 생성 함수
 
@@ -1423,7 +1427,7 @@ summary(DF)
 
 ```
 
-## 리스트(list)
+### 리스트(list)
 
 - 서로 다른 구조를 갖는 데이터를 모두 묵은 객체 형태
     - 예를 들어 행렬과 배열은 자료 구조가 다름
@@ -1433,7 +1437,7 @@ summary(DF)
     - 리스트 내 객체명이 존재하는 경우 `LIST$객체명`과 같이 리스트 내 객체 접근 가능
     - 일반적으로 `LIST[[index]]` 또는 `LIST[["객체명"]]`으로도 접근 가능
 
-```{r echo = T, eval = T, prompt = T}
+```{r echo = T, eval = T, prompt = F, out.width="\\textwidth"}
 # Vector (V), matrix (M), array (A), data frame(DF)를 만들어서, 하나의 list (L)로 묶기
 # 예시 출처: http://rfriend.tistory.com/14?category=601862 [R, Python 분석과 프로그래밍 (by R Friend)]
 
@@ -1441,17 +1445,27 @@ V <- c(1, 2, 3, 4) # Vector
 M <- matrix(1:6, 3, byrow=TRUE) # Matrix
 A <- array(1:24, c(3,4,2)) # Array
 DF <- data.frame(cust_id = c(1, 2, 3, 4), last_name = c("Kim", "Lee", "Choi", "Park")) # Data Frame
-L <- list(L1, L2, L3, L4) # List
+L <- list(V, M, A, DF) # List
+
+# 리스트 내부구조 출력(str 사용)
+str(L)
 
 # 통계분석 시 리스트 결과 출력 예시: 일변량 회귀분석
 data(mtcars)
 linreg <- lm(mpg ~ hp, data = mtcars) 
 is.list(linreg) # 리스트 객체 여부 확인
 
-# 회귀계수 접근("coefficients")
+# 리스트 linreg에 포함된 객체명 출력
+names(linreg)
+
+# 리스트 색인: 회귀계수 접근("coefficients")
 linreg[["coefficients"]] 
-linreg[]
+
+# 리스트 색인: 회귀모형 잔차("residual") 접근
+linreg[[2]]
 ```
+
+### R 자료 구조 정리
 
 \begin{figure}[H] {
   \centering
@@ -1461,6 +1475,40 @@ linreg[]
 
 \vspace{1cm}
 
+# 데이터 조작 I: 기본 자료 조작
+
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{목적}
+\begin{itemize}
+  \item 기초적인 자료 입출력 방법 숙지
+  \item 예시 자료를 이용한 자료 조작 
+\end{itemize}
+\end{minipage}}
+\end{quote}
+
+## 데이터 처리 예시를 위한 실습 자료
+
+### Iris dataset
+
+- 영국 통계학자 Ronald Aylmer Fisher가 소개한 데이터로 붓꽃의 세 가지 종(setosa, versicolor, virginica)에 대해 꽃받침(sepal)과 꽃입(petal)의 길이(length)와 너비(width)를 정리한 자료
+- 지도 학습(supervised learning) 또는 비지도 학습(unsupervised learning) 예시 자료로 유명
+- R의 기본 dataset에 포함되어 있으며 `data(iris)`로 자료 불러오기 가능
+- Iris dataset의 구조
+
+```{r iris-desc, echo = F}
+
+data(iris)
+변수명 <- names(iris)
+설명 <- c("꽃받침 길이", "꽃받침 너비", "꽃잎 길이", "꽃잎 너비", "붓꽃의 종(setosa, versicolor, virginica)")
+타입 <- c("numeric", "numeric", "numeric", "numeric", "factor")
+
+tab3 <- data.frame(변수명, 설명, 타입)
+kable(tab3, booktabs = T, escape = F, caption = "Iris 자료 설명") %>% 
+  kable_styling(latex_options = c("striped", "HOLD_position"))
+```
+
+### Blood pressure dataset
 
 
 <!-- # 데이터 조작 -->

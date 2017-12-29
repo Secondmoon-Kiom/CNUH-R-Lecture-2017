@@ -199,6 +199,17 @@
 
 \pagestyle{plain}
 % \linespread{1.5}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -219,7 +230,7 @@
 
 {
 \hypersetup{linkcolor=black}
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 \tableofcontents
 }
 \chapter{R을 사용하기 위한 환경 설정}\label{r----}
@@ -682,12 +693,11 @@ R은 공개 소프트웨어로 \url{http://www.r-project.org/} 에서 다운로�
 \end{Shaded}
 
 \begin{verbatim}
-  [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
- [18]  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34
- [35]  35  36  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51
- [52]  52  53  54  55  56  57  58  59  60  61  62  63  64  65  66  67  68
- [69]  69  70  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85
- [86]  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100
+  [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20
+ [21]  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40
+ [41]  41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60
+ [61]  61  62  63  64  65  66  67  68  69  70  71  72  73  74  75  76  77  78  79  80
+ [81]  81  82  83  84  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100
 \end{verbatim}
 
 \normalsize
@@ -1694,11 +1704,9 @@ RStudio는 아래 그림 \ref{fig:Rstudio-part-01}과 같이 크게 4개 창으�
   따라서 R의 데이터 타입에 좀 더 익숙해져야 R을 보다 쉽게 다룰 수 있음
 \end{itemize}
 
-\section{R의 데이터 유형}\label{r--}
+\section{R의 기초}\label{r-}
 
 \subsection{R 객체 입력 방법 및 변수 설정 규칙}\label{r-------}
-
-\subsubsection{객체 입력 및 할당}\label{---}
 
 R의 가장 기본적인 데이터 입력 및 할당 방법과 객체 또는 변수의 명명 규칙
 설명
@@ -2742,8 +2750,7 @@ Levels: Mild < Moderate < Severe
 \end{Shaded}
 
 \begin{verbatim}
- [1] 27 29 31 33 35 37 39 41 43 45 47 49 51 53 55 57 59 61 63 65 67 69 71
-[24] 73 75
+ [1] 27 29 31 33 35 37 39 41 43 45 47 49 51 53 55 57 59 61 63 65 67 69 71 73 75
 \end{verbatim}
 
 \begin{Shaded}
@@ -2753,8 +2760,8 @@ Levels: Mild < Moderate < Severe
 \end{Shaded}
 
 \begin{verbatim}
- [1] -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25
-[18] -25 -25 -25 -25 -25 -25 -25 -25
+ [1] -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25 -25
+[21] -25 -25 -25 -25 -25
 \end{verbatim}
 
 \begin{Shaded}
@@ -2764,9 +2771,9 @@ Levels: Mild < Moderate < Severe
 \end{Shaded}
 
 \begin{verbatim}
- [1] 0.0385 0.0741 0.1071 0.1379 0.1667 0.1935 0.2188 0.2424 0.2647 0.2857
-[11] 0.3056 0.3243 0.3421 0.3590 0.3750 0.3902 0.4048 0.4186 0.4318 0.4444
-[21] 0.4565 0.4681 0.4792 0.4898 0.5000
+ [1] 0.0385 0.0741 0.1071 0.1379 0.1667 0.1935 0.2188 0.2424 0.2647 0.2857 0.3056
+[12] 0.3243 0.3421 0.3590 0.3750 0.3902 0.4048 0.4186 0.4318 0.4444 0.4565 0.4681
+[23] 0.4792 0.4898 0.5000
 \end{verbatim}
 
 \begin{Shaded}
@@ -2776,8 +2783,8 @@ Levels: Mild < Moderate < Severe
 \end{Shaded}
 
 \begin{verbatim}
- [1]   26   54   84  116  150  186  224  264  306  350  396  444  494  546
-[15]  600  656  714  774  836  900  966 1034 1104 1176 1250
+ [1]   26   54   84  116  150  186  224  264  306  350  396  444  494  546  600  656
+[17]  714  774  836  900  966 1034 1104 1176 1250
 \end{verbatim}
 
 \begin{Shaded}
@@ -2790,8 +2797,7 @@ Levels: Mild < Moderate < Severe
 \end{Shaded}
 
 \begin{verbatim}
- [1] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
-[12] FALSE  TRUE
+ [1] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
 \end{verbatim}
 
 \begin{Shaded}
@@ -2801,8 +2807,7 @@ Levels: Mild < Moderate < Severe
 \end{Shaded}
 
 \begin{verbatim}
- [1] FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
-[12]  TRUE  TRUE
+ [1] FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE
 \end{verbatim}
 
 \begin{Shaded}
@@ -2812,8 +2817,7 @@ Levels: Mild < Moderate < Severe
 \end{Shaded}
 
 \begin{verbatim}
- [1]  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
-[12] FALSE FALSE
+ [1]  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
 \end{verbatim}
 
 \begin{Shaded}
@@ -2823,8 +2827,7 @@ Levels: Mild < Moderate < Severe
 \end{Shaded}
 
 \begin{verbatim}
- [1]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[12]  TRUE FALSE
+ [1]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
 \end{verbatim}
 
 \begin{Shaded}
@@ -2834,8 +2837,7 @@ Levels: Mild < Moderate < Severe
 \end{Shaded}
 
 \begin{verbatim}
- [1] FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
-[12]  TRUE FALSE
+ [1] FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE
 \end{verbatim}
 
 \begin{Shaded}
@@ -2845,8 +2847,7 @@ Levels: Mild < Moderate < Severe
 \end{Shaded}
 
 \begin{verbatim}
- [1]  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE
-[12] FALSE  TRUE
+ [1]  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE
 \end{verbatim}
 
 \begin{Shaded}
@@ -2880,8 +2881,7 @@ Levels: Mild < Moderate < Severe
 \end{Shaded}
 
 \begin{verbatim}
-[1] "Boncho Ku"         "Linear Regression" "307"              
-[4] "Male"             
+[1] "Boncho Ku"         "Linear Regression" "307"               "Male"             
 \end{verbatim}
 
 \begin{Shaded}
@@ -2893,10 +2893,8 @@ Levels: Mild < Moderate < Severe
 \end{Shaded}
 
 \begin{verbatim}
-               Name             Subject                Room 
-        "Boncho Ku" "Linear Regression"               "307" 
-                Sex 
-             "Male" 
+               Name             Subject                Room                 Sex 
+        "Boncho Ku" "Linear Regression"               "307"              "Male" 
 \end{verbatim}
 
 \begin{Shaded}
@@ -2964,8 +2962,7 @@ Levels: Mild < Moderate < Severe
 \end{Shaded}
 
 \begin{verbatim}
- [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
-[12]  TRUE
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE
 \end{verbatim}
 
 \begin{Shaded}
@@ -2998,8 +2995,7 @@ Levels: Mild < Moderate < Severe
 \end{Shaded}
 
 \begin{verbatim}
- [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
-[24] 24 25
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
 \end{verbatim}
 
 \begin{Shaded}
@@ -3056,8 +3052,8 @@ Levels: Mild < Moderate < Severe
 \end{Shaded}
 
 \begin{verbatim}
- [1] Male   Male   Male   Male   Male   Male   Male   Male   Male   Male  
-[11] Female Female Female Female Female Female Female Female Female Female
+ [1] Male   Male   Male   Male   Male   Male   Male   Male   Male   Male   Female
+[12] Female Female Female Female Female Female Female Female Female
 Levels: Male Female
 \end{verbatim}
 
@@ -3089,8 +3085,7 @@ Levels: Male Female
 \end{Shaded}
 
 \begin{verbatim}
- [1]  1  2  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
-[24] 25
+ [1]  1  2  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
 \end{verbatim}
 
 \begin{Shaded}
@@ -3228,7 +3223,7 @@ Levels: Male Female
 
 \normalsize
 
-\section{행렬(matrix)}\label{matrix}
+\subsection{행렬(matrix)}\label{matrix}
 
 \begin{itemize}
 \tightlist
@@ -3248,7 +3243,7 @@ Levels: Male Female
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\NormalTok{X <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DataTypeTok{data =} \OperatorTok{<}\NormalTok{DATA}\OperatorTok{>}\NormalTok{, }\DataTypeTok{nrow =} \OperatorTok{<}\NormalTok{N}\OperatorTok{>}\NormalTok{, }\DataTypeTok{ncol =} \OperatorTok{<}\NormalTok{P}\OperatorTok{>}\NormalTok{, }\DataTypeTok{byrow =} \OperatorTok{<}\OtherTok{TRUE}\OperatorTok{/}\OtherTok{FALSE}\OperatorTok{>}\NormalTok{)}
+\NormalTok{X <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DataTypeTok{data =} \OperatorTok{<}\NormalTok{DATA}\OperatorTok{>}\NormalTok{, }\DataTypeTok{nrow =} \OperatorTok{<}\NormalTok{N}\OperatorTok{>}\NormalTok{, }\DataTypeTok{ncol =} \OperatorTok{<}\NormalTok{P}\OperatorTok{>}\NormalTok{, }\DataTypeTok{byrow =} \OperatorTok{<}\OtherTok{TRUE}\OperatorTok{/}\OtherTok{FALSE}\OperatorTok{>}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3770,7 +3765,7 @@ Error in X * Z: 배열의 크기가 올바르지 않습니다
 
 \normalsize
 
-\section{배열(array)}\label{array}
+\subsection{배열(array)}\label{array}
 
 \begin{itemize}
 \tightlist
@@ -3853,7 +3848,7 @@ Error in X * Z: 배열의 크기가 올바르지 않습니다
 
 \normalsize
 
-\section{데이터 프레임(data frame)}\label{-data-frame}
+\subsection{데이터 프레임(data frame)}\label{-data-frame}
 
 \begin{itemize}
 \tightlist
@@ -3899,7 +3894,7 @@ Error in X * Z: 배열의 크기가 올바르지 않습니다
 
 \normalsize
 
-\subsection{데이터 프레임 생성 및 관련 명령어}\label{-----}
+\subsubsection{데이터 프레임 생성 및 관련 명령어}\label{-----}
 
 \begin{itemize}
 \tightlist
@@ -4334,67 +4329,130 @@ Error in `[.data.frame`(DF, Sex == "Male", ): 객체 'Sex'를 찾을 수 없습�
 
 \normalsize
 
-\section{리스트}
+\subsection{리스트(list)}\label{list}
+
+\begin{itemize}
+\tightlist
+\item
+  서로 다른 구조를 갖는 데이터를 모두 묵은 객체 형태
+
+  \begin{itemize}
+  \tightlist
+  \item
+    예를 들어 행렬과 배열은 자료 구조가 다름
+  \item
+    R 패키지를 이용한 분석결과는 일반적으로 리스트 구조로 출력
+  \end{itemize}
+\item
+  다른 구조를 갖는 다수의 데이터 객체 정리에 용이
+\item
+  리스트 색인(index)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    리스트 내 객체명이 존재하는 경우 \texttt{LIST\$객체명}과 같이 리스트
+    내 객체 접근 가능
+  \item
+    일반적으로 \texttt{LIST{[}{[}index{]}{]}} 또는
+    \texttt{LIST{[}{[}"객체명"{]}{]}}으로도 접근 가능
+  \end{itemize}
+\end{itemize}
 
 \footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# Vector(L1), Matrix(L2), Array(L3), Data Frame(L4)를 만들어서, 하나의 List(L5)로}
-\ErrorTok{>}\StringTok{ }\CommentTok{# 묶어라}
-\ErrorTok{>}\StringTok{ }\NormalTok{L1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{)  }\CommentTok{# Vector}
-\OperatorTok{>}\StringTok{ }\NormalTok{L2 <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{TRUE}\NormalTok{)  }\CommentTok{# Matrix}
-\OperatorTok{>}\StringTok{ }\NormalTok{L3 <-}\StringTok{ }\KeywordTok{array}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{24}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{))  }\CommentTok{# Array}
-\OperatorTok{>}\StringTok{ }\NormalTok{L4 <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{cust_id =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{), }\DataTypeTok{last_name =} \KeywordTok{c}\NormalTok{(}\StringTok{"Kim"}\NormalTok{, }\StringTok{"Lee"}\NormalTok{, }\StringTok{"Choi"}\NormalTok{, }\StringTok{"Park"}\NormalTok{))  }\CommentTok{# Data Frame}
-\OperatorTok{>}\StringTok{ }\NormalTok{L5 <-}\StringTok{ }\KeywordTok{list}\NormalTok{(L1, L2, L3, L4)  }\CommentTok{# List}
-\OperatorTok{>}\StringTok{ }\CommentTok{# [[1]]는 Vector(L1), [[2]]는 Matrix(L2), [[3]]는 Array(L3), [[4]]는 Data Frame(L4)가}
-\ErrorTok{>}\StringTok{ }\CommentTok{# 묶인 것임}
-\ErrorTok{>}\StringTok{ }\NormalTok{L5}
+\CommentTok{# Vector (V), matrix (M), array (A), data frame(DF)를 만들어서, 하나의 list (L)로 묶기}
+\CommentTok{# 예시 출처: http://rfriend.tistory.com/14?category=601862 [R, Python 분석과}
+\CommentTok{# 프로그래밍 (by R Friend)]}
+\NormalTok{V <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{)  }\CommentTok{# Vector}
+\NormalTok{M <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{TRUE}\NormalTok{)  }\CommentTok{# Matrix}
+\NormalTok{A <-}\StringTok{ }\KeywordTok{array}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{24}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{))  }\CommentTok{# Array}
+\NormalTok{DF <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{cust_id =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{), }\DataTypeTok{last_name =} \KeywordTok{c}\NormalTok{(}\StringTok{"Kim"}\NormalTok{, }\StringTok{"Lee"}\NormalTok{, }\StringTok{"Choi"}\NormalTok{, }\StringTok{"Park"}\NormalTok{))  }\CommentTok{# Data Frame}
+\NormalTok{L <-}\StringTok{ }\KeywordTok{list}\NormalTok{(V, M, A, DF)  }\CommentTok{# List}
+\CommentTok{# 리스트 내부구조 출력(str 사용)}
+\KeywordTok{str}\NormalTok{(L)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-[[1]]
-[1] 1 2 3 4
-
-[[2]]
-     [,1] [,2]
-[1,]    1    2
-[2,]    3    4
-[3,]    5    6
-
-[[3]]
-, , 1
-
-     [,1] [,2] [,3] [,4]
-[1,]    1    4    7   10
-[2,]    2    5    8   11
-[3,]    3    6    9   12
-
-, , 2
-
-     [,1] [,2] [,3] [,4]
-[1,]   13   16   19   22
-[2,]   14   17   20   23
-[3,]   15   18   21   24
-
-
-[[4]]
-  cust_id last_name
-1       1       Kim
-2       2       Lee
-3       3      Choi
-4       4      Park
+List of 4
+ $ : num [1:4] 1 2 3 4
+ $ : int [1:3, 1:2] 1 3 5 2 4 6
+ $ : int [1:3, 1:4, 1:2] 1 2 3 4 5 6 7 8 9 10 ...
+ $ :'data.frame':   4 obs. of  2 variables:
+  ..$ cust_id  : num [1:4] 1 2 3 4
+  ..$ last_name: Factor w/ 4 levels "Choi","Kim","Lee",..: 2 3 1 4
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\CommentTok{# 출처: http://rfriend.tistory.com/14?category=601862 [R, Python 분석과 프로그래밍 (by}
-\ErrorTok{>}\StringTok{ }\CommentTok{# R Friend)]}
+\CommentTok{# 통계분석 시 리스트 결과 출력 예시: 일변량 회귀분석}
+\KeywordTok{data}\NormalTok{(mtcars)}
+\NormalTok{linreg <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(mpg }\OperatorTok{~}\StringTok{ }\NormalTok{hp, }\DataTypeTok{data =}\NormalTok{ mtcars)}
+\KeywordTok{is.list}\NormalTok{(linreg)  }\CommentTok{# 리스트 객체 여부 확인}
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 리스트 linreg에 포함된 객체명 출력}
+\KeywordTok{names}\NormalTok{(linreg)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1] "coefficients"  "residuals"     "effects"       "rank"          "fitted.values"
+ [6] "assign"        "qr"            "df.residual"   "xlevels"       "call"         
+[11] "terms"         "model"        
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 리스트 색인: 회귀계수 접근('coefficients')}
+\NormalTok{linreg[[}\StringTok{"coefficients"}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(Intercept)          hp 
+    30.0989     -0.0682 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 리스트 색인: 회귀모형 잔차('residual') 접근}
+\NormalTok{linreg[[}\DecValTok{2}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+          Mazda RX4       Mazda RX4 Wag          Datsun 710      Hornet 4 Drive 
+            -1.5937             -1.5937             -0.9536             -1.1937 
+  Hornet Sportabout             Valiant          Duster 360           Merc 240D 
+             0.5411             -4.8349              0.9171             -1.4687 
+           Merc 230            Merc 280           Merc 280C          Merc 450SE 
+            -0.8172             -2.5068             -3.9068             -1.4178 
+         Merc 450SL         Merc 450SLC  Cadillac Fleetwood Lincoln Continental 
+            -0.5178             -2.6178             -5.7121             -5.0298 
+  Chrysler Imperial            Fiat 128         Honda Civic      Toyota Corolla 
+             0.2936              6.8042              3.8490              8.2360 
+      Toyota Corona    Dodge Challenger         AMC Javelin          Camaro Z28 
+            -1.9807             -4.3646             -4.6646             -0.0829 
+   Pontiac Firebird           Fiat X1-9       Porsche 914-2        Lotus Europa 
+             1.0411              1.7042              2.1099              8.0109 
+     Ford Pantera L        Ferrari Dino       Maserati Bora          Volvo 142E 
+             3.7134              1.5411              7.7576             -1.2620 
+\end{verbatim}
+
 \normalsize
+
+\subsection{R 자료 구조 정리}\label{r---}
 
 \begin{figure}[H] {
   \centering
@@ -4403,6 +4461,65 @@ Error in `[.data.frame`(DF, Sex == "Male", ): 객체 'Sex'를 찾을 수 없습�
 } \end{figure}
 
 \vspace{1cm}
+
+\chapter{데이터 조작 I: 기본 자료 조작}\label{--i---}
+
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{목적}
+\begin{itemize}
+  \item 기초적인 자료 입출력 방법 숙지
+  \item 예시 자료를 이용한 자료 조작 및 연산 방법
+  \item 
+\end{itemize}
+\end{minipage}}
+\end{quote}
+
+\section{데이터 처리 예시를 위한 실습 자료}\label{-----}
+
+\subsection{Iris dataset}\label{iris-dataset}
+
+\begin{itemize}
+\tightlist
+\item
+  영국 통계학자 Ronald Aylmer Fisher가 소개한 데이터로 붓꽃의 세 가지
+  종(setosa, versicolor, virginica)에 대해 꽃받침(sepal)과 꽃입(petal)의
+  길이(length)와 너비(width)를 정리한 자료임
+\item
+  지도 학습(supervised learning) 또는 비지도 학습(unsupervised learning)
+  예시 자료로 유명
+\item
+  Iris dataset의 구조
+\end{itemize}
+
+\footnotesize
+
+\rowcolors{2}{gray!6}{white}
+
+\begin{table}[H]
+
+\caption{\label{tab:iris-desc}Iris 자료 설명}
+\centering
+\begin{tabular}[t]{lll}
+\hiderowcolors
+\toprule
+변수명 & 설명 & 타입\\
+\midrule
+\showrowcolors
+Sepal.Length & 꽃받침 길이 & numeric\\
+Sepal.Width & 꽃받침 너비 & numeric\\
+Petal.Length & 꽃잎 길이 & numeric\\
+Petal.Width & 꽃잎 너비 & numeric\\
+Species & 붓꽃의 종(setosa, versicolor, virginica) & factor\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\rowcolors{2}{white}{white}
+
+\normalsize
+
+\subsection{Blood pressure dataset}\label{blood-pressure-dataset}
 
 \renewcommand\bibname{References}
 \bibliography{CNUH.bib}
