@@ -1993,6 +1993,28 @@ Error in 0.3 <- 10: 대입에 유효하지 않은 (do_set) 좌변입니다
 수치연산(\texttt{+,\ -,\ *,\ \^{},\ **,\ /,\ \%\%,\ \%/\%})
 가능}{숫자형: 수치연산(+, -, *, \^{}, **, /, \%\%, \%/\%) 가능}}\label{----}
 
+\begin{table}[H]
+  \centering
+  \begingroup\footnotesize
+  \caption{R의 수치 연산자 및 기본 수학 함수}
+  \begin{tabular}{p{5cm}p{7cm}}
+  \toprule
+  \textbf{연산자 또는 함수} & \textbf{설명} \\
+  \midrule
+  \texttt{+, -, *, /} & 사칙연산 \\
+  \texttt{n \%\% m} & \texttt{n}을 \texttt{m} 으로 나눈 나머지 \\
+  \texttt{n \%/\% m} & \texttt{n}을 \texttt{m} 으로 나눈 몫 \\
+  \texttt{n : m} & 정수 \texttt{n} 부터 정수 \texttt{m} 까지 1단위 수열 생성 \\
+  \texttt{n\textasciicircum m} & \texttt{n}의 \texttt{m} 승 \\
+  \texttt{exp(n)} & 상수 $e$의 \texttt{n} 승 \\
+  \texttt{log(x, base = m)} & 밑이 \texttt{m}인 x의 로그값 계산. \texttt{base} 값의 default는 $e$ \\
+  \texttt{log2(x), log10(x)} & 각각 밑이 2, 10인 x의 로그값 계산 \\
+  \texttt{sin(x), cos(x), tan(x)} & 삼각함수 계산 \\
+  \bottomrule
+  \end{tabular}
+  \endgroup
+\end{table}
+
 \footnotesize
 
 \begin{Shaded}
@@ -2119,6 +2141,27 @@ Error in 0.3 <- 10: 대입에 유효하지 않은 (do_set) 좌변입니다
 [1] 16
 \end{verbatim}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\CommentTok{# 수열 생성}
+\ErrorTok{>}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1]  1  2  3  4  5  6  7  8  9 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\DecValTok{10}\OperatorTok{:}\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1] 10  9  8  7  6  5  4  3  2  1
+\end{verbatim}
+
 \normalsize
 
 \subsubsection{문자형 스칼라: 수치연산 불가능}\label{---}
@@ -2185,6 +2228,11 @@ Error in h1 + g2: 이항연산자에 수치가 아닌 인수입니다
 \begin{quote}
 \textbf{참고 1: 논리형 스칼라도 숫자형 연산 가능하다. 왜냐하면 컴퓨터는
 TRUE/FALSE를 1과 0의 숫자로 인식하기 때문이다.}
+\end{quote}
+
+\begin{quote}
+\textbf{참고 2: 수치 연산자는 스칼라 뿐 아니라 아래에서 다룰 벡터, 행렬,
+리스트, 데이터프레임 객체의 연산에 사용 가능하다.}
 \end{quote}
 
 \begin{quote}
@@ -2418,6 +2466,109 @@ Error in TRUE <- FALSE: 대입에 유효하지 않은 (do_set) 좌변입니다
 \end{verbatim}
 
 \normalsize
+
+\begin{quote}
+참고: 자료에 \texttt{NA}가 포함된 경우 연산 결과는 모두 \texttt{NA}로
+변환
+\end{quote}
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OtherTok{NA} \OperatorTok{+}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OtherTok{NA} \OperatorTok{&}\StringTok{ }\OtherTok{TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] NA
+\end{verbatim}
+
+\normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  위 문제점을 해결하기 위해 R에서 사용하는 대부분의 함수는
+  \texttt{na.rm}을 인자로 받음
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{na.rm}은 \texttt{TRUE} 또는 \texttt{FALSE} 값을 가지며
+    결측값을 연산에서 제외할지를 지정함
+  \end{itemize}
+\end{itemize}
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{, }\OtherTok{NA}\NormalTok{)}
+\KeywordTok{mean}\NormalTok{(x)  }\CommentTok{# 결측 포함한 연산}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 연산에서 결측 제외(na.rm = TRUE)}
+\KeywordTok{mean}\NormalTok{(x, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 5.5
+\end{verbatim}
+
+\normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  결측(\texttt{NA}) 처리 함수: \texttt{NA} 값에 따라 처리를 다르게 하기
+  위한 함수
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{na.fail}, \texttt{na.omit}, \texttt{na.exclude},
+    \texttt{na.pass}
+  \item
+    보통 R의 선형모형과 관련된 함수에서 사용되며, 이들 함수의
+    \texttt{na.action}에 대한 인자값으로 사용됨
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+  \centering
+  \begingroup\footnotesize
+  \caption{\texttt{NA} 처리 함수}
+  \begin{tabular}{p{5cm}p{9cm}}
+  \toprule
+  \textbf{함수} & \textbf{설명} \\
+  \midrule
+  \texttt{na.fail(<object>, ...)} & \texttt{<object>}에 \texttt{NA}가 포함되어 있으면 에러 반환 \\
+  \texttt{na.omit(<object>, ...)} & \texttt{<object>}에 \texttt{NA}가 포함되어 있으면 생략 \\
+  \texttt{na.exclude(<object>, ...)} & \texttt{na.omit()}과 동일하게 작동하지만, 선형모형 관련 함수 중 잔차나 예측값을 반환하는  `resid`, `predict` 함수에서 `NA`로 제외한 행을 출력결과에 다시 추가 \\
+  \texttt{na.pass(<object>, ...)} & \texttt{<object>}에 NA가 포함되더라도 통과 \\
+  \bottomrule
+  \end{tabular}
+  \endgroup
+\end{table}
 
 \subsubsection{\texorpdfstring{NULL
 값(\texttt{NULL})}{NULL 값(NULL)}}\label{null-null}
@@ -3144,7 +3295,7 @@ Levels: Male Female
 \end{minipage}}
 \end{quote}
 
-\vspace{0.5cm} \textbf{벡터 연산 예시}
+\vspace{0.5cm} \textbf{벡터의 집합연산 예시}
 
 \footnotesize
 
@@ -3163,6 +3314,7 @@ Levels: Male Female
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{y <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\CommentTok{# x와 y가 동일한지 여부: TRUE/FALSE 반환}
 \KeywordTok{identical}\NormalTok{(x, y)}
 \end{Highlighting}
 \end{Shaded}
@@ -3173,6 +3325,7 @@ Levels: Male Female
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# x와 y의 합집합(union) 반환}
 \KeywordTok{union}\NormalTok{(x, y)}
 \end{Highlighting}
 \end{Shaded}
@@ -3183,6 +3336,7 @@ Levels: Male Female
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# x와 y의 교집합(interaction) 반환}
 \KeywordTok{intersect}\NormalTok{(x, y)}
 \end{Highlighting}
 \end{Shaded}
@@ -3193,6 +3347,7 @@ Levels: Male Female
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# x와 y의 차집합(difference) 반환}
 \KeywordTok{setdiff}\NormalTok{(x, y)}
 \end{Highlighting}
 \end{Shaded}
@@ -3213,6 +3368,7 @@ Levels: Male Female
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# y 벡터 내 x 벡터 원소 포함여부: TRUE/FALSE 반환}
 \NormalTok{x }\OperatorTok{%in%}\StringTok{ }\NormalTok{y}
 \end{Highlighting}
 \end{Shaded}
@@ -4302,10 +4458,30 @@ Error in `[.data.frame`(DF, Sex == "Male", ): 객체 'Sex'를 찾을 수 없습�
 10 10   Male  42 109    162     60 22.9
 \end{verbatim}
 
+\normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  데이터프레임을 스프레드시트 형태로 보기: \texttt{View()} 함수 사용
+\item
+  데이터프레임 요약 통계량은 \texttt{summary()} 함수를 통해 확인
+  가능(모든 객체에 적용 가능)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    최솟값(minimum), 1사분위수(1\(^{\mathrm{st}}\) quantile),
+    중앙값(median), 평균(mean), 3사분위수(3\(^{\mathrm{rd}}\) quantile),
+    최댓값(maximum) 순으로 각 변수 요약
+  \end{itemize}
+\end{itemize}
+
+\footnotesize
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# 데이터프레임을 스프레드시트 형태로 보기 View(DF)}
-\CommentTok{# 데이터프레임 요약 통계량}
+\CommentTok{# 데이터 프레임 요약}
 \KeywordTok{summary}\NormalTok{(DF)}
 \end{Highlighting}
 \end{Shaded}
@@ -4469,13 +4645,12 @@ List of 4
 \textbf{목적}
 \begin{itemize}
   \item 기초적인 자료 입출력 방법 숙지
-  \item 예시 자료를 이용한 자료 조작 및 연산 방법
-  \item 
+  \item 예시 자료를 이용한 자료 조작 
 \end{itemize}
 \end{minipage}}
 \end{quote}
 
-\section{데이터 처리 예시를 위한 실습 자료}\label{-----}
+\section{데이터 처리 예시를 위한 실습 자료 설명}\label{------}
 
 \subsection{Iris dataset}\label{iris-dataset}
 
@@ -4484,10 +4659,13 @@ List of 4
 \item
   영국 통계학자 Ronald Aylmer Fisher가 소개한 데이터로 붓꽃의 세 가지
   종(setosa, versicolor, virginica)에 대해 꽃받침(sepal)과 꽃입(petal)의
-  길이(length)와 너비(width)를 정리한 자료임
+  길이(length)와 너비(width)를 정리한 자료
 \item
   지도 학습(supervised learning) 또는 비지도 학습(unsupervised learning)
   예시 자료로 유명
+\item
+  R의 기본 dataset에 포함되어 있으며 \texttt{data(iris)}로 자료 불러오기
+  가능
 \item
   Iris dataset의 구조
 \end{itemize}
@@ -4519,7 +4697,92 @@ Species & 붓꽃의 종(setosa, versicolor, virginica) & factor\\
 
 \normalsize
 
+\begin{itemize}
+\tightlist
+\item
+  붓꽃 별 50행 씩 총 150행으로 이루어짐.
+\end{itemize}
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(iris)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(iris)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+'data.frame':   150 obs. of  5 variables:
+ $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+ $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+ $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+ $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+ $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(iris)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  Sepal.Length   Sepal.Width    Petal.Length   Petal.Width        Species  
+ Min.   :4.30   Min.   :2.00   Min.   :1.00   Min.   :0.1   setosa    :50  
+ 1st Qu.:5.10   1st Qu.:2.80   1st Qu.:1.60   1st Qu.:0.3   versicolor:50  
+ Median :5.80   Median :3.00   Median :4.35   Median :1.3   virginica :50  
+ Mean   :5.84   Mean   :3.06   Mean   :3.76   Mean   :1.2                  
+ 3rd Qu.:6.40   3rd Qu.:3.30   3rd Qu.:5.10   3rd Qu.:1.8                  
+ Max.   :7.90   Max.   :4.40   Max.   :6.90   Max.   :2.5                  
+\end{verbatim}
+
+\normalsize
+
 \subsection{Blood pressure dataset}\label{blood-pressure-dataset}
+
+\section{외부 파일 입출력}\label{--}
+
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{목적}
+
+Excel 자료 저장 방식인 \texttt{.xls}, \texttt{.xlsx} 확장자 파일과 일반적인 텍스트 형태 자료 저장 방식인 \texttt{.txt}, \texttt{.csv} (콤마 분리 형식) 등과 같은 확장자를 가진 파일을 R workspace로 읽고, R에서 처리한 자료를 외부로 출력하는 방법을 습득한다. 
+
+\end{minipage}}
+\end{quote}
+
+\subsection{RStudio에서 외부 파일 읽어보기}\label{rstudio---}
+
+\begin{itemize}
+\tightlist
+\item
+  최근 Rstudio version 1.1.xxx 이후 손쉽게 외부 자료를 R workspace 에
+  불러오는 것이 가능해짐.
+\item
+  Rstudio 상단 메뉴에서
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{{[}File{]}} \(\rightarrow\)
+  \end{itemize}
+\end{itemize}
 
 \renewcommand\bibname{References}
 \bibliography{CNUH.bib}

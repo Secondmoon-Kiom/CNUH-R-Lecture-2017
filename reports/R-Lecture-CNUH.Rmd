@@ -885,6 +885,29 @@ _x <- c("M", "M", "F")
 
 #### 숫자형: 수치연산(`+, -, *, ^, **, /, %%, %/%`) 가능
 
+\begin{table}[H]
+  \centering
+  \begingroup\footnotesize
+  \caption{R의 수치 연산자 및 기본 수학 함수}
+  \begin{tabular}{p{5cm}p{7cm}}
+  \toprule
+  \textbf{연산자 또는 함수} & \textbf{설명} \\
+  \midrule
+  \texttt{+, -, *, /} & 사칙연산 \\
+  \texttt{n \%\% m} & \texttt{n}을 \texttt{m} 으로 나눈 나머지 \\
+  \texttt{n \%/\% m} & \texttt{n}을 \texttt{m} 으로 나눈 몫 \\
+  \texttt{n : m} & 정수 \texttt{n} 부터 정수 \texttt{m} 까지 1단위 수열 생성 \\
+  \texttt{n\textasciicircum m} & \texttt{n}의 \texttt{m} 승 \\
+  \texttt{exp(n)} & 상수 $e$의 \texttt{n} 승 \\
+  \texttt{log(x, base = m)} & 밑이 \texttt{m}인 x의 로그값 계산. \texttt{base} 값의 default는 $e$ \\
+  \texttt{log2(x), log10(x)} & 각각 밑이 2, 10인 x의 로그값 계산 \\
+  \texttt{sin(x), cos(x), tan(x)} & 삼각함수 계산 \\
+  \bottomrule
+  \end{tabular}
+  \endgroup
+\end{table}
+
+
 ```{r, echo = T, eval = T, prompt = T}
 # 숫자형 스칼라
 a <- 3
@@ -911,6 +934,9 @@ b %/% a
 # 연산 우선순위
 n <- (3+5)*3 - 4**2/2
 n
+# 수열 생성
+1:10
+10:1
 ```
 
 #### 문자형 스칼라: 수치연산 불가능
@@ -933,6 +959,8 @@ h1 + g2
     - 문자형 비교 연산은 `==, !=`만 가능
 
 > **참고 1: 논리형 스칼라도 숫자형 연산 가능하다. 왜냐하면 컴퓨터는 TRUE/FALSE를 1과 0의 숫자로 인식하기 때문이다.**
+
+> **참고 2: 수치 연산자는 스칼라 뿐 아니라 아래에서 다룰 벡터, 행렬, 리스트, 데이터프레임 객체의 연산에 사용 가능하다.**
 
 > **참고 2: `&`와 `&&`는 동일하게 AND를 의미하지만 연산 결과가 다르다. `&`의 연산 대상이 벡터인 경우 백터 구성 값 각각에 대해 `&` 연산을 실행 하지만 `&&`는 한 개(스칼라)에만  논리 연산이 적용된다(아래 예시 참고).**
 
@@ -982,6 +1010,46 @@ four
 # 'is.na()' 결측 NA가 포함되어 있으면 TRUE 
 is.na(NA)
 ```
+
+> 참고: 자료에 `NA`가 포함된 경우 연산 결과는 모두 `NA`로 변환
+
+```{r, echo = T}
+NA + 1
+NA & TRUE
+```
+
+- 위 문제점을 해결하기 위해 R에서 사용하는 대부분의 함수는 `na.rm`을 인자로 받음
+    - `na.rm`은 `TRUE` 또는 `FALSE` 값을 가지며 결측값을 연산에서 제외할지를 지정함
+
+```{r echo = T}
+x <- c(1:10, NA)
+mean(x) # 결측 포함한 연산
+
+# 연산에서 결측 제외(na.rm = TRUE)
+mean(x, na.rm = TRUE)
+```
+
+- 결측(`NA`) 처리 함수: `NA` 값에 따라 처리를 다르게 하기 위한 함수
+    - `na.fail`, `na.omit`, `na.exclude`, `na.pass`
+    - 보통 R의 선형모형과 관련된 함수에서 사용되며, 이들 함수의 `na.action`에 대한 인자값으로 사용됨
+
+\begin{table}[H]
+  \centering
+  \begingroup\footnotesize
+  \caption{\texttt{NA} 처리 함수}
+  \begin{tabular}{p{5cm}p{9cm}}
+  \toprule
+  \textbf{함수} & \textbf{설명} \\
+  \midrule
+  \texttt{na.fail(<object>, ...)} & \texttt{<object>}에 \texttt{NA}가 포함되어 있으면 에러 반환 \\
+  \texttt{na.omit(<object>, ...)} & \texttt{<object>}에 \texttt{NA}가 포함되어 있으면 생략 \\
+  \texttt{na.exclude(<object>, ...)} & \texttt{na.omit()}과 동일하게 작동하지만, 선형모형 관련 함수 중 잔차나 예측값을 반환하는  `resid`, `predict` 함수에서 `NA`로 제외한 행을 출력결과에 다시 추가 \\
+  \texttt{na.pass(<object>, ...)} & \texttt{<object>}에 NA가 포함되더라도 통과 \\
+  \bottomrule
+  \end{tabular}
+  \endgroup
+\end{table}
+
 
 #### NULL 값(`NULL`)
 
@@ -1188,7 +1256,7 @@ str1["Name"]
 \end{quote}
 
 \vspace{0.5cm}
-\textbf{벡터 연산 예시}
+\textbf{벡터의 집합연산 예시}
 
 ```{r, echo = T, eval = T}
 x <- c(1:3)
@@ -1197,12 +1265,20 @@ identical(x, y)
 
 y <- c(1,2,4)
 
+# x와 y가 동일한지 여부: TRUE/FALSE 반환
 identical(x, y)
+
+# x와 y의 합집합(union) 반환
 union(x, y)
+
+# x와 y의 교집합(interaction) 반환
 intersect(x, y)
+
+# x와 y의 차집합(difference) 반환
 setdiff(x, y)
 setdiff(y, x)
 
+# y 벡터 내 x 벡터 원소 포함여부: TRUE/FALSE 반환
 x %in% y
 ```
 
@@ -1418,13 +1494,17 @@ DF[DF$Sex == "Male", ]; with(DF, DF[Sex == "Male", ])
 DF[-1, -1]
 
 head(DF); tail(DF)
+```
 
-# 데이터프레임을 스프레드시트 형태로 보기
-# View(DF)
+- 데이터프레임을 스프레드시트 형태로 보기: `View()` 함수 사용
+- 데이터프레임 요약 통계량은 `summary()` 함수를 통해 확인 가능(모든 객체에 적용 가능)
+    - 최솟값(minimum), 1사분위수(1$^{\mathrm{st}}$ quantile), 중앙값(median), 평균(mean), 3사분위수(3$^{\mathrm{rd}}$ quantile), 최댓값(maximum) 순으로 각 변수 요약
 
-# 데이터프레임 요약 통계량
+<!-- \newpage -->
+
+```{r, echo = T}
+# 데이터 프레임 요약
 summary(DF)
-
 ```
 
 ### 리스트(list)
@@ -1487,7 +1567,7 @@ linreg[[2]]
 \end{minipage}}
 \end{quote}
 
-## 데이터 처리 예시를 위한 실습 자료
+## 데이터 처리 예시를 위한 실습 자료 설명
 
 ### Iris dataset
 
@@ -1508,8 +1588,33 @@ kable(tab3, booktabs = T, escape = F, caption = "Iris 자료 설명") %>%
   kable_styling(latex_options = c("striped", "HOLD_position"))
 ```
 
+- 붓꽃 별 50행 씩 총 `r NROW(iris)`행으로 이루어짐. 
+
+```{r echo = T}
+head(iris)
+str(iris)
+summary(iris)
+```
+
 ### Blood pressure dataset
 
+
+## 외부 파일 입출력
+
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{목적}
+
+Excel 자료 저장 방식인 \texttt{.xls}, \texttt{.xlsx} 확장자 파일과 일반적인 텍스트 형태 자료 저장 방식인 \texttt{.txt}, \texttt{.csv} (콤마 분리 형식) 등과 같은 확장자를 가진 파일을 R workspace로 읽고, R에서 처리한 자료를 외부로 출력하는 방법을 습득한다. 
+
+\end{minipage}}
+\end{quote}
+
+### RStudio에서 외부 파일 읽어보기
+
+- 최근 Rstudio version 1.1.xxx 이후 손쉽게 외부 자료를 R workspace 에 불러오는 것이 가능해짐. 
+- Rstudio 상단 메뉴에서
+    - `[File]` $\rightarrow$
 
 <!-- # 데이터 조작 -->
 
