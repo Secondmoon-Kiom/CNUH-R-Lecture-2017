@@ -812,7 +812,8 @@ x
     2) 변수명의 알파벳, 한글, `.`로 시작 가능
         - `.`로 시작한 경우 뒤에 숫자 올 수 없음(숫자로 인지)
     3) 대소문자 구분
-```{r objectName-ex01, echo = T, eval = T}
+    
+```{r objectName-ex01, echo = T, eval = T, prompt = F}
 # 1:10은 1부터 10까지 정수 생성
 # 'c()'는 벡터 생성 함수
 x <- c(1:10) 
@@ -831,15 +832,16 @@ a1 <- seq(from = 1, to = 10, by = 2)
 ```
 
 3. 잘못된 객체 또는 변수 명명 예시
-```{r objName-ex02, echo = T, eval = T}
+
+```{r objName-ex02, echo = T, eval = T, prompt = F}
 3x <- 7
 ```
 
-```{r objName-ex03, echo = T, eval = T}
+```{r objName-ex03, echo = T, eval = T, prompt = F}
 _x <- c("M", "M", "F")
 ```
 
-```{r objName-ex04, echo = T, eval = T}
+```{r objName-ex04, echo = T, eval = T, prompt = F}
 .3 <- 10
 ```
 
