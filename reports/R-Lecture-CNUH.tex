@@ -4682,6 +4682,7 @@ List of 4
 
 \caption{\label{tab:iris-desc}Iris 자료 설명}
 \centering
+\fontsize{9}{11}\selectfont
 \begin{tabular}[t]{lll}
 \hiderowcolors
 \toprule
@@ -4758,7 +4759,65 @@ Species & 붓꽃의 종(setosa, versicolor, virginica) & factor\\
 
 \normalsize
 
-\subsection{Blood pressure dataset}\label{blood-pressure-dataset}
+\subsection{Diastolic blood pressure
+dataset}\label{diastolic-blood-pressure-dataset}
+
+\begin{itemize}
+\tightlist
+\item
+  책 ``Clinical Trial Data Analysis Using R'' \citep{Chen-2010}의
+  예시자료
+\item
+  1960년대 후반 혈압강하제의 유효성 평가를 위한 실시한 RCT 결과 자료
+
+  \begin{itemize}
+  \tightlist
+  \item
+    신약(혈압강하제) vs.~위약(placebo)군 비교
+  \item
+    당시 이완기 혈압의 고혈압 기준은 \(\mathrm{DBP} > 95\) mmHg
+  \item
+    20명 씩 각각 신약군과 위약군에 배정. 총 40명의 고혈압 환자의 이완기
+    혈압 측정
+  \item
+    투약 후 이완기 혈압 변화를 4개월 간 F/U
+  \end{itemize}
+\item
+  \texttt{DBP} 데이터의 구조
+\end{itemize}
+
+\footnotesize
+
+\rowcolors{2}{gray!6}{white}
+
+\begin{table}[H]
+
+\caption{\label{tab:DBP-desc}DBP 자료 설명}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabular}[t]{lll}
+\hiderowcolors
+\toprule
+변수명 & 설명 & 타입\\
+\midrule
+\showrowcolors
+Subject & 대상자 ID & numeric\\
+TRT & 처리: 신약(A), 위약(B) & character\\
+DBP1 & Baseline & numeric\\
+DBP2 & 투약 후 1개월 & numeric\\
+DBP3 & 투약 후 2개월 & numeric\\
+\addlinespace
+DBP4 & 투약 후 3개월 & numeric\\
+DBP5 & 투약 후 4개월 & numeric\\
+Age & 나이 & numeric\\
+Sex & 성별: 남성(M), 여성(F) & character\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\rowcolors{2}{white}{white}
+
+\normalsize
 
 \section{외부 파일 입출력}\label{--}
 
@@ -4785,7 +4844,45 @@ Excel 자료 저장 방식인 \texttt{.xls}, \texttt{.xlsx} 확장자 파일과 
   \tightlist
   \item
     \texttt{{[}File{]}} \(\rightarrow\)
+    \texttt{{[}Import\ Dataset{]}}에서 조건에 맞는 파일 옵션 선택
+  \item
+    \texttt{{[}Browse...{]}} 버튼을 눌러 불러오고자 하는 데이터 파일
+    경로 선택
+  \item
+    \texttt{Import\ Options:} 에서 알맞는 옵션 설정 후 우측 하단
+    \texttt{{[}Import{]}} 버튼 클릭
   \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+{
+  \centering
+  \includegraphics[width = 15cm, height = 10cm]{Figures/data-import.png}
+  \caption[]{R-Studio 파일 메뉴에서 외부파일 읽어오기(예시)}\label{fig:data-import}
+}
+\end{figure}
+
+\subsection{R 명령어를 이용한 외부 파일 읽어오기/내보내기}\label{r-----}
+
+\begin{itemize}
+\tightlist
+\item
+  R은 외부 자료를 읽어오기 위한 함수 제공
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{scan()}, \texttt{read.table()}, \texttt{read.csv()},
+    \texttt{read.fwf} 등
+  \end{itemize}
+\item
+  파일 입출력을 위한 다양한 함수들이 존재하지만, 여기서는 가장 일반적인
+  자료 형태를 불러오는 방법 소개
+\item
+  위에서 나열한 함수 중 가장 범용적으로 사용하는 함수는
+  \texttt{read.table()}
+\item
+  \texttt{read.table()} 함수 형태
 \end{itemize}
 
 \renewcommand\bibname{References}
