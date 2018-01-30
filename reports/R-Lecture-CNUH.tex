@@ -210,6 +210,7 @@
 \usepackage{pdflscape}
 \usepackage{tabu}
 \usepackage{threeparttable}
+\usepackage[normalem]{ulem}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -4882,8 +4883,51 @@ Excel 자료 저장 방식인 \texttt{.xls}, \texttt{.xlsx} 확장자 파일과 
   위에서 나열한 함수 중 가장 범용적으로 사용하는 함수는
   \texttt{read.table()}
 \item
-  \texttt{read.table()} 함수 형태
+  \texttt{read.table()} 함수의 기본 사용 형태
 \end{itemize}
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{read.table}\NormalTok{(}\DataTypeTok{file =} \StringTok{""}\NormalTok{, }\CommentTok{# 읽어올 *.txt 또는 *.csv 파일 이름 }
+           \DataTypeTok{sep =} \StringTok{""}\NormalTok{, }\CommentTok{# 자료 구분 분리자(e.g. TAB, comma, space, ...)}
+           \DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{, }\CommentTok{# 파일 첫 행을 헤더(변수명)로 처리할 것인지 여부 }
+           \DataTypeTok{na.strings =} \StringTok{"NA"}\NormalTok{, }\CommentTok{# "NA"로 저장된 문자열은 R의 결측으로 처리}
+           \DataTypeTok{stringsAsFactors =} \OtherTok{TRUE}\NormalTok{, }\CommentTok{# 문자열 벡터의 요인형 변환 여부}
+\NormalTok{           )}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  예시: 하위폴더 \texttt{output}에 저장되어 있는 \texttt{DBP.txt}를
+  \texttt{read.table()} 함수를 이용해 불러오기
+\end{itemize}
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{DBP <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"output/DBP.txt"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{"}\CharTok{\textbackslash{}t}\StringTok{"}\NormalTok{, }\DataTypeTok{header =}\NormalTok{ T)}
+\OperatorTok{>}\StringTok{ }\KeywordTok{head}\NormalTok{(DBP)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  Subject TRT DBP1 DBP2 DBP3 DBP4 DBP5 Age Sex
+1       1   A  114  115  113  109  105  43   F
+2       2   A  116  113  112  103  101  51   M
+3       3   A  119  115  113  104   98  48   F
+4       4   A  115  113  112  109  101  42   F
+5       5   A  116  112  107  104  105  49   M
+6       6   A  117  112  113  104  102  47   M
+\end{verbatim}
+
+\normalsize
 
 \renewcommand\bibname{References}
 \bibliography{CNUH.bib}
